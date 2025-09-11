@@ -14,6 +14,7 @@ Handlebars.registerHelper('ne', (a, b) => a !== b);
 Handlebars.registerHelper('or', (a, b) => a || b);
 Handlebars.registerHelper('and', (a, b) => a && b);
 Handlebars.registerHelper('includes', (array, item) => array && array.includes(item));
+Handlebars.registerHelper('contains', (array, item) => array && array.includes(item));
 Handlebars.registerHelper('capitalize', (str) => str.charAt(0).toUpperCase() + str.slice(1));
 Handlebars.registerHelper('kebabCase', (str) => str.replace(/\s+/g, '-').toLowerCase());
 Handlebars.registerHelper('camelCase', (str) => str.replace(/[-_\s]+(.)?/g, (_, c) => c ? c.toUpperCase() : ''));

@@ -1,0 +1,157 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+{{description}}
+
+{{#if useMonorepo}}
+This is a monorepo project with multiple packages: {{#each packages}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}. The project uses {{packageManager}} for workspace management and dependency handling.
+{{else}}
+This is a single-package project focused on {{projectName}}.
+{{/if}}
+
+## Development Commands
+
+### Setup & Dependencies
+```bash
+{{#if packageManager}}
+{{packageManager}} install                    # Install all dependencies
+{{else}}
+npm install                                   # Install dependencies
+{{/if}}
+chmod +x scripts/agent-guardrails.sh         # Make guardrails executable
+```
+
+### Quality & Validation
+```bash
+{{#if packageManager}}
+{{packageManager}} run guardrails             # Run AI code guardrails validation
+{{packageManager}} run lint                   # Run ESLint
+{{#if useTypeScript}}
+{{packageManager}} run type-check             # Run TypeScript type checking
+{{/if}}
+{{packageManager}} run test                   # Run test suites
+{{else}}
+npm run guardrails                            # Run AI code guardrails validation
+npm run lint                                  # Run ESLint
+{{#if useTypeScript}}
+npm run type-check                            # Run TypeScript type checking
+{{/if}}
+npm run test                                  # Run test suites
+{{/if}}
+./scripts/agent-guardrails.sh                # Direct guardrail script execution
+```
+
+### Build & Development
+```bash
+{{#if packageManager}}
+{{packageManager}} run build                  # Build all packages
+{{packageManager}} run dev                    # Development mode
+{{#if useMonorepo}}
+{{packageManager}} run clean                  # Clean build artifacts
+{{/if}}
+{{else}}
+npm run build                                 # Build the project
+npm run dev                                   # Development mode
+{{/if}}
+```
+
+{{#if useMonorepo}}
+### Workspace Management
+```bash
+{{packageManager}} --filter {{packages.[0]}} run build    # Build specific package
+{{packageManager}} --filter {{packages.[0]}} run test     # Test specific package
+{{packageManager}} add <dependency> --workspace {{packages.[0]}}  # Add dependency to specific package
+```
+{{/if}}
+
+## Project Architecture
+
+{{#if useTypeScript}}
+### TypeScript Configuration
+- Strict TypeScript mode enabled
+- Shared type definitions in {{#if useMonorepo}}shared-types package{{else}}types directory{{/if}}
+- Path mapping configured for clean imports
+{{/if}}
+
+{{#if useMonorepo}}
+### Package Structure
+{{#each packages}}
+- **{{this}}**: {{#if (eq this "core")}}Core utilities and shared functionality{{else if (eq this "api")}}API services and endpoints{{else if (eq this "web")}}Frontend web application{{else if (eq this "shared-types")}}Shared TypeScript type definitions{{else}}Package functionality{{/if}}
+{{/each}}
+{{/if}}
+
+### Code Quality Tools
+- **ESLint**: Code linting and style enforcement
+- **Prettier**: Code formatting
+{{#if useTypeScript}}
+- **TypeScript**: Static type checking
+{{/if}}
+- **Agent Guardrails**: Pre-commit validation and security checks
+
+## Development Guidelines
+
+### Code Style
+{{#if useTypeScript}}
+- Use TypeScript for all new code
+- Prefer interfaces over types for object shapes
+- Use strict null checks and proper error handling
+{{/if}}
+- Follow existing naming conventions
+- Write self-documenting code with clear variable names
+- Add JSDoc comments for public APIs
+
+### Git Workflow
+- Create focused commits with clear messages
+- Use conventional commit format: `type(scope): description`
+- Include `AI-Generated: Yes` in commit messages for AI-created code
+- All commits must pass pre-commit guardrails
+
+### Testing Strategy
+- Write tests for all new functionality
+- Maintain high test coverage
+- Use descriptive test names
+- Mock external dependencies appropriately
+
+## Security & Quality Standards
+
+### Pre-commit Validation
+The `scripts/agent-guardrails.sh` script runs automatically before each commit and validates:
+- File size limits
+- Forbidden patterns (secrets, debugging code)
+- Code quality metrics
+- JSON syntax validation
+- Security pattern detection
+
+### Security Guidelines
+- Never commit secrets, API keys, or passwords
+- Use environment variables for configuration
+- Validate all user inputs
+- Follow secure coding practices
+
+## AI Collaboration
+
+### AGENTS.md Integration
+This project follows the AGENTS.md standard for AI-human collaboration. See `AGENTS.md` for detailed guidelines on:
+- What AI agents can and cannot do
+- Code generation boundaries
+- Testing requirements
+- Communication protocols
+
+### Recommended AI Workflow
+1. Read `AGENTS.md` for project-specific guidelines
+2. Understand the current task and requirements
+3. Generate code following established patterns
+4. Write comprehensive tests for new functionality
+5. Update documentation as needed
+6. Ensure all guardrails pass before committing
+
+---
+
+**Project**: {{projectName}}
+**Author**: {{author}}
+**Last Updated**: {{currentYear}}
+
+*This file should be updated when development workflows or project structure changes.*

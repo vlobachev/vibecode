@@ -1,0 +1,228 @@
+# {{projectName}} - Project Structure
+
+## 📁 Directory Overview
+
+```
+{{projectName}}/
+├── README.md                           # Main project documentation
+├── AGENTS.md                           # AI agent guidelines (standard location)
+├── CLAUDE.md                           # Claude-specific development guidance
+├── PROJECT_STRUCTURE.md               # This file - project organization guide
+{{#if packageManager}}
+├── package.json                        # Project configuration and dependencies
+{{#if useMonorepo}}
+├── pnpm-workspace.yaml                 # Workspace configuration
+{{/if}}
+{{/if}}
+{{#if useTypeScript}}
+├── tsconfig.json                       # TypeScript configuration
+{{/if}}
+├── .eslintrc.js                        # ESLint configuration
+├── .prettierrc                         # Prettier configuration
+├── .gitignore                          # Git ignore patterns
+│
+{{#if setupGithubActions}}
+├── .github/                            # GitHub configuration
+│   └── workflows/                      # CI/CD workflows
+│       └── ci.yml                      # Continuous integration pipeline
+│
+{{/if}}
+{{#if useMonorepo}}
+├── packages/                           # Workspace packages
+{{#each packages}}
+│   ├── {{this}}/                       # {{#if (eq this "core")}}Core utilities and shared functionality{{else if (eq this "api")}}API services and endpoints{{else if (eq this "web")}}Frontend web application{{else if (eq this "shared-types")}}Shared TypeScript type definitions{{else}}{{this}} package{{/if}}
+│   │   ├── package.json                # Package-specific configuration
+{{#if ../useTypeScript}}
+│   │   ├── tsconfig.json               # Package TypeScript config
+{{/if}}
+│   │   ├── src/                        # Source code
+│   │   └── tests/                      # Package tests
+{{/each}}
+│
+{{else}}
+├── src/                                # Source code
+│   ├── index.{{#if useTypeScript}}ts{{else}}js{{/if}}                        # Main entry point
+│   ├── components/                     # Reusable components
+│   ├── utils/                          # Utility functions
+{{#if useTypeScript}}
+│   └── types/                          # Type definitions
+{{/if}}
+│
+├── tests/                              # Test files
+│   ├── unit/                           # Unit tests
+│   ├── integration/                    # Integration tests
+│   └── fixtures/                       # Test data and fixtures
+│
+{{/if}}
+├── scripts/                            # Development and build scripts
+│   └── agent-guardrails.sh             # Pre-commit validation script
+│
+└── docs/                               # Additional documentation
+    ├── architecture/                   # System design documentation
+    ├── guides/                         # Development guides
+    └── api/                            # API documentation
+```
+
+## 🏗️ Architecture Overview
+
+{{#if useMonorepo}}
+### Monorepo Structure
+This project uses a monorepo architecture with {{packageManager}} workspaces to manage multiple related packages:
+
+{{#each packages}}
+#### {{this}} Package
+{{#if (eq this "core")}}
+- **Purpose**: Core utilities, shared functionality, and common libraries
+- **Dependencies**: Minimal external dependencies
+- **Exports**: Utility functions, constants, shared business logic
+{{else if (eq this "api")}}
+- **Purpose**: API services, endpoints, and server-side logic
+- **Dependencies**: Core package, database libraries, web frameworks
+- **Exports**: REST/GraphQL APIs, service layers, data models
+{{else if (eq this "web")}}
+- **Purpose**: Frontend web application and user interface
+- **Dependencies**: Core package, shared-types, UI libraries
+- **Exports**: Web application, components, client-side logic
+{{else if (eq this "shared-types")}}
+- **Purpose**: Shared TypeScript type definitions and interfaces
+- **Dependencies**: None (types only)
+- **Exports**: Type definitions, interfaces, enums
+{{else}}
+- **Purpose**: {{this}} package functionality
+- **Dependencies**: Core package and related utilities
+- **Exports**: Package-specific functionality
+{{/if}}
+
+{{/each}}
+
+### Package Dependencies
+```
+{{#each packages}}
+{{this}} → {{#if (eq this "core")}}(no internal deps){{else if (eq this "shared-types")}}(no internal deps){{else}}core{{#if (and (eq this "web") (contains ../packages "shared-types"))}}, shared-types{{/if}}{{/if}}
+{{/each}}
+```
+{{else}}
+### Single Package Structure
+This project follows a standard single-package architecture with clear separation of concerns:
+
+- **src/**: Main source code with modular organization
+- **tests/**: Comprehensive test suite with unit and integration tests
+- **docs/**: Documentation and guides
+- **scripts/**: Development and deployment scripts
+{{/if}}
+
+## 🛠️ Development Workflow
+
+### Getting Started
+1. **Setup**: Follow instructions in `README.md`
+{{#if packageManager}}
+2. **Install**: Run `{{packageManager}} install` to install dependencies
+{{else}}
+2. **Install**: Run `npm install` to install dependencies
+{{/if}}
+3. **Develop**: Use the scripts defined in `package.json`
+4. **Test**: Run tests before committing changes
+5. **Commit**: Pre-commit hooks will validate your changes
+
+### Key Scripts
+{{#if packageManager}}
+- `{{packageManager}} run dev` - Start development mode
+- `{{packageManager}} run build` - Build for production
+- `{{packageManager}} run test` - Run test suite
+- `{{packageManager}} run lint` - Run ESLint
+{{#if useTypeScript}}
+- `{{packageManager}} run type-check` - TypeScript validation
+{{/if}}
+- `{{packageManager}} run guardrails` - Run AI code guardrails
+{{else}}
+- `npm run dev` - Start development mode
+- `npm run build` - Build for production
+- `npm run test` - Run test suite
+- `npm run lint` - Run ESLint
+{{#if useTypeScript}}
+- `npm run type-check` - TypeScript validation
+{{/if}}
+- `npm run guardrails` - Run AI code guardrails
+{{/if}}
+
+## 🤖 AI Collaboration
+
+### Essential Files for AI Agents
+- **`AGENTS.md`**: Primary AI agent guidelines and boundaries
+- **`CLAUDE.md`**: Claude-specific development commands and context
+- **`README.md`**: Project overview and setup instructions
+- **`package.json`**: Dependencies and available scripts
+
+### Code Quality & Security
+- **Pre-commit Hooks**: `scripts/agent-guardrails.sh` validates all changes
+- **Linting**: ESLint enforces code style and catches errors
+{{#if useTypeScript}}
+- **Type Safety**: TypeScript provides compile-time error checking
+{{/if}}
+- **Testing**: Comprehensive test suite ensures code reliability
+
+### Development Guidelines
+1. **Read `AGENTS.md`** before making changes
+2. **Follow existing patterns** in the codebase
+3. **Write tests** for new functionality
+4. **Update documentation** when needed
+5. **Use conventional commits** with clear messages
+
+## 📋 File Conventions
+
+### Naming Patterns
+{{#if useTypeScript}}
+- **TypeScript files**: `.ts` for modules, `.tsx` for React components
+{{else}}
+- **JavaScript files**: `.js` for modules, `.jsx` for React components
+{{/if}}
+- **Test files**: `.test.{{#if useTypeScript}}ts{{else}}js{{/if}}` or `.spec.{{#if useTypeScript}}ts{{else}}js{{/if}}`
+- **Configuration**: Descriptive names (e.g., `eslint.config.js`)
+- **Documentation**: `.md` files with clear, descriptive names
+
+### Directory Organization
+- **Flat structure** within each directory when possible
+- **Feature-based** organization for larger modules
+- **Shared utilities** in dedicated directories
+- **Tests** co-located with source code or in dedicated test directories
+
+## 🔧 Configuration Files
+
+{{#if useTypeScript}}
+### TypeScript (`tsconfig.json`)
+- Strict mode enabled for better type safety
+- Path mapping for clean imports
+{{#if useMonorepo}}
+- Project references for workspace packages
+{{/if}}
+- Modern target and module settings
+{{/if}}
+
+### ESLint (`.eslintrc.js`)
+- Extends recommended configurations
+{{#if useTypeScript}}
+- TypeScript-aware rules and parsing
+{{/if}}
+- Custom rules for project-specific patterns
+- Integration with Prettier for formatting
+
+### Package Management (`package.json`)
+{{#if packageManager}}
+- **{{packageManager}}** as the primary package manager
+{{#if useMonorepo}}
+- Workspace configuration for monorepo management
+{{/if}}
+{{else}}
+- **npm** as the package manager
+{{/if}}
+- Scripts for common development tasks
+- Dependency management with security considerations
+
+---
+
+**Project**: {{projectName}}
+**Author**: {{author}}
+**Architecture**: {{#if useMonorepo}}Monorepo{{else}}Single Package{{/if}}
+**Last Updated**: {{currentYear}}
+
+*This structure supports scalable development with clear boundaries and excellent AI collaboration capabilities.*

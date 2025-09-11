@@ -1,0 +1,155 @@
+# AGENTS.md
+
+**AI Agent Guidelines for {{projectName}}**
+
+This file provides guidance for AI agents working in this repository. It follows the AGENTS.md standard for clear AI-human collaboration.
+
+## Project Overview
+
+**Mission**: {{description}}
+
+{{#if useMonorepo}}
+**Architecture**: Monorepo with packages for {{#each packages}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}.
+{{else}}
+**Architecture**: Single package application with modular structure.
+{{/if}}
+
+**Development Philosophy**: AI proposes, humans approve. Contracts and tests define boundaries.
+
+## What You Can Do
+
+✅ **Code Generation & Modification**
+- Generate new functions, classes, and components
+- Implement features following our established patterns
+{{#if useTypeScript}}
+- Write TypeScript code with proper type definitions
+{{/if}}
+- Write unit and integration tests for your code
+- Create API endpoints following REST conventions
+- Update documentation for code you write
+- Refactor code when explicitly asked
+
+✅ **Testing & Quality**
+- Generate comprehensive test suites
+- Create test data and mock objects  
+{{#if useTypeScript}}
+- Write type-safe tests with proper TypeScript coverage
+{{/if}}
+- Write snapshot tests for UI components
+- Add error handling and edge case coverage
+- Update existing tests when code changes
+
+✅ **Documentation & Communication**
+- Update README files and inline documentation
+- Create clear commit messages following our format
+- Write helpful code comments explaining complex logic
+- Generate API documentation
+- Update this AGENTS.md file when project scope changes
+
+{{#if useMonorepo}}
+✅ **Monorepo Management**
+- Work across multiple packages while respecting boundaries
+- Update workspace dependencies appropriately
+- Maintain consistent patterns across packages
+- Use shared types and utilities from the shared package
+{{/if}}
+
+## What You Cannot Do
+
+❌ **Restricted Actions**
+- Delete or modify existing tests without explicit permission
+- Change core architecture without discussion
+- Modify CI/CD workflows without approval
+- Update dependencies without security review
+- Access or modify sensitive configuration files
+- Make breaking changes to public APIs
+
+❌ **Security Boundaries**
+- Never hardcode secrets, API keys, or passwords
+- Don't bypass existing security measures
+- Avoid creating potential security vulnerabilities
+- Don't modify authentication or authorization logic without approval
+
+## Development Guidelines
+
+### Code Style
+{{#if useTypeScript}}
+- Use TypeScript for all new code
+- Prefer interfaces over types for object shapes
+- Use strict TypeScript configuration
+{{/if}}
+- Follow existing naming conventions
+- Write self-documenting code with clear variable names
+- Use consistent formatting (Prettier handles this)
+- Add JSDoc comments for public APIs
+
+### Testing Strategy
+- Write tests for all new functionality
+- Maintain high test coverage (aim for >80%)
+- Use descriptive test names that explain the scenario
+- Group related tests in describe blocks
+- Mock external dependencies appropriately
+
+### Git Workflow
+- Create focused commits with clear messages
+- Use conventional commit format: `type(scope): description`
+- Include `AI-Generated: Yes` in commit messages for AI-created code
+- Reference issue numbers when applicable
+
+{{#if packageManager}}
+### Package Management
+- Use {{packageManager}} for all dependency management
+- Keep dependencies up to date and secure
+- Prefer exact versions for production dependencies
+- Document any new dependencies in commit messages
+{{/if}}
+
+## Communication Protocol
+
+### When to Ask for Help
+- Before making architectural decisions
+- When encountering ambiguous requirements
+- If you need to modify existing APIs
+- When security implications are unclear
+- If tests are failing and the cause isn't obvious
+
+### How to Communicate Changes
+- Explain your reasoning for code changes
+- Highlight any potential impacts or risks
+- Suggest alternatives when appropriate
+- Ask for feedback on complex implementations
+
+## Project-Specific Context
+
+### Key Technologies
+{{#if useTypeScript}}
+- **TypeScript**: Primary language for type safety
+{{/if}}
+{{#if packageManager}}
+- **{{packageManager}}**: Package manager and workspace tool
+{{/if}}
+- **ESLint & Prettier**: Code quality and formatting
+- **Git Hooks**: Pre-commit validation with agent-guardrails.sh
+
+### Important Files
+- `package.json`: Project configuration and dependencies
+{{#if useTypeScript}}
+- `tsconfig.json`: TypeScript configuration
+{{/if}}
+- `.eslintrc.js`: Linting rules and configuration
+- `scripts/agent-guardrails.sh`: Pre-commit validation script
+- `README.md`: Project documentation and setup instructions
+
+### Quality Standards
+- All code must pass ESLint validation
+- Pre-commit hooks must pass before commits
+- Tests must pass in CI/CD pipeline
+- Security scans must not reveal vulnerabilities
+- Documentation must be kept up to date
+
+---
+
+**Last Updated**: {{currentYear}}
+**Maintained By**: {{author}}
+
+*This file should be updated whenever project scope, architecture, or AI collaboration guidelines change.*
