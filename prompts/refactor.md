@@ -5,7 +5,9 @@ Use this template when asking AI agents to refactor code or perform migrations.
 ## Refactoring Goal
 
 ### Motivation
+
 **Why are we refactoring?**
+
 - [ ] Technical debt reduction
 - [ ] Performance improvement
 - [ ] Code maintainability
@@ -17,6 +19,7 @@ Use this template when asking AI agents to refactor code or perform migrations.
 **Business Justification**: [How this helps the business/users]
 
 ### Target Scope
+
 **Components to Refactor**: [Specific files, packages, or modules]
 **Estimated Size**: [Small/Medium/Large - number of files affected]
 **Timeline**: [Expected duration or deadline]
@@ -24,8 +27,10 @@ Use this template when asking AI agents to refactor code or perform migrations.
 ## Current State Analysis
 
 ### Existing Implementation
+
 **Current Architecture**: [How it works today]
-**Pain Points**: 
+**Pain Points**:
+
 1. [Issue 1]: [Description and impact]
 2. [Issue 2]: [Description and impact]
 3. [Issue 3]: [Description and impact]
@@ -33,6 +38,7 @@ Use this template when asking AI agents to refactor code or perform migrations.
 **Technical Debt**: [Specific problems to address]
 
 ### Dependencies
+
 **Internal Dependencies**: [Other packages that depend on this code]
 **External Dependencies**: [Third-party libraries involved]
 **Database/Schema**: [Any data structure changes needed]
@@ -40,13 +46,16 @@ Use this template when asking AI agents to refactor code or perform migrations.
 ## Target Architecture
 
 ### Desired End State
+
 **New Architecture**: [How it should work after refactoring]
 **Benefits Expected**:
+
 - [Benefit 1]: [Measurable improvement]
 - [Benefit 2]: [Measurable improvement]
 - [Benefit 3]: [Measurable improvement]
 
 ### Design Decisions
+
 **Patterns to Use**: [Preferred architectural patterns]
 **Patterns to Avoid**: [Anti-patterns to eliminate]
 **Technology Choices**: [New libraries or approaches to adopt]
@@ -54,7 +63,9 @@ Use this template when asking AI agents to refactor code or perform migrations.
 ## Migration Strategy
 
 ### Required Invariants
+
 **Must Preserve**:
+
 - [ ] API compatibility (specify which APIs)
 - [ ] Data integrity
 - [ ] Performance characteristics
@@ -67,6 +78,7 @@ Use this template when asking AI agents to refactor code or perform migrations.
 - [ ] Breaking changes acceptable with migration guide
 
 ### Migration Phases
+
 1. **Phase 1**: [First step - what to change]
 2. **Phase 2**: [Second step - what to change]
 3. **Phase 3**: [Final step - what to change]
@@ -76,11 +88,13 @@ Use this template when asking AI agents to refactor code or perform migrations.
 ## Risk Assessment
 
 ### Potential Risks
+
 **High Risk Areas**: [Components most likely to break]
 **User Impact**: [What users might experience during migration]
 **Rollback Difficulty**: [How hard it would be to undo changes]
 
 ### Mitigation Strategies
+
 - **Testing**: [Comprehensive test plan]
 - **Monitoring**: [What metrics to watch]
 - **Feature Flags**: [How to control rollout]
@@ -89,11 +103,13 @@ Use this template when asking AI agents to refactor code or perform migrations.
 ## Implementation Plan
 
 ### Prerequisites
+
 - [ ] [Prerequisite 1]
 - [ ] [Prerequisite 2]
 - [ ] [Prerequisite 3]
 
 ### Step-by-Step Approach
+
 1. **Preparation**:
    - [ ] Create comprehensive tests for existing behavior
    - [ ] Document current API contracts
@@ -115,7 +131,9 @@ Use this template when asking AI agents to refactor code or perform migrations.
    - [ ] Monitoring and validation
 
 ### Testing Requirements
+
 **Test Categories**:
+
 - [ ] Unit tests for new components
 - [ ] Integration tests for API changes
 - [ ] Performance tests for critical paths
@@ -127,12 +145,14 @@ Use this template when asking AI agents to refactor code or perform migrations.
 ## Success Criteria
 
 ### Functional Success
+
 - [ ] All existing functionality works as before
 - [ ] New architecture provides expected benefits
 - [ ] Performance meets or exceeds current benchmarks
 - [ ] No regressions in user experience
 
 ### Technical Success
+
 - [ ] Code quality metrics improved
 - [ ] Technical debt reduced
 - [ ] Maintainability increased
