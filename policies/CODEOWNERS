@@ -1,0 +1,63 @@
+# CODEOWNERS - Define package ownership and review requirements
+
+# Global owners - always notified for any change
+* @tech-lead @senior-dev
+
+# Core shared packages - require extra scrutiny
+/packages/core/ @tech-lead @architecture-team
+/packages/shared-types/ @tech-lead @api-team @web-team
+
+# API packages - backend team ownership
+/packages/api/ @api-team @tech-lead
+/packages/auth/ @api-team @security-team
+/packages/database/ @api-team @dba-team
+
+# Frontend packages - frontend team ownership  
+/packages/web/ @web-team @ui-team
+/packages/components/ @web-team @ui-team
+/packages/design-system/ @ui-team @design-team
+
+# Infrastructure and configuration
+/.github/ @devops-team @tech-lead
+/scripts/ @devops-team @tech-lead
+/docker/ @devops-team
+/k8s/ @devops-team
+/.env* @devops-team @security-team
+
+# Documentation
+/docs/ @tech-lead @product-team
+/README.md @tech-lead
+/CHANGELOG.md @tech-lead
+
+# Vibecoding specific files - require human oversight
+/policies/ @tech-lead @senior-dev
+/prompts/ @tech-lead @team-leads
+/templates/ @tech-lead
+/tests/golden/ @tech-lead @qa-team
+
+# Security sensitive files
+/auth/ @security-team @tech-lead
+/security/ @security-team
+/**/security.* @security-team
+/**/*auth* @security-team @api-team
+/**/*secret* @security-team @devops-team
+
+# Database and migrations
+/migrations/ @api-team @dba-team @tech-lead
+/seeds/ @api-team @dba-team
+/schema/ @api-team @dba-team @tech-lead
+
+# Testing
+/tests/ @qa-team @respective-package-owners
+/e2e/ @qa-team @tech-lead
+/**/*.test.* @respective-package-owners @qa-team
+/**/*.spec.* @respective-package-owners @qa-team
+
+# Package-specific overrides
+package.json @tech-lead @devops-team
+yarn.lock @tech-lead @devops-team
+tsconfig*.json @tech-lead @api-team @web-team
+
+# AI-generated code reviews - always require human oversight
+# Any file modified by AI tools should have human review
+# This is enforced by our PR template and CI checks
