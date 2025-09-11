@@ -73,6 +73,7 @@ Use this template when asking AI agents to refactor code or perform migrations.
 - [ ] User-facing behavior
 
 **Backward Compatibility**:
+
 - [ ] Full backward compatibility required
 - [ ] Deprecation period allowed: [Duration]
 - [ ] Breaking changes acceptable with migration guide

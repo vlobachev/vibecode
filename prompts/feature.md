@@ -3,12 +3,14 @@
 Use this template when asking AI agents to develop new features.
 
 ## System Goal
+
 **Business Objective**: [Describe what the feature should accomplish in business terms]
 **User Story**: As a [user type], I want [goal] so that [benefit]
 
 ## Technical Specifications
 
 ### Constraints
+
 - **Allowed Libraries**: [List specific libraries that can be used]
 - **Forbidden Libraries**: [List libraries to avoid]
 - **Style Rules**: Follow project formatter configuration
@@ -16,6 +18,7 @@ Use this template when asking AI agents to develop new features.
 - **Browser/Environment Support**: [Compatibility requirements]
 
 ### Architecture Guidelines
+
 - **Package Location**: [Which package should contain this feature]
 - **Design Patterns**: [Preferred patterns to use]
 - **Integration Points**: [How this connects to existing code]
@@ -23,11 +26,13 @@ Use this template when asking AI agents to develop new features.
 ## Acceptance Criteria
 
 ### Functional Requirements
+
 1. [Requirement 1 with specific input/output examples]
 2. [Requirement 2 with expected behavior]
 3. [Requirement 3 with edge cases to handle]
 
 ### Non-Functional Requirements
+
 - **Performance**: [Response time, throughput requirements]
 - **Security**: [Authentication, authorization, validation needs]
 - **Accessibility**: [A11y requirements if applicable]
