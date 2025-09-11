@@ -1,7 +1,8 @@
 # Commit Message Template
 
 ## Format
-```
+
+```text
 type(scope): brief description
 
 Detailed explanation of the change and why it was made.
@@ -17,6 +18,7 @@ Refs: #[issue number]
 ```
 
 ## Types
+
 - **feat**: A new feature
 - **fix**: A bug fix
 - **refactor**: Code change that neither fixes a bug nor adds a feature
@@ -29,6 +31,7 @@ Refs: #[issue number]
 - **revert**: Reverts a previous commit
 
 ## Scope Examples
+
 - **api**: Backend API changes
 - **web**: Frontend web application
 - **core**: Shared/core utilities
@@ -40,7 +43,8 @@ Refs: #[issue number]
 ## Examples
 
 ### Feature Addition
-```
+
+```text
 feat(api): add user profile update endpoint
 
 Implement PATCH /users/:id endpoint to allow users to update
@@ -57,7 +61,8 @@ Refs: #123
 ```
 
 ### Bug Fix
-```
+
+```text
 fix(web): resolve infinite loop in user dashboard
 
 Fixed pagination component causing infinite re-renders when
@@ -74,7 +79,8 @@ Refs: #456
 ```
 
 ### Refactoring
-```
+
+```text
 refactor(core): extract common validation utilities
 
 Move repeated validation logic into shared utility functions
@@ -93,18 +99,21 @@ Reviewed-by: Bob Johnson
 ## AI-Generated Commit Guidelines
 
 ### What AI Should Include
+
 - Clear, concise description of what changed
 - Why the change was necessary
 - Impact on other parts of the system
 - Any breaking changes or migration notes
 
 ### What AI Should Avoid
+
 - Vague descriptions like "fix stuff" or "update code"
 - Technical jargon without explanation
 - Missing context about the problem solved
 - Forgetting to mention breaking changes
 
 ### Human Review Checklist
+
 - [ ] Description accurately reflects the changes
 - [ ] Type and scope are appropriate
 - [ ] Breaking changes are clearly noted
@@ -114,7 +123,8 @@ Reviewed-by: Bob Johnson
 ## Special Cases
 
 ### Breaking Changes
-```
+
+```text
 feat(api): migrate to new authentication system
 
 BREAKING CHANGE: JWT tokens now expire after 1 hour instead of 24 hours.
@@ -129,7 +139,8 @@ Refs: #789
 ```
 
 ### Security Fixes
-```
+
+```text
 fix(auth): prevent timing attacks in login validation
 
 Security fix for timing attack vulnerability in user authentication.
@@ -145,7 +156,8 @@ Refs: SECURITY-001
 ```
 
 ### Reverts
-```bash
+
+```text
 revert: "feat(api): add experimental caching layer"
 
 This reverts commit abc1234567890. The caching implementation

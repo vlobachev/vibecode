@@ -139,6 +139,7 @@ Use this template when asking AI agents to refactor code or perform migrations.
 - [ ] Test coverage maintained or improved
 
 ### Metrics to Track
+
 - **Before/After Comparison**:
   - Performance: [Specific metrics]
   - Code complexity: [Metrics like cyclomatic complexity]
@@ -148,12 +149,14 @@ Use this template when asking AI agents to refactor code or perform migrations.
 ## Post-Migration Tasks
 
 ### Cleanup
+
 - [ ] Remove deprecated code (after grace period)
 - [ ] Update documentation
 - [ ] Remove temporary migration code
 - [ ] Clean up feature flags
 
 ### Knowledge Transfer
+
 - [ ] Update team documentation
 - [ ] Conduct code walkthrough
 - [ ] Update onboarding materials
@@ -161,12 +164,14 @@ Use this template when asking AI agents to refactor code or perform migrations.
 ---
 
 **Template Usage**:
+
 1. Be clear about the motivation and scope
 2. Define success criteria upfront
 3. Plan for backward compatibility
 4. Include comprehensive testing strategy
 
 **AI Agent Instructions**:
+
 - Start with thorough analysis of current state
 - Implement changes incrementally when possible
 - Maintain or improve test coverage throughout
