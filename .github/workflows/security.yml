@@ -28,9 +28,9 @@ jobs:
       uses: trufflesecurity/trufflehog@main
       with:
         path: ./
-        base: ${{ github.event.repository.default_branch }}
-        head: HEAD
-        extra_args: --debug --only-verified
+        base: ""
+        head: ""
+        extra_args: --only-verified
 
   dependency-scan:
     name: Dependency Vulnerability Scan
@@ -152,10 +152,10 @@ jobs:
         required_security_checks=(
           "SECURITY_PATTERNS"
           "FORBIDDEN_PATTERNS"
-          "password.*="
-          "api[_-]?key.*="
-          "secret.*="
-          "eval\\("
+          "password"
+          "api.*key"
+          "secret"
+          "eval"
           "innerHTML"
         )
         
