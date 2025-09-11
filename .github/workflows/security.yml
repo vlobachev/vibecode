@@ -40,18 +40,25 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js
+    - name: Setup Node.js and pnpm
       uses: actions/setup-node@v4
       with:
         node-version: '18'
+        cache: 'pnpm'
+    
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
         
-    - name: Check for package.json
+    - name: Check for package.json and run security audit
       run: |
         if [ -f "package.json" ]; then
-          echo "package.json found, running npm audit"
-          npm audit --audit-level moderate
+          echo "package.json found, installing dependencies and running security audit"
+          pnpm install
+          pnpm audit --audit-level moderate
         else
-          echo "No package.json found, skipping npm audit"
+          echo "No package.json found, skipping dependency audit"
         fi
 
   codeql-analysis:
