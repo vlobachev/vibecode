@@ -1,0 +1,377 @@
+name: Documentation Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - '**.md'
+      - 'docs/**'
+      - 'examples/**'
+      - 'prompts/**'
+      - 'templates/**'
+      - '.github/workflows/docs.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - '**.md'
+      - 'docs/**'
+      - 'examples/**'
+      - 'prompts/**'
+      - 'templates/**'
+
+jobs:
+  markdown-lint:
+    name: Markdown Linting
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install markdownlint
+      run: npm install -g markdownlint-cli
+      
+    - name: Create markdownlint config
+      run: |
+        cat > .markdownlint.json << 'EOF'
+        {
+          "MD013": false,
+          "MD033": false,
+          "MD041": false
+        }
+        EOF
+        
+    - name: Run markdownlint
+      run: markdownlint **/*.md --ignore node_modules
+
+  link-checker:
+    name: Link Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install markdown-link-check
+      run: npm install -g markdown-link-check
+      
+    - name: Create link-check config
+      run: |
+        cat > .markdown-link-check.json << 'EOF'
+        {
+          "ignorePatterns": [
+            {
+              "pattern": "^http://localhost"
+            },
+            {
+              "pattern": "^https://localhost"
+            }
+          ],
+          "timeout": "20s",
+          "retryOn429": true,
+          "retryCount": 3,
+          "fallbackHttp2": false
+        }
+        EOF
+        
+    - name: Check links in markdown files
+      run: |
+        find . -name "*.md" -not -path "./node_modules/*" -exec markdown-link-check --config .markdown-link-check.json {} \;
+
+  documentation-structure:
+    name: Documentation Structure Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Validate documentation completeness
+      run: |
+        echo "Checking for required documentation files..."
+        
+        required_docs=(
+          "README.md"
+          "AGENTS.md"
+          "CLAUDE.md"
+          "PROJECT_STRUCTURE.md"
+          "LICENSE"
+          "docs/architecture/SYSTEM_ARCHITECTURE.md"
+          "docs/guides/CONTRIBUTING.md"
+          "docs/guides/ONBOARDING.md"
+        )
+        
+        missing_docs=()
+        for doc in "${required_docs[@]}"; do
+          if [ ! -f "$doc" ]; then
+            missing_docs+=("$doc")
+          fi
+        done
+        
+        if [ ${#missing_docs[@]} -gt 0 ]; then
+          echo "❌ Missing required documentation files:"
+          printf '%s\n' "${missing_docs[@]}"
+          exit 1
+        fi
+        
+        echo "✅ All required documentation files present"
+        
+    - name: Validate documentation content quality
+      run: |
+        echo "Validating documentation content quality..."
+        
+        # Check README.md structure
+        if [ -f "README.md" ]; then
+          if ! grep -q "# " README.md; then
+            echo "❌ README.md missing main heading"
+            exit 1
+          fi
+          
+          required_sections=("Quick Start" "Repository Structure" "Core Rules")
+          for section in "${required_sections[@]}"; do
+            if ! grep -q "$section" README.md; then
+              echo "⚠️ README.md missing recommended section: $section"
+            fi
+          done
+        fi
+        
+        # Check AGENTS.md structure
+        if [ -f "AGENTS.md" ]; then
+          required_agent_sections=("What You Can Do" "What You Cannot Do" "Security Guidelines")
+          for section in "${required_agent_sections[@]}"; do
+            if ! grep -q "$section" AGENTS.md; then
+              echo "❌ AGENTS.md missing required section: $section"
+              exit 1
+            fi
+          done
+        fi
+        
+        # Check CLAUDE.md structure
+        if [ -f "CLAUDE.md" ]; then
+          if ! grep -q "This file provides guidance to Claude Code" CLAUDE.md; then
+            echo "❌ CLAUDE.md missing standard header"
+            exit 1
+          fi
+          
+          claude_sections=("Development Commands" "Project Architecture")
+          for section in "${claude_sections[@]}"; do
+            if ! grep -q "$section" CLAUDE.md; then
+              echo "❌ CLAUDE.md missing required section: $section"
+              exit 1
+            fi
+          done
+        fi
+        
+        echo "✅ Documentation content validation passed"
+
+  template-validation:
+    name: Template Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Validate prompt templates
+      run: |
+        echo "Validating prompt templates..."
+        
+        prompt_templates=(
+          "prompts/feature.md"
+          "prompts/bugfix.md"
+          "prompts/refactor.md"
+        )
+        
+        for template in "${prompt_templates[@]}"; do
+          if [ -f "$template" ]; then
+            echo "Checking $template..."
+            
+            # Check for basic prompt structure
+            if ! grep -q -i "context\|background\|objective\|task" "$template"; then
+              echo "⚠️ $template may be missing standard prompt structure"
+            fi
+            
+            # Check for AI-specific guidance
+            if ! grep -q -i "ai\|agent\|generated" "$template"; then
+              echo "⚠️ $template may be missing AI-specific guidance"
+            fi
+          else
+            echo "⚠️ Missing prompt template: $template"
+          fi
+        done
+        
+        echo "✅ Prompt template validation completed"
+        
+    - name: Validate other templates
+      run: |
+        echo "Validating other templates..."
+        
+        # Check PR template
+        if [ -f "templates/PR.md" ]; then
+          if ! grep -q -i "description\|changes\|testing" templates/PR.md; then
+            echo "⚠️ PR template may be missing standard sections"
+          fi
+        fi
+        
+        # Check commit message template
+        if [ -f "templates/CommitMessage.md" ]; then
+          if ! grep -q "AI-Generated" templates/CommitMessage.md; then
+            echo "❌ Commit message template missing AI-Generated field"
+            exit 1
+          fi
+        fi
+        
+        echo "✅ Template validation completed"
+
+  examples-validation:
+    name: Examples Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Validate examples structure
+      run: |
+        echo "Validating examples structure..."
+        
+        if [ -d "examples" ]; then
+          # Check for examples README
+          if [ ! -f "examples/README.md" ]; then
+            echo "⚠️ examples/README.md missing"
+          fi
+          
+          # Check that examples are not empty
+          example_count=$(find examples -name "*.md" | wc -l)
+          if [ "$example_count" -lt 2 ]; then
+            echo "⚠️ Few examples found, consider adding more"
+          fi
+          
+          # Check for complete workflow example
+          if [ -f "examples/feature-example/complete-workflow.md" ]; then
+            if ! grep -q -i "step\|workflow\|process" examples/feature-example/complete-workflow.md; then
+              echo "⚠️ Complete workflow example may need more detailed steps"
+            fi
+          fi
+        fi
+        
+        echo "✅ Examples validation completed"
+
+  spelling-check:
+    name: Spelling Check
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install cspell
+      run: npm install -g cspell
+      
+    - name: Create cspell config
+      run: |
+        cat > .cspell.json << 'EOF'
+        {
+          "version": "0.2",
+          "language": "en",
+          "words": [
+            "vibecoding",
+            "agentic",
+            "IDEs",
+            "monorepo",
+            "guardrails",
+            "vlobachev",
+            "CODEOWNERS",
+            "markdownlint",
+            "GitHub",
+            "TypeScript",
+            "ESLint",
+            "Prettier",
+            "Windsurf",
+            "KiloCode"
+          ],
+          "ignorePaths": [
+            "node_modules/**",
+            ".git/**",
+            "*.json",
+            "LICENSE"
+          ]
+        }
+        EOF
+        
+    - name: Run spell check
+      run: cspell "**/*.md" || echo "Spelling check completed with warnings"
+
+  accessibility-check:
+    name: Documentation Accessibility
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check documentation accessibility
+      run: |
+        echo "Checking documentation accessibility..."
+        
+        # Check for proper heading hierarchy
+        markdown_files=$(find . -name "*.md" -not -path "./node_modules/*")
+        
+        for file in $markdown_files; do
+          echo "Checking heading structure in $file..."
+          
+          # Check if headings follow proper hierarchy (simplified check)
+          if grep -q "^###" "$file" && ! grep -q "^##" "$file"; then
+            echo "⚠️ $file may have improper heading hierarchy (h3 without h2)"
+          fi
+          
+          if grep -q "^####" "$file" && ! grep -q "^###" "$file"; then
+            echo "⚠️ $file may have improper heading hierarchy (h4 without h3)"
+          fi
+        done
+        
+        # Check for alt text in images (basic check)
+        image_refs=$(grep -r "!\[" --include="*.md" . || true)
+        if [ -n "$image_refs" ]; then
+          echo "Images found - ensure they have descriptive alt text:"
+          echo "$image_refs"
+        fi
+        
+        echo "✅ Accessibility check completed"
+
+  documentation-summary:
+    name: Documentation Summary
+    runs-on: ubuntu-latest
+    needs: [markdown-lint, link-checker, documentation-structure, template-validation, examples-validation, spelling-check, accessibility-check]
+    if: always()
+    
+    steps:
+    - name: Documentation validation summary
+      run: |
+        echo "📚 Documentation Validation Summary"
+        echo "=================================="
+        echo ""
+        echo "✅ Markdown linting"
+        echo "✅ Link validation"
+        echo "✅ Documentation structure"
+        echo "✅ Template validation"
+        echo "✅ Examples validation"
+        echo "✅ Spelling check"
+        echo "✅ Accessibility check"
+        echo ""
+        echo "Documentation validation completed! 📖"

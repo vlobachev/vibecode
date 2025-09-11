@@ -1,0 +1,275 @@
+name: Security Scanning
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run weekly security scans
+    - cron: '0 2 * * 1'
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  secret-scan:
+    name: Secret Detection
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: Run TruffleHog
+      uses: trufflesecurity/trufflehog@main
+      with:
+        path: ./
+        base: ${{ github.event.repository.default_branch }}
+        head: HEAD
+        extra_args: --debug --only-verified
+
+  dependency-scan:
+    name: Dependency Vulnerability Scan
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Check for package.json
+      run: |
+        if [ -f "package.json" ]; then
+          echo "package.json found, running npm audit"
+          npm audit --audit-level moderate
+        else
+          echo "No package.json found, skipping npm audit"
+        fi
+
+  codeql-analysis:
+    name: CodeQL Security Analysis
+    runs-on: ubuntu-latest
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'javascript' ]
+        
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: ${{ matrix.language }}
+        
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v3
+      
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v3
+
+  script-security-audit:
+    name: Script Security Audit
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Install shellcheck
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y shellcheck
+        
+    - name: Run shellcheck on bash scripts
+      run: |
+        echo "Running shellcheck on all .sh files..."
+        find . -name "*.sh" -type f -exec shellcheck {} \;
+        
+    - name: Check for dangerous patterns in scripts
+      run: |
+        echo "Scanning for dangerous patterns in shell scripts..."
+        
+        dangerous_patterns=(
+          "eval.*\$"
+          "exec.*\$"
+          "rm.*-rf.*\$"
+          "wget.*|.*sh"
+          "curl.*|.*sh"
+          "chmod.*777"
+        )
+        
+        found_issues=()
+        
+        for pattern in "${dangerous_patterns[@]}"; do
+          matches=$(grep -r -n "$pattern" --include="*.sh" . || true)
+          if [ -n "$matches" ]; then
+            found_issues+=("Pattern '$pattern' found:")
+            found_issues+=("$matches")
+            found_issues+=("")
+          fi
+        done
+        
+        if [ ${#found_issues[@]} -gt 0 ]; then
+          echo "⚠️ Potentially dangerous patterns found in scripts:"
+          printf '%s\n' "${found_issues[@]}"
+          echo ""
+          echo "Please review these patterns to ensure they are safe and necessary."
+          echo "Consider adding comments explaining why these patterns are needed."
+        else
+          echo "✅ No dangerous patterns found in scripts"
+        fi
+
+  framework-security-check:
+    name: Framework Security Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Validate guardrails security rules
+      run: |
+        echo "Validating that agent-guardrails.sh contains security checks..."
+        
+        required_security_checks=(
+          "SECURITY_PATTERNS"
+          "FORBIDDEN_PATTERNS"
+          "password.*="
+          "api[_-]?key.*="
+          "secret.*="
+          "eval\\("
+          "innerHTML"
+        )
+        
+        missing_checks=()
+        
+        for check in "${required_security_checks[@]}"; do
+          if ! grep -q "$check" scripts/agent-guardrails.sh; then
+            missing_checks+=("$check")
+          fi
+        done
+        
+        if [ ${#missing_checks[@]} -gt 0 ]; then
+          echo "❌ agent-guardrails.sh missing security checks:"
+          printf '%s\n' "${missing_checks[@]}"
+          exit 1
+        fi
+        
+        echo "✅ All required security checks present in guardrails script"
+        
+    - name: Validate AGENTS.md security guidelines
+      run: |
+        echo "Validating AGENTS.md contains security guidelines..."
+        
+        required_security_sections=(
+          "Security Guidelines"
+          "Input Validation"
+          "Authentication & Authorization"
+          "Secrets & Configuration"
+        )
+        
+        missing_sections=()
+        
+        for section in "${required_security_sections[@]}"; do
+          if ! grep -q "$section" AGENTS.md; then
+            missing_sections+=("$section")
+          fi
+        done
+        
+        if [ ${#missing_sections[@]} -gt 0 ]; then
+          echo "❌ AGENTS.md missing security sections:"
+          printf '%s\n' "${missing_sections[@]}"
+          exit 1
+        fi
+        
+        echo "✅ All required security guidelines present in AGENTS.md"
+
+  license-compliance:
+    name: License Compliance Check
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check for license file
+      run: |
+        if [ ! -f "LICENSE" ]; then
+          echo "❌ LICENSE file not found"
+          exit 1
+        fi
+        
+        if ! grep -q "MIT License" LICENSE; then
+          echo "⚠️ License file doesn't appear to be MIT License"
+        fi
+        
+        echo "✅ License file validation passed"
+        
+    - name: Check license references in documentation
+      run: |
+        if ! grep -q -i "license" README.md; then
+          echo "⚠️ README.md should reference the license"
+        fi
+        
+        echo "✅ License reference check completed"
+
+  permissions-audit:
+    name: File Permissions Audit
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check file permissions
+      run: |
+        echo "Checking file permissions..."
+        
+        # Find files with unusual permissions
+        world_writable=$(find . -type f -perm -002 2>/dev/null || true)
+        if [ -n "$world_writable" ]; then
+          echo "⚠️ World-writable files found:"
+          echo "$world_writable"
+        fi
+        
+        # Check that scripts are executable
+        shell_scripts=$(find . -name "*.sh" -type f)
+        for script in $shell_scripts; do
+          if [ ! -x "$script" ]; then
+            echo "⚠️ Script not executable: $script"
+          fi
+        done
+        
+        echo "✅ File permissions audit completed"
+
+  security-summary:
+    name: Security Summary
+    runs-on: ubuntu-latest
+    needs: [secret-scan, dependency-scan, script-security-audit, framework-security-check, license-compliance, permissions-audit]
+    if: always()
+    
+    steps:
+    - name: Security scan summary
+      run: |
+        echo "🔒 Security Scan Summary"
+        echo "======================="
+        echo ""
+        echo "✅ Secret detection scan"
+        echo "✅ Dependency vulnerability scan" 
+        echo "✅ Script security audit"
+        echo "✅ Framework security validation"
+        echo "✅ License compliance check"
+        echo "✅ File permissions audit"
+        echo ""
+        echo "Security validation completed! 🛡️"

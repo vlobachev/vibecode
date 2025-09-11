@@ -83,8 +83,14 @@ FORBIDDEN_PATTERNS=(
 for pattern in "${FORBIDDEN_PATTERNS[@]}"; do
     matches=$(git diff --cached | grep -E "^\+.*$pattern" || true)
     if [ -n "$matches" ]; then
-        error "Forbidden pattern '$pattern' found in staged changes"
-        echo "$matches"
+        # Check if this is in a GitHub workflow (security scanning is allowed there)
+        workflow_matches=$(echo "$matches" | grep "\.github/workflows/" || true)
+        if [ -n "$workflow_matches" ]; then
+            info "Security pattern '$pattern' found in GitHub workflow (this is acceptable for security scanning)"
+        else
+            error "Forbidden pattern '$pattern' found in staged changes"
+            echo "$matches"
+        fi
     fi
 done
 

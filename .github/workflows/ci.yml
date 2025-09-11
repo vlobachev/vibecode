@@ -1,0 +1,368 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  validate-structure:
+    name: Validate Project Structure
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Validate required files
+      run: |
+        # Check for essential framework files
+        required_files=(
+          "AGENTS.md"
+          "CLAUDE.md" 
+          "README.md"
+          "PROJECT_STRUCTURE.md"
+          "package.json"
+          "src/setup.js"
+          "scripts/agent-guardrails.sh"
+        )
+        
+        missing_files=()
+        for file in "${required_files[@]}"; do
+          if [ ! -f "$file" ]; then
+            missing_files+=("$file")
+          fi
+        done
+        
+        if [ ${#missing_files[@]} -gt 0 ]; then
+          echo "❌ Missing required files:"
+          printf '%s\n' "${missing_files[@]}"
+          exit 1
+        fi
+        
+        echo "✅ All required framework files present"
+        
+    - name: Validate directory structure
+      run: |
+        # Check for essential directories
+        required_dirs=(
+          "docs/architecture"
+          "docs/guides"
+          "prompts"
+          "policies"
+          "templates"
+          "scripts"
+          "tests/golden"
+          "examples"
+        )
+        
+        missing_dirs=()
+        for dir in "${required_dirs[@]}"; do
+          if [ ! -d "$dir" ]; then
+            missing_dirs+=("$dir")
+          fi
+        done
+        
+        if [ ${#missing_dirs[@]} -gt 0 ]; then
+          echo "❌ Missing required directories:"
+          printf '%s\n' "${missing_dirs[@]}"
+          exit 1
+        fi
+        
+        echo "✅ All required directories present"
+
+  validate-scripts:
+    name: Validate Scripts
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Make scripts executable
+      run: |
+        chmod +x setup.sh
+        chmod +x scripts/agent-guardrails.sh
+        
+    - name: Validate setup script
+      run: |
+        # Check if setup script has basic structure
+        if ! grep -q "#!/bin/bash" setup.sh; then
+          echo "❌ setup.sh missing shebang"
+          exit 1
+        fi
+        
+        if ! grep -q "git rev-parse --git-dir" setup.sh; then
+          echo "❌ setup.sh missing git check"
+          exit 1
+        fi
+        
+        echo "✅ setup.sh validation passed"
+        
+    - name: Validate guardrails script
+      run: |
+        # Check if guardrails script has security checks
+        if ! grep -q "FORBIDDEN_PATTERNS" scripts/agent-guardrails.sh; then
+          echo "❌ agent-guardrails.sh missing security patterns"
+          exit 1
+        fi
+        
+        if ! grep -q "SECURITY_PATTERNS" scripts/agent-guardrails.sh; then
+          echo "❌ agent-guardrails.sh missing security validation"
+          exit 1
+        fi
+        
+        echo "✅ agent-guardrails.sh validation passed"
+
+  validate-documentation:
+    name: Validate Documentation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Validate AGENTS.md format
+      run: |
+        # Check for required sections in AGENTS.md
+        required_sections=(
+          "## What You Can Do"
+          "## What You Cannot Do"
+          "## Code Standards"
+          "## Security Guidelines"
+          "## Working with Humans"
+        )
+        
+        missing_sections=()
+        for section in "${required_sections[@]}"; do
+          if ! grep -q "$section" AGENTS.md; then
+            missing_sections+=("$section")
+          fi
+        done
+        
+        if [ ${#missing_sections[@]} -gt 0 ]; then
+          echo "❌ AGENTS.md missing required sections:"
+          printf '%s\n' "${missing_sections[@]}"
+          exit 1
+        fi
+        
+        echo "✅ AGENTS.md format validation passed"
+        
+    - name: Validate CLAUDE.md format
+      run: |
+        # Check for required sections in CLAUDE.md
+        if ! grep -q "# CLAUDE.md" CLAUDE.md; then
+          echo "❌ CLAUDE.md missing proper header"
+          exit 1
+        fi
+        
+        if ! grep -q "## Development Commands" CLAUDE.md; then
+          echo "❌ CLAUDE.md missing Development Commands section"
+          exit 1
+        fi
+        
+        if ! grep -q "## Project Architecture" CLAUDE.md; then
+          echo "❌ CLAUDE.md missing Project Architecture section"
+          exit 1
+        fi
+        
+        echo "✅ CLAUDE.md format validation passed"
+        
+    - name: Check for broken links
+      run: |
+        # Simple check for common broken internal links
+        broken_links=()
+        
+        # Check if referenced files exist
+        while IFS= read -r line; do
+          if [[ $line =~ \[.*\]\(([^)]+)\) ]]; then
+            link="${BASH_REMATCH[1]}"
+            # Skip external links
+            if [[ ! $link =~ ^https?:// ]] && [[ ! $link =~ ^# ]]; then
+              if [ ! -f "$link" ] && [ ! -d "$link" ]; then
+                broken_links+=("$link")
+              fi
+            fi
+          fi
+        done < README.md
+        
+        if [ ${#broken_links[@]} -gt 0 ]; then
+          echo "⚠️ Potential broken links found:"
+          printf '%s\n' "${broken_links[@]}"
+        fi
+        
+        echo "✅ Link validation completed"
+
+  validate-templates:
+    name: Validate Templates
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Validate prompt templates
+      run: |
+        # Check prompt templates have required structure
+        prompt_files=(
+          "prompts/feature.md"
+          "prompts/bugfix.md" 
+          "prompts/refactor.md"
+        )
+        
+        for file in "${prompt_files[@]}"; do
+          if [ -f "$file" ]; then
+            if ! grep -q "Context:" "$file" && ! grep -q "Task:" "$file"; then
+              echo "⚠️ $file may be missing standard prompt structure"
+            fi
+          fi
+        done
+        
+        echo "✅ Prompt template validation completed"
+        
+    - name: Validate commit template
+      run: |
+        if [ -f "templates/CommitMessage.md" ]; then
+          if ! grep -q "AI-Generated:" templates/CommitMessage.md; then
+            echo "❌ Commit template missing AI-Generated field"
+            exit 1
+          fi
+          if ! grep -q "Reviewed-by:" templates/CommitMessage.md; then
+            echo "❌ Commit template missing Reviewed-by field"
+            exit 1
+          fi
+        fi
+        
+        echo "✅ Commit template validation passed"
+
+  test-setup-script:
+    name: Test Setup Script
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Initialize git for testing
+      run: |
+        git config --global user.name "Test User"
+        git config --global user.email "test@example.com"
+        git init test-repo
+        cd test-repo
+        cp -r ../* . 2>/dev/null || true
+        cp -r ../.[^.]* . 2>/dev/null || true
+        
+    - name: Test setup script (dry run simulation)
+      run: |
+        cd test-repo
+        chmod +x setup.sh
+        
+        # Test that setup script doesn't fail on basic checks
+        if ! bash -n setup.sh; then
+          echo "❌ setup.sh has syntax errors"
+          exit 1
+        fi
+        
+        echo "✅ setup.sh syntax validation passed"
+
+  integration-test:
+    name: Integration Test
+    runs-on: ubuntu-latest
+    needs: [validate-structure, validate-scripts, validate-documentation, validate-templates]
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Simulate full project setup
+      run: |
+        # Create a temporary test environment
+        mkdir -p /tmp/vibecode-test
+        cp -r . /tmp/vibecode-test/
+        cd /tmp/vibecode-test
+        
+        # Initialize git
+        git init
+        git config user.name "Test User"
+        git config user.email "test@example.com"
+        
+        # Make scripts executable
+        chmod +x setup.sh
+        chmod +x scripts/agent-guardrails.sh
+        
+        # Test guardrails script doesn't crash on empty repo
+        echo "Testing guardrails on empty staged area..."
+        ./scripts/agent-guardrails.sh || echo "Guardrails completed (expected for empty staging area)"
+        
+        echo "✅ Integration test passed"
+
+  security-check:
+    name: Security Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Check for security patterns
+      run: |
+        # Look for potential security issues in the framework itself
+        echo "Checking for hardcoded secrets..."
+        
+        # Check for common secret patterns
+        if grep -r -i "password.*=" --include="*.sh" --include="*.md" .; then
+          echo "⚠️ Found potential hardcoded passwords"
+        fi
+        
+        if grep -r -i "api.key.*=" --include="*.sh" --include="*.md" .; then
+          echo "⚠️ Found potential hardcoded API keys"
+        fi
+        
+        if grep -r -i "secret.*=" --include="*.sh" --include="*.md" .; then
+          echo "⚠️ Found potential hardcoded secrets"
+        fi
+        
+        echo "✅ Security pattern check completed"
+        
+    - name: Validate script permissions
+      run: |
+        # Ensure scripts have appropriate permissions
+        if [ -f "scripts/agent-guardrails.sh" ]; then
+          if [ ! -x "scripts/agent-guardrails.sh" ]; then
+            echo "❌ agent-guardrails.sh should be executable"
+            exit 1
+          fi
+        fi
+        
+        if [ -f "setup.sh" ]; then
+          if [ ! -x "setup.sh" ]; then
+            echo "❌ setup.sh should be executable"
+            exit 1
+          fi
+        fi
+        
+        echo "✅ Script permissions validation passed"
+
+  quality-gate:
+    name: Quality Gate
+    runs-on: ubuntu-latest
+    needs: [integration-test, security-check]
+    if: github.event_name == 'pull_request'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Quality gate summary
+      run: |
+        echo "🎉 All quality checks passed!"
+        echo ""
+        echo "✅ Project structure validation"
+        echo "✅ Script validation" 
+        echo "✅ Documentation validation"
+        echo "✅ Template validation"
+        echo "✅ Integration testing"
+        echo "✅ Security validation"
+        echo ""
+        echo "Ready for merge! 🚀"
