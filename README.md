@@ -81,4 +81,4 @@ See `/docs/guides/CONTRIBUTING.md` for detailed contribution guidelines.
 
 ## License
 
-[Your License Here]
+MIT License - see [LICENSE](LICENSE) file for details.
