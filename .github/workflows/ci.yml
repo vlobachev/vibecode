@@ -191,25 +191,14 @@ jobs:
     - name: Check for broken links
       run: |
         # Simple check for common broken internal links
-        broken_links=()
+        echo "Checking for broken internal links in README.md..."
         
-        # Check if referenced files exist
-        while IFS= read -r line; do
-          if [[ $line =~ \[.*\]\(([^)]+)\) ]]; then
-            link="${BASH_REMATCH[1]}"
-            # Skip external links and anchors
-            if [[ ! $link =~ ^https?:// ]] && [[ ! $link =~ ^# ]]; then
-              if [ ! -f "$link" ] && [ ! -d "$link" ]; then
-                broken_links+=("$link")
-              fi
-            fi
+        # Extract markdown links and check if local files exist
+        grep -o '\[.*\](.*\.md)' README.md | grep -o '([^)]*.md)' | tr -d '()' | while read -r link; do
+          if [ ! -f "$link" ]; then
+            echo "⚠️ Potential broken link: $link"
           fi
-        done < README.md
-        
-        if [ ${#broken_links[@]} -gt 0 ]; then
-          echo "⚠️ Potential broken links found:"
-          printf '%s\n' "${broken_links[@]}"
-        fi
+        done
         
         echo "✅ Link validation completed"
 
