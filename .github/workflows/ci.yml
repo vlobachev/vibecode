@@ -80,25 +80,44 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
+    - name: Setup Node.js and pnpm
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'pnpm'
+    
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+    
+    - name: Install dependencies
+      run: pnpm install
+    
     - name: Make scripts executable
       run: |
-        chmod +x setup.sh
         chmod +x scripts/agent-guardrails.sh
         
-    - name: Validate setup script
+    - name: Validate Node.js setup script
       run: |
-        # Check if setup script has basic structure
-        if ! grep -q "#!/bin/bash" setup.sh; then
-          echo "❌ setup.sh missing shebang"
+        # Check if Node.js setup script has basic structure
+        if ! grep -q "#!/usr/bin/env node" src/setup.js; then
+          echo "❌ src/setup.js missing Node.js shebang"
           exit 1
         fi
         
-        if ! grep -q "git rev-parse --git-dir" setup.sh; then
-          echo "❌ setup.sh missing git check"
+        if ! grep -q "VibecodeSetup" src/setup.js; then
+          echo "❌ src/setup.js missing main class"
           exit 1
         fi
         
-        echo "✅ setup.sh validation passed"
+        # Test Node.js syntax
+        if ! node -c src/setup.js; then
+          echo "❌ src/setup.js has syntax errors"
+          exit 1
+        fi
+        
+        echo "✅ Node.js setup script validation passed"
         
     - name: Validate guardrails script
       run: |
@@ -335,19 +354,65 @@ jobs:
           fi
         fi
         
-        if [ -f "setup.sh" ]; then
-          if [ ! -x "setup.sh" ]; then
-            echo "❌ setup.sh should be executable"
+        if [ -f "src/setup.js" ]; then
+          if ! node -c src/setup.js; then
+            echo "❌ src/setup.js has syntax errors"
             exit 1
           fi
         fi
         
         echo "✅ Script permissions validation passed"
 
+  test-blueprint:
+    name: Test Blueprint System
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js and pnpm
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'pnpm'
+    
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+    
+    - name: Install dependencies
+      run: pnpm install
+    
+    - name: Test blueprint system
+      run: |
+        # Run the test setup script to validate blueprint functionality
+        node src/test-setup.js
+        
+        # Verify test output was created
+        if [ ! -d "test-output" ]; then
+          echo "❌ Test output directory not created"
+          exit 1
+        fi
+        
+        # Check if key files were generated
+        if [ ! -f "test-output/package.json" ]; then
+          echo "❌ package.json not generated"
+          exit 1
+        fi
+        
+        if [ ! -f "test-output/.gitignore" ]; then
+          echo "❌ .gitignore not generated"
+          exit 1
+        fi
+        
+        echo "✅ Blueprint system test passed"
+
   quality-gate:
     name: Quality Gate
     runs-on: ubuntu-latest
-    needs: [integration-test, security-check]
+    needs: [integration-test, security-check, test-blueprint]
     if: github.event_name == 'pull_request'
     
     steps:
@@ -359,9 +424,10 @@ jobs:
         echo "🎉 All quality checks passed!"
         echo ""
         echo "✅ Project structure validation"
-        echo "✅ Script validation" 
+        echo "✅ Node.js setup script validation" 
         echo "✅ Documentation validation"
         echo "✅ Template validation"
+        echo "✅ Blueprint system testing"
         echo "✅ Integration testing"
         echo "✅ Security validation"
         echo ""

@@ -54,7 +54,9 @@ jobs:
           "AGENTS.md"
           "CLAUDE.md"
           "PROJECT_STRUCTURE.md"
-          "setup.sh"
+          "package.json"
+          "src/setup.js"
+          "src/test-setup.js"
           "scripts/agent-guardrails.sh"
         )
         
