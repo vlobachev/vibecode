@@ -246,6 +246,20 @@ import { UserService } from '../../api/src/services/UserService';
 - Respond to feedback constructively
 - Flag any areas where you're uncertain
 
+### GitHub Actions Validation (CRITICAL)
+**ALWAYS check GitHub Actions results after every push:**
+- Run `gh run list --limit 5` to see recent workflow status
+- If any workflows fail, investigate with `gh run view <run-id> --log-failed`
+- Fix any CI/CD failures before proceeding with new changes
+- Common failure types to watch for:
+  - Markdown linting errors in documentation
+  - Security scanning issues (secrets, vulnerabilities)
+  - Test failures or coverage drops
+  - Build/compilation errors
+  - Code quality violations (ESLint, Prettier)
+- Update relevant documentation templates if workflow patterns change
+- Never ignore workflow failures - they indicate real issues
+
 ### Continuous Learning
 - Learn from human feedback and corrections
 - Adapt to project-specific patterns and conventions

@@ -145,7 +145,7 @@ Refs: SECURITY-001
 ```
 
 ### Reverts
-```
+```bash
 revert: "feat(api): add experimental caching layer"
 
 This reverts commit abc1234567890. The caching implementation
@@ -160,6 +160,7 @@ Refs: #999
 ---
 
 **Usage Notes**:
+
 - Keep first line under 72 characters
 - Use imperative mood ("add feature" not "added feature")
 - Body should wrap at 72 characters
