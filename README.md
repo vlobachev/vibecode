@@ -1,17 +1,31 @@
-# Collaborative Vibecoding Project
+# Vibecode Blueprint 🚀
 
-**Natural-language driven development through agentic IDEs for team collaboration**
+**The Ultimate Collaborative AI Development Template**
+
+A powerful, modern blueprint for setting up AI-assisted collaborative development projects with best practices, intelligent tooling, and seamless workflows.
 
 ## What is Vibecoding?
 
 Vibecoding = natural-language driven development through agentic IDEs. The developer specifies intent, the IDE or AI agent generates code, and validation happens via tests and execution. With tools like Windsurf, Roo Code, and KiloCode, new practices are emerging.
 
-## Project Purpose
+## Blueprint Purpose
 
-Enable teams to co-develop in a **monorepo** using vibecoding tools. Provide **rules, shared prompts, examples, and collaboration artifacts** to ensure smooth, consistent output.
+**Transform this repository into a reusable blueprint** that enables teams to quickly set up collaborative AI development environments. Instead of manual configuration, use our **Node.js-powered setup system** with intelligent templating to generate production-ready projects in minutes.
 
-## Quick Start
+## 🚀 Quick Start
 
+### Using the Blueprint (Recommended)
+```bash
+# Install dependencies
+pnpm install
+
+# Run interactive setup
+pnpm run setup
+
+# Follow the prompts to customize your project
+```
+
+### Traditional Approach (Legacy)
 1. **Read the guidelines**: Start with `AGENTS.md` for AI tool guidance
 2. **Choose your prompts**: Use templates in `/prompts/` for common scenarios
 3. **Follow the workflow**: AI proposes → human reviews → merge

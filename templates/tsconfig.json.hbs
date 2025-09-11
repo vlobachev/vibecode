@@ -1,0 +1,46 @@
+{{#if useTypeScript}}
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "lib": ["ES2022"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    {{#if useMonorepo}}
+    "composite": true,
+    "incremental": true,
+    {{/if}}
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    {{#if useMonorepo}}
+    "packages/*/src/**/*",
+    {{else}}
+    "src/**/*",
+    {{/if}}
+    "scripts/**/*",
+    "tests/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ]{{#if useMonorepo}},
+  "references": [
+    {{#each packages}}
+    { "path": "./packages/{{this}}" }{{#unless @last}},{{/unless}}
+    {{/each}}
+  ]{{/if}}
+}
+{{/if}}

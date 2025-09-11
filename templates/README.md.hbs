@@ -1,0 +1,139 @@
+# {{projectName}}
+
+{{description}}
+
+## 🚀 Quick Start
+
+This project was generated using the [Vibecode Blueprint](https://github.com/vlobachev/vibecode) - a collaborative AI development template.
+
+### Prerequisites
+
+- Node.js 18+
+{{#if (eq packageManager "pnpm")}}
+- pnpm 8+
+{{else if (eq packageManager "yarn")}}
+- Yarn
+{{else}}
+- npm
+{{/if}}
+
+### Installation
+
+```bash
+# Install dependencies
+{{packageManager}} install
+
+{{#if useMonorepo}}
+# Build all packages
+{{packageManager}} run build
+{{/if}}
+
+# Start development
+{{packageManager}} run dev
+```
+
+## 📁 Project Structure
+
+{{#if useMonorepo}}
+```
+{{projectName}}/
+├── packages/
+{{#each packages}}
+│   ├── {{this}}/           # {{this}} package
+{{/each}}
+├── scripts/               # Build and utility scripts
+├── docs/                  # Documentation
+└── templates/             # Code templates
+```
+
+### Packages
+
+{{#each packages}}
+- **{{this}}**: {{#if (eq this "core")}}Core business logic and utilities{{else if (eq this "api")}}REST/GraphQL API server{{else if (eq this "web")}}Frontend web application{{else if (eq this "shared-types")}}Shared TypeScript types and interfaces{{else if (eq this "cli")}}Command line interface{{else}}{{this}} package{{/if}}
+{{/each}}
+{{else}}
+```
+{{projectName}}/
+├── src/                   # Source code
+├── test/                  # Test files
+├── scripts/               # Build and utility scripts
+└── docs/                  # Documentation
+```
+{{/if}}
+
+## 🤖 AI Collaboration
+
+This project is set up for AI-assisted development with:
+
+- **Code guardrails**: Automated checks for AI-generated code
+- **Structured prompts**: Templates for common development tasks
+- **Git integration**: AI-aware commit templates and hooks
+- **Documentation**: AI-friendly project structure and docs
+
+### AI Coding Workflow
+
+1. **Feature Development**: Use prompts in `/prompts/feature.md`
+2. **Bug Fixes**: Follow `/prompts/bugfix.md` template
+3. **Refactoring**: Reference `/prompts/refactor.md`
+4. **Code Review**: AI guardrails run automatically on commits
+
+## 🛠️ Development
+
+### Available Scripts
+
+{{#if useMonorepo}}
+- `{{packageManager}} run build` - Build all packages
+- `{{packageManager}} run dev` - Start development mode for all packages
+- `{{packageManager}} run test` - Run tests across all packages
+- `{{packageManager}} run lint` - Lint all packages
+{{#if useTypeScript}}
+- `{{packageManager}} run type-check` - Type check all packages
+{{/if}}
+- `{{packageManager}} run clean` - Clean build artifacts
+{{else}}
+- `{{packageManager}} run build` - Build the project
+- `{{packageManager}} run dev` - Start development mode
+- `{{packageManager}} run test` - Run tests
+- `{{packageManager}} run lint` - Lint code
+{{#if useTypeScript}}
+- `{{packageManager}} run type-check` - Type check code
+{{/if}}
+{{/if}}
+- `{{packageManager}} run format` - Format code with Prettier
+- `{{packageManager}} run guardrails` - Run AI code validation
+
+### Code Quality
+
+This project uses:
+
+- **ESLint** for code linting
+- **Prettier** for code formatting
+{{#if useTypeScript}}
+- **TypeScript** for type safety
+{{/if}}
+- **AI Guardrails** for AI-generated code validation
+
+## 📖 Documentation
+
+- [Contributing Guide](docs/guides/CONTRIBUTING.md)
+- [Architecture Overview](docs/architecture/SYSTEM_ARCHITECTURE.md)
+- [AI Collaboration Guide](AGENTS.md)
+
+## 🤝 Contributing
+
+1. Read the [Contributing Guide](docs/guides/CONTRIBUTING.md)
+2. Follow the AI collaboration workflow in [AGENTS.md](AGENTS.md)
+3. Use the provided prompt templates in `/prompts/`
+4. Ensure all guardrails pass before submitting PRs
+
+## 📄 License
+
+{{#if license}}
+This project is licensed under the {{license}} License.
+{{else}}
+See LICENSE file for details.
+{{/if}}
+
+---
+
+*Generated with ❤️ using [Vibecode Blueprint](https://github.com/vlobachev/vibecode)*

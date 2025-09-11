@@ -1,0 +1,63 @@
+{{#if setupGithubActions}}
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        {{#if (eq packageManager "pnpm")}}
+        cache: 'pnpm'
+    
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        {{else}}
+        cache: '{{packageManager}}'
+        {{/if}}
+    
+    - name: Install dependencies
+      run: {{packageManager}} {{#if (eq packageManager "npm")}}ci{{else}}install --frozen-lockfile{{/if}}
+    
+    - name: Run linting
+      run: {{packageManager}} run lint
+    
+    {{#if useTypeScript}}
+    - name: Run type checking
+      run: {{packageManager}} run type-check
+    {{/if}}
+    
+    - name: Run tests
+      run: {{packageManager}} run test
+    
+    - name: Run AI code guardrails
+      run: {{packageManager}} run guardrails
+
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Run security audit
+      run: {{packageManager}} audit {{#if (eq packageManager "npm")}}--audit-level moderate{{/if}}
+    
+    - name: Scan for secrets
+      uses: trufflesecurity/trufflehog@main
+      with:
+        path: ./
+        base: main
+        head: HEAD
+{{/if}}

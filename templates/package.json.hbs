@@ -1,0 +1,47 @@
+{
+  "name": "{{#if useMonorepo}}{{packageNameScoped}}{{else}}{{projectName}}{{/if}}",
+  "version": "1.0.0",
+  "private": true,
+  "description": "{{description}}",
+  "author": "{{author}}",
+  {{#if useWorkspaces}}
+  "workspaces": [
+    "packages/*"
+  ],
+  {{/if}}
+  "type": "module",
+  "scripts": {
+    {{#if useMonorepo}}
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "type-check": "turbo run type-check",
+    "clean": "turbo run clean",
+    {{else}}
+    "build": {{#if useTypeScript}}"tsc"{{else}}"echo 'No build step needed'"{{/if}},
+    "dev": "node --watch src/index.js",
+    "lint": "eslint src/",
+    "test": "node --test test/**/*.test.js",
+    {{#if useTypeScript}}
+    "type-check": "tsc --noEmit",
+    {{/if}}
+    {{/if}}
+    "format": "prettier --write .",
+    "guardrails": "./scripts/agent-guardrails.sh"
+  },
+  "devDependencies": {
+    {{#if useTypeScript}}
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    {{/if}}
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"{{#if useMonorepo}},
+    "turbo": "^1.10.0"{{/if}}
+  },
+  "engines": {
+    "node": ">=18.0.0"{{#if (eq packageManager "pnpm")}},
+    "pnpm": ">=8.0.0"{{/if}}
+  }{{#if (eq packageManager "pnpm")}},
+  "packageManager": "pnpm@8.15.0"{{/if}}
+}
