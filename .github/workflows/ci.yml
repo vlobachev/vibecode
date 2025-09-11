@@ -80,16 +80,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js and pnpm
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'pnpm'
-    
     - name: Setup pnpm
       uses: pnpm/action-setup@v2
       with:
         version: 8
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'pnpm'
     
     - name: Install dependencies
       run: pnpm install
@@ -197,7 +197,7 @@ jobs:
         while IFS= read -r line; do
           if [[ $line =~ \[.*\]\(([^)]+)\) ]]; then
             link="${BASH_REMATCH[1]}"
-            # Skip external links
+            # Skip external links and anchors
             if [[ ! $link =~ ^https?:// ]] && [[ ! $link =~ ^# ]]; then
               if [ ! -f "$link" ] && [ ! -d "$link" ]; then
                 broken_links+=("$link")
@@ -272,18 +272,21 @@ jobs:
         cp -r ../* . 2>/dev/null || true
         cp -r ../.[^.]* . 2>/dev/null || true
         
-    - name: Test setup script (dry run simulation)
+    - name: Test Node.js setup script (dry run simulation)
       run: |
         cd test-repo
-        chmod +x setup.sh
         
-        # Test that setup script doesn't fail on basic checks
-        if ! bash -n setup.sh; then
-          echo "❌ setup.sh has syntax errors"
+        # Copy our Node.js setup files for testing
+        cp ../src/setup.js .
+        cp ../package.json .
+        
+        # Test that Node.js setup script has valid syntax
+        if ! node -c setup.js; then
+          echo "❌ setup.js has syntax errors"
           exit 1
         fi
         
-        echo "✅ setup.sh syntax validation passed"
+        echo "✅ Node.js setup script syntax validation passed"
 
   integration-test:
     name: Integration Test
@@ -307,7 +310,6 @@ jobs:
         git config user.email "test@example.com"
         
         # Make scripts executable
-        chmod +x setup.sh
         chmod +x scripts/agent-guardrails.sh
         
         # Test guardrails script doesn't crash on empty repo
@@ -371,16 +373,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
-    - name: Setup Node.js and pnpm
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'pnpm'
-    
     - name: Setup pnpm
       uses: pnpm/action-setup@v2
       with:
         version: 8
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'pnpm'
     
     - name: Install dependencies
       run: pnpm install

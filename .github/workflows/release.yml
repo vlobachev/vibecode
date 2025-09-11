@@ -175,7 +175,8 @@ jobs:
         cp CLAUDE.md release/vibecode-framework/
         cp PROJECT_STRUCTURE.md release/vibecode-framework/
         cp LICENSE release/vibecode-framework/
-        cp setup.sh release/vibecode-framework/
+        cp -r src/ release/vibecode-framework/
+        cp package.json release/vibecode-framework/
         
         # Create archive
         cd release
@@ -260,9 +261,11 @@ jobs:
           ## Installation
           
           1. Download and extract the framework archive
-          2. Run `chmod +x setup.sh && ./setup.sh` to initialize your project
-          3. Customize `AGENTS.md` with your project specifics
-          4. Start vibecoding with your favorite AI tool!
+          2. Ensure Node.js (>=18) and pnpm (>=8) are installed
+          3. Run `pnpm install` to install dependencies
+          4. Run `node src/setup.js` to initialize your project
+          5. Customize `AGENTS.md` with your project specifics
+          6. Start vibecoding with your favorite AI tool!
           
           ## Documentation
           
