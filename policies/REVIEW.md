@@ -1,6 +1,6 @@
 # Human Review Guidelines
 
-**Guidelines for reviewing AI-generated code and vibecoding contributions**
+## Guidelines for reviewing AI-generated code and vibecoding contributions
 
 ## Review Philosophy
 
