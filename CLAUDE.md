@@ -11,7 +11,7 @@ This is a collaborative vibecoding project - a framework for natural-language dr
 ### Setup & Dependencies
 
 ```bash
-chmod +x setup.sh && ./setup.sh      # Initial project setup
+node src/setup.js                     # Initial project setup
 chmod +x scripts/agent-guardrails.sh # Make guardrails executable
 npm ci                                # Install dependencies (when package.json exists)
 ```
@@ -79,7 +79,7 @@ The `scripts/agent-guardrails.sh` script enforces:
 
 ### Configuration & Setup
 
-- `setup.sh`: Comprehensive project initialization script that creates package.json, ESLint, Prettier, TypeScript configs, and GitHub Actions workflows
+- `src/setup.js`: Comprehensive project initialization script that creates package.json, ESLint, Prettier, TypeScript configs, and GitHub Actions workflows
 - `AGENTS.md`: Detailed AI agent guidelines following standard format (285 lines of comprehensive rules)
 - `scripts/agent-guardrails.sh`: Pre-commit validation script (260 lines) with security and quality checks
 

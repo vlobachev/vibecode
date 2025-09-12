@@ -6,7 +6,6 @@
 vibecode/
 ├── README.md                           # Main project documentation
 ├── AGENTS.md                           # AI agent guidelines (standard location)
-├── setup.sh                            # Project initialization script
 │
 ├── docs/                               # Documentation
 │   ├── architecture/                   
@@ -68,7 +67,7 @@ vibecode/
 ## 🚀 Quick Start
 
 1. **Copy this structure** to your project repository
-2. **Run the setup script**: `chmod +x setup.sh && ./setup.sh`
+2. **Run the setup script**: `node src/setup.js`
 3. **Customize AGENTS.md** with your project specifics
 4. **Configure your AI tool** (Windsurf, Roo Code, KiloCode, etc.)
 5. **Start vibecoding** using the prompt templates!
