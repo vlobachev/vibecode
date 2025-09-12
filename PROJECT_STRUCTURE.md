@@ -44,6 +44,7 @@ vibecode/
 ## 🎯 What This Provides
 
 ### Core Framework
+
 - **Complete project structure** for collaborative AI-assisted development
 - **AGENTS.md file** following the standard format for AI agent guidance
 - **Standardized templates** for common development scenarios  
@@ -51,12 +52,14 @@ vibecode/
 - **Documentation** for onboarding and ongoing development
 
 ### AI Integration
+
 - **Prompt engineering templates** for consistent AI interactions
 - **Agent guidelines** defining what AI can/cannot do
 - **Review processes** for human oversight of AI contributions
 - **Real examples** showing successful AI collaboration patterns
 
 ### Team Collaboration
+
 - **CODEOWNERS** for managing package responsibilities
 - **Review guidelines** for evaluating AI-generated code
 - **Commit templates** for tracking AI contributions

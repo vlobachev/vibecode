@@ -5,12 +5,14 @@
 ## Architecture Principles
 
 ### 1. AI-Human Collaboration
+
 - **AI generates code** based on structured prompts
 - **Humans provide oversight** through review and testing  
 - **Contracts define boundaries** between AI and human responsibilities
 - **Golden tests provide guardrails** for maintaining behavior
 
 ### 2. Monorepo Structure
+
 ```
 packages/
 ├── core/              # Shared utilities, types, constants
@@ -34,6 +36,7 @@ packages/
 ```
 
 ### 3. Contract-Driven Development
+
 - **API Contracts**: OpenAPI/Swagger specifications
 - **Type Contracts**: Shared TypeScript interfaces
 - **Test Contracts**: Golden snapshots and integration tests
@@ -42,6 +45,7 @@ packages/
 ## Data Flow
 
 ### Request Lifecycle
+
 ```
 Client Request → Authentication → Validation → Business Logic → Database → Response
                      ↓              ↓             ↓            ↓         ↓
@@ -49,6 +53,7 @@ Client Request → Authentication → Validation → Business Logic → Database
 ```
 
 ### AI Code Generation Flow
+
 ```
 Human Intent → Prompt Template → AI Generation → Human Review → Integration → Testing
       ↓              ↓                ↓             ↓            ↓          ↓
@@ -59,6 +64,7 @@ Requirements   Structured      Generated      Code Review   Git Commit   CI/CD
 ## Technology Stack
 
 ### Backend (API Package)
+
 - **Runtime**: Node.js with TypeScript
 - **Framework**: Express.js with middleware architecture
 - **Database**: PostgreSQL with TypeORM/Prisma
@@ -67,6 +73,7 @@ Requirements   Structured      Generated      Code Review   Git Commit   CI/CD
 - **Testing**: Jest with supertest for integration tests
 
 ### Frontend (Web Package)
+
 - **Framework**: React 18 with TypeScript
 - **State Management**: React Query for server state, Context for client state
 - **Styling**: Tailwind CSS with component variants
@@ -74,6 +81,7 @@ Requirements   Structured      Generated      Code Review   Git Commit   CI/CD
 - **Testing**: Jest + React Testing Library
 
 ### Shared Infrastructure
+
 - **Build Tool**: Turborepo for monorepo management
 - **Package Manager**: pnpm with workspace support
 - **Linting**: ESLint with TypeScript rules
@@ -83,6 +91,7 @@ Requirements   Structured      Generated      Code Review   Git Commit   CI/CD
 ## AI Integration Points
 
 ### 1. Code Generation
+
 ```
 Prompt Engineering → AI Model → Code Output → Human Validation
         ↓               ↓           ↓              ↓
@@ -91,12 +100,14 @@ Prompt Engineering → AI Model → Code Output → Human Validation
 ```
 
 ### 2. Quality Assurance
+
 - **Automated Testing**: AI generates tests, humans validate coverage
 - **Code Review**: AI suggests improvements, humans make decisions
 - **Documentation**: AI drafts docs, humans ensure accuracy
 - **Refactoring**: AI proposes changes, humans validate impact
 
 ### 3. Context Management
+
 - **Project Memory**: Long-term context stored in AI tools (Windsurf Memories)
 - **Code Patterns**: Reusable templates and examples
 - **Domain Knowledge**: Business rules and requirements in structured format
@@ -105,6 +116,7 @@ Prompt Engineering → AI Model → Code Output → Human Validation
 ## Security Architecture
 
 ### Authentication & Authorization
+
 ```
 JWT Token → Middleware Validation → Role-Based Access → Resource Permission
     ↓              ↓                      ↓                    ↓
@@ -112,6 +124,7 @@ Client Auth    Token Verification    User Roles         CRUD Operations
 ```
 
 ### Data Protection
+
 - **Input Sanitization**: All user inputs validated and sanitized
 - **SQL Injection Prevention**: Parameterized queries and ORM usage
 - **XSS Protection**: Output encoding and CSP headers
@@ -119,6 +132,7 @@ Client Auth    Token Verification    User Roles         CRUD Operations
 - **Secrets Management**: Environment variables and secure storage
 
 ### AI-Specific Security
+
 - **Code Review Requirements**: All AI-generated code must be human-reviewed
 - **Sensitive Data Handling**: AI tools cannot access production data
 - **Audit Trail**: Track AI contributions and human modifications
@@ -127,12 +141,14 @@ Client Auth    Token Verification    User Roles         CRUD Operations
 ## Performance Architecture
 
 ### Scalability Patterns
+
 - **Horizontal Scaling**: Load balancers with stateless services
 - **Database Optimization**: Indexes, query optimization, connection pooling
 - **Caching Strategy**: Redis for session data, application-level caching
 - **CDN Integration**: Static assets served via CDN
 
 ### Monitoring & Observability
+
 - **Application Metrics**: Response times, error rates, throughput
 - **Infrastructure Metrics**: CPU, memory, disk usage
 - **Business Metrics**: User engagement, feature adoption
@@ -141,6 +157,7 @@ Client Auth    Token Verification    User Roles         CRUD Operations
 ## Development Workflow
 
 ### Branch Strategy
+
 ```
 main (production) → develop (integration) → feature/* (development)
   ↓                    ↓                        ↓
@@ -148,6 +165,7 @@ Stable Release    Integration Testing    Active Development
 ```
 
 ### CI/CD Pipeline
+
 ```
 Code Push → Lint & Format → Type Check → Unit Tests → Integration Tests → Deploy
     ↓           ↓              ↓           ↓             ↓                ↓
@@ -155,6 +173,7 @@ Code Push → Lint & Format → Type Check → Unit Tests → Integration Tests 
 ```
 
 ### AI Workflow Integration
+
 ```
 AI Generation → Human Review → Automated Testing → Manual Testing → Deployment
       ↓              ↓               ↓                ↓               ↓
@@ -165,6 +184,7 @@ AI Generation → Human Review → Automated Testing → Manual Testing → Depl
 ## Package Dependencies
 
 ### Dependency Graph
+
 ```
 web → shared-types → core
  ↓         ↓          ↓
@@ -172,6 +192,7 @@ api → shared-types → core
 ```
 
 ### Dependency Rules
+
 - **No Circular Dependencies**: Packages cannot depend on each other cyclically
 - **Strict Boundaries**: Internal package files cannot be imported directly
 - **Version Alignment**: All packages use same versions of shared dependencies
@@ -180,12 +201,14 @@ api → shared-types → core
 ## Future Considerations
 
 ### Scalability Improvements
+
 - **Microservices Migration**: Break monolith into smaller services as needed
 - **Event-Driven Architecture**: Implement message queues for decoupling
 - **Database Sharding**: Horizontal database scaling strategies
 - **Container Orchestration**: Kubernetes for production deployment
 
 ### AI Evolution
+
 - **Advanced Code Generation**: More sophisticated AI models and techniques
 - **Automated Testing**: AI-driven test generation and validation
 - **Intelligent Refactoring**: AI-suggested architectural improvements

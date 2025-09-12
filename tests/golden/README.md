@@ -5,6 +5,7 @@ Golden tests (also known as snapshot tests) capture the expected output of funct
 ## Purpose
 
 Golden tests are especially valuable in AI-assisted development because:
+
 - **AI agents might change implementation details** while preserving behavior
 - **Complex business logic** can be accidentally altered during refactoring  
 - **API contracts** need to remain stable across AI-generated changes
@@ -13,6 +14,7 @@ Golden tests are especially valuable in AI-assisted development because:
 ## Test Categories
 
 ### 1. API Response Snapshots
+
 Capture complete API responses for critical endpoints:
 
 ```typescript
@@ -29,6 +31,7 @@ describe('API Golden Tests', () => {
 ```
 
 **Golden snapshot**: `user-profile-response.json`
+
 ```json
 {
   "success": true,
@@ -45,6 +48,7 @@ describe('API Golden Tests', () => {
 ```
 
 ### 2. Business Logic Calculations
+
 Preserve complex business rule outputs:
 
 ```typescript
@@ -73,6 +77,7 @@ describe('Pricing Calculator Golden Tests', () => {
 ```
 
 ### 3. Component Rendering
+
 UI component output consistency:
 
 ```typescript
@@ -96,11 +101,13 @@ describe('UserProfileCard Golden Tests', () => {
 ## Best Practices
 
 ### 1. Naming Convention
+
 - Use descriptive snapshot names: `admin-user-profile-card` not `snapshot1`
 - Include test scenario in name: `premium-subscription-with-discount`
 - Use kebab-case for consistency
 
 ### 2. Data Normalization
+
 Remove non-deterministic data before snapshotting:
 
 ```typescript
@@ -121,14 +128,18 @@ expect(normalized).toMatchSnapshot('user-profile-response');
 ```
 
 ### 3. Critical Path Focus
+
 Only create golden tests for:
+
 - **Critical business logic** that must not change unexpectedly
 - **Public API responses** that external clients depend on
 - **Complex calculations** where subtle bugs could be expensive
 - **Core UI components** used throughout the application
 
 ### 4. Review Process
+
 When golden tests fail:
+
 1. **Understand why** the output changed
 2. **Verify the change is intentional** and correct
 3. **Review with domain expert** if business logic changed
@@ -137,13 +148,16 @@ When golden tests fail:
 ## AI Agent Guidelines
 
 ### When AI Can Update Golden Tests
+
 - **Never automatically** update golden test snapshots
 - **Alert human reviewer** when golden tests fail
 - **Explain what changed** and why in PR description
 - **Provide migration guide** if breaking changes are necessary
 
 ### Human Oversight Required
+
 All golden test changes require human approval because:
+
 - Changes might indicate unintended behavior modifications
 - Business logic changes need domain expert validation
 - API changes might break client integrations
@@ -152,6 +166,7 @@ All golden test changes require human approval because:
 ## Example Golden Test Snapshots
 
 ### API Error Response
+
 ```json
 // __snapshots__/api-errors.snap
 exports[`should handle validation errors consistently 1`] = {
@@ -172,6 +187,7 @@ exports[`should handle validation errors consistently 1`] = {
 ```
 
 ### Complex Calculation Result
+
 ```json
 // __snapshots__/pricing-calculator.snap
 exports[`should calculate premium subscription with discount 1`] = {
@@ -196,6 +212,7 @@ exports[`should calculate premium subscription with discount 1`] = {
 ```
 
 ### UI Component Structure
+
 ```html
 <!-- __snapshots__/user-profile-card.snap -->
 exports[`should render admin user profile consistently 1`] = 
@@ -214,12 +231,14 @@ exports[`should render admin user profile consistently 1`] =
 ## Maintenance
 
 ### Regular Review
+
 - **Quarterly review** of all golden tests for relevance
 - **Remove outdated** snapshots for deprecated features
 - **Update test data** to reflect current business scenarios
 - **Consolidate redundant** tests that cover similar scenarios
 
 ### Documentation
+
 - **Document the business logic** being protected by each golden test
 - **Explain why** certain outputs must remain stable
 - **Provide context** for complex test scenarios

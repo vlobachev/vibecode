@@ -15,6 +15,7 @@ Vibecoding = natural-language driven development through agentic IDEs. The devel
 ## 🚀 Quick Start
 
 ### Using the Blueprint (Recommended)
+
 ```bash
 # Install dependencies
 pnpm install
@@ -26,6 +27,7 @@ pnpm run setup
 ```
 
 ### Traditional Approach (Legacy)
+
 1. **Read the guidelines**: Start with `AGENTS.md` for AI tool guidance
 2. **Choose your prompts**: Use templates in `/prompts/` for common scenarios
 3. **Follow the workflow**: AI proposes → human reviews → merge
@@ -83,6 +85,7 @@ AGENTS.md                → AI agent guidelines (root level)
 ## Quality Metrics
 
 Track these metrics to ensure healthy vibecoding practices:
+
 - % of PRs accepted without post-review changes
 - Lead time from task to release
 - Contract test coverage

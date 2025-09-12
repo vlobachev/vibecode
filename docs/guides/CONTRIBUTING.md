@@ -12,24 +12,28 @@ Welcome to the team! This guide will help you understand how to contribute effec
 ## Development Workflow
 
 ### 1. Planning Phase
+
 - Define your task using appropriate prompt template
 - Check existing code and patterns
 - Identify affected packages and dependencies
 - Consider testing strategy upfront
 
 ### 2. Implementation Phase
+
 - Use AI agent with structured prompts
 - Follow the golden rule: **AI proposes, human approves**
 - Implement in small, reviewable chunks
 - Write tests alongside code
 
 ### 3. Review Phase
+
 - Self-review AI-generated code thoroughly
 - Create detailed PR using template
 - Address reviewer feedback promptly
 - Ensure CI/CD passes
 
 ### 4. Deployment Phase
+
 - Monitor metrics after merge
 - Be prepared to rollback if issues arise
 - Document lessons learned
@@ -37,18 +41,21 @@ Welcome to the team! This guide will help you understand how to contribute effec
 ## Using AI Agents Effectively
 
 ### Best Practices
+
 - **Be specific in prompts**: Vague requests lead to poor results
 - **Provide context**: Share relevant code, requirements, and constraints
 - **Iterate incrementally**: Break large tasks into smaller pieces
 - **Review critically**: AI can make mistakes, especially with business logic
 
 ### Prompt Engineering Tips
+
 - Use our standardized templates as starting points
 - Include concrete examples of inputs/outputs
 - Specify constraints and forbidden approaches
 - Reference existing code patterns when possible
 
 ### Common Pitfalls
+
 - **Over-relying on AI**: Still need to understand the code
 - **Insufficient testing**: AI might miss edge cases
 - **Ignoring patterns**: AI might not follow project conventions
@@ -57,6 +64,7 @@ Welcome to the team! This guide will help you understand how to contribute effec
 ## Tool-Specific Guidance
 
 ### Windsurf IDE
+
 - **Memories**: Save project context for consistent results
 - **Cascade**: Use for multi-step operations
 - **Supercomplete**: Leverage for intelligent code completion
@@ -69,6 +77,7 @@ Create memory: "All database operations must be transactional"
 ```
 
 ### Roo Code
+
 - **Slash commands**: Use predefined shortcuts for common tasks
 - **Multi-agent**: Leverage different agents for different aspects
 
@@ -81,6 +90,7 @@ Create memory: "All database operations must be transactional"
 ```
 
 ### KiloCode
+
 - **Orchestration**: Follow architect → code → debug workflow
 - **Memory Bank**: Maintain shared knowledge across sessions
 
@@ -94,12 +104,14 @@ Create memory: "All database operations must be transactional"
 ## Code Standards
 
 ### Quality Requirements
+
 - **Type Safety**: Use TypeScript strictly, avoid `any`
 - **Error Handling**: Always handle errors gracefully
 - **Testing**: Minimum 80% coverage for new code
 - **Documentation**: Self-documenting code + API docs
 
 ### Patterns to Follow
+
 ```typescript
 // Preferred error handling
 try {
@@ -120,6 +132,7 @@ interface ApiResponse<T> {
 ```
 
 ### Patterns to Avoid
+
 - Magic numbers or strings without constants
 - Deeply nested callbacks (use async/await)
 - Global state mutations
@@ -128,6 +141,7 @@ interface ApiResponse<T> {
 ## Testing Strategy
 
 ### Test Types
+
 1. **Unit Tests**: Individual functions and components
 2. **Integration Tests**: API endpoints and database interactions
 3. **Contract Tests**: Interface compatibility
@@ -135,6 +149,7 @@ interface ApiResponse<T> {
 5. **E2E Tests**: Complete user workflows
 
 ### Testing AI-Generated Code
+
 - **Verify test quality**: Ensure tests check behavior, not implementation
 - **Add edge cases**: AI might miss boundary conditions
 - **Check error paths**: Ensure error handling is tested
@@ -168,12 +183,14 @@ describe('UserService.createUser', () => {
 ## Security Guidelines
 
 ### Always Verify
+
 - **Input validation**: Check all user inputs
 - **Authentication**: Verify user identity
 - **Authorization**: Confirm user permissions
 - **Data sanitization**: Clean outputs to prevent XSS
 
 ### Common Security Issues with AI Code
+
 - Missing input validation
 - Improper error message disclosure
 - Incorrect permission checks
@@ -182,12 +199,14 @@ describe('UserService.createUser', () => {
 ## Performance Considerations
 
 ### Monitor These Metrics
+
 - Response time for API endpoints
 - Database query performance
 - Bundle size for frontend changes
 - Memory usage for long-running processes
 
 ### Optimization Guidelines
+
 - Use database indexes appropriately
 - Implement caching where beneficial
 - Lazy load resources when possible
@@ -196,11 +215,13 @@ describe('UserService.createUser', () => {
 ## Collaboration Guidelines
 
 ### Communication
+
 - **PR discussions**: Use PR comments for code-specific discussions
 - **Architecture decisions**: Use team meetings or dedicated channels
 - **Urgent issues**: Use appropriate escalation channels
 
 ### Knowledge Sharing
+
 - Document important architectural decisions
 - Share interesting AI prompting techniques
 - Conduct regular code reviews as learning sessions
@@ -209,6 +230,7 @@ describe('UserService.createUser', () => {
 ## Troubleshooting
 
 ### Common Issues
+
 1. **AI produces overly complex code**
    - Simplify the prompt
    - Provide specific constraints
@@ -230,6 +252,7 @@ describe('UserService.createUser', () => {
    - Test with realistic data volumes
 
 ### Getting Help
+
 - Check existing documentation first
 - Search previous PR discussions
 - Ask in team chat for quick questions
@@ -238,13 +261,16 @@ describe('UserService.createUser', () => {
 ## Continuous Improvement
 
 ### Team Retrospectives
+
 - What AI techniques worked well?
 - What prompts produced poor results?
 - How can we improve our review process?
 - What patterns should we document?
 
 ### Updating Guidelines
+
 This document evolves with our learnings. Contribute improvements by:
+
 1. Proposing changes via PR
 2. Discussing in team meetings
 3. Sharing successful techniques

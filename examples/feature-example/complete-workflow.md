@@ -1,6 +1,7 @@
 # Feature Example: User Profile API Endpoint
 
 ## Overview
+
 This example shows how to use AI assistance to create a complete feature from requirements to deployment.
 
 **Task**: Create a new API endpoint for updating user profiles
@@ -10,12 +11,14 @@ This example shows how to use AI assistance to create a complete feature from re
 Used `/prompts/feature.md` template with these details:
 
 ### System Goal
+
 **Business Objective**: Allow users to update their profile information (name, email, bio)
 **User Story**: As a logged-in user, I want to update my profile so that other users see current information about me
 
 ### Technical Specifications
 
 #### Constraints
+
 - **Allowed Libraries**: Express.js, Joi for validation, bcrypt for passwords
 - **Forbidden Libraries**: None specific
 - **Style Rules**: Follow existing API patterns in `/packages/api/`
@@ -23,11 +26,13 @@ Used `/prompts/feature.md` template with these details:
 - **Authentication**: Requires valid JWT token
 
 #### Architecture Guidelines
+
 - **Package Location**: `/packages/api/src/routes/users`
 - **Design Patterns**: Repository pattern, middleware for auth
 - **Integration Points**: User service, database layer
 
 ### Acceptance Criteria
+
 1. PATCH /api/users/:id endpoint that accepts JSON payload
 2. Validates user owns the profile or has admin rights
 3. Validates email format and username uniqueness
@@ -35,11 +40,13 @@ Used `/prompts/feature.md` template with these details:
 5. Handles validation errors with descriptive messages
 
 ### Dependencies
+
 - **Affected Packages**: api, shared-types
 - **Database Changes**: None (using existing users table)
 - **API Changes**: New PATCH endpoint
 
 ### Testing Requirements
+
 - Unit tests for validation logic
 - Integration tests for full endpoint
 - Security tests for authorization
@@ -52,6 +59,7 @@ Used `/prompts/feature.md` template with these details:
 ### Generated Files
 
 #### `src/routes/users/profile.ts`
+
 ```typescript
 import { Request, Response } from 'express';
 import Joi from 'joi';
@@ -119,6 +127,7 @@ export const updateUserProfile = [
 ```
 
 #### `src/services/UserService.ts` (additions)
+
 ```typescript
 async updateProfile(userId: string, profileData: Partial<UserProfile>): Promise<User | null> {
   const existingUser = await this.userRepository.findById(userId);
@@ -144,6 +153,7 @@ async updateProfile(userId: string, profileData: Partial<UserProfile>): Promise<
 ```
 
 #### `tests/integration/profile.test.ts`
+
 ```typescript
 describe('PATCH /api/users/:id', () => {
   let authToken: string;
@@ -203,6 +213,7 @@ describe('PATCH /api/users/:id', () => {
 ## 3. Human Review & Modifications
 
 ### Issues Found
+
 1. **Security**: Console.log in production code
 2. **Error Handling**: Generic error messages could leak info
 3. **Validation**: Missing check for empty updates
@@ -243,9 +254,11 @@ if (Object.keys(req.body).length === 0) {
 ## 4. Final PR
 
 ### PR Title
+
 `feat(api): add user profile update endpoint`
 
 ### PR Description
+
 Following the template in `/templates/PR.md`:
 
 - **AI Generated**: Yes (Windsurf)
@@ -254,6 +267,7 @@ Following the template in `/templates/PR.md`:
 - **Breaking Changes**: None
 
 ### Commit Message
+
 ```
 feat(api): add user profile update endpoint
 
@@ -273,17 +287,20 @@ Refs: #USER-123
 ## 5. Key Learnings
 
 ### What Worked Well
+
 - AI generated structurally correct code following existing patterns
 - Test coverage was comprehensive from the start
 - Security middleware was properly applied
 
 ### Human Value Added
+
 - Identified security issues (console.log, error message leakage)
 - Improved error handling specificity
 - Added edge case validation (empty updates)
 - Enhanced logging for debugging
 
 ### Prompt Improvements for Next Time
+
 - Be more specific about security requirements
 - Include examples of proper error handling patterns
 - Specify logging requirements upfront

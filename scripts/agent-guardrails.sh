@@ -249,7 +249,35 @@ else
     info "ESLint not found globally - skipping lint check (install with 'pnpm install' and run 'pnpm run lint')"
 fi
 
-# 12. Check for proper branch naming
+# 12. Run markdown linting with automatic fixes
+echo "🔍 Running markdown linter with automatic fixes..."
+MD_FILES=$(echo "$STAGED_FILES" | grep -E '\.md$' || true)
+if [ -n "$MD_FILES" ]; then
+    if command -v npx &> /dev/null; then
+        # First, try to automatically fix markdown issues
+        echo "🔧 Attempting to automatically fix markdown issues..."
+        for file in $MD_FILES; do
+            if [ -f "$file" ]; then
+                if npx markdownlint-cli2 "$file" --fix --config .markdownlint.json 2>/dev/null; then
+                    success "Auto-fixed markdown issues in $file"
+                    # Re-stage the fixed file
+                    git add "$file"
+                else
+                    # If auto-fix fails, just check for issues
+                    if ! npx markdownlint-cli2 "$file" --config .markdownlint.json 2>/dev/null; then
+                        warning "Markdown linting issues found in $file (some may require manual fixes)"
+                    fi
+                fi
+            fi
+        done
+    else
+        warning "npx not found - skipping markdown linting (install Node.js)"
+    fi
+else
+    info "No markdown files staged - skipping markdown linting"
+fi
+
+# 13. Check for proper branch naming
 echo "🔍 Checking branch naming..."
 BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 if [[ ! $BRANCH_NAME =~ ^(feature|fix|hotfix|refactor|chore)/.+ ]]; then

@@ -5,18 +5,22 @@ Use this template when asking AI agents to fix bugs.
 ## Bug Description
 
 ### Observed Bug
+
 **Summary**: [Brief description of the issue]
 **Reproduction Steps**:
+
 1. [Step 1]
 2. [Step 2]
 3. [Step 3]
 
-**Environment**: 
+**Environment**:
+
 - Browser/Node version: [Version]
 - OS: [Operating system]
 - Other relevant environment details: [Details]
 
 ### Expected Behavior
+
 **What should happen instead**: [Clear description of correct behavior]
 **Contract/Specification**: [Link to relevant docs or requirements]
 
