@@ -64,8 +64,6 @@ jspm_packages/
 .turbo/
 
 # AI and editor temporary files
-.claude/
-.windsurf/
 *.tmp
 
 # Test output (generated during testing)
