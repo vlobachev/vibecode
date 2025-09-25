@@ -71,6 +71,41 @@
 3. Establish agent coordination workflows
 4. Set up collaborative development patterns
 
+### MCP Memory Integrations TODO
+
+1. Supermemory
+   - Evaluate Supermemory server for lightweight note storage
+   - Prototype integration with `addToSupermemory` and `searchSupermemory`
+   - Define note schema and tagging strategy
+   - Add configuration flag and environment variables
+   - Write quick-start docs and tests
+
+2. MCP Memory Service (SQLite-vec or ChromaDB)
+   - Stand up local vector DB (prefer SQLite-vec for simple setup)
+   - Implement semantic search, natural-language time queries, and tag filters
+   - Define memory types (note, decision, task, code_ref) and embeddings pipeline
+   - Add import/export and retention policies
+   - Create benchmarks for retrieval quality
+
+3. MemCP (Temporal Knowledge Graph)
+   - Model entities, relationships, and episodes for project knowledge
+   - Build ingestion from commits, issues, and chats
+   - Expose queries for “who/what/when/why” across timelines
+   - Validate against real project scenarios
+
+4. Chroma MCP Server (Auto-index code and chats)
+   - Enable auto-index of repository code and AI chat sessions into ChromaDB
+   - Wire working-memory tools for retrieval in coding sessions
+   - Add deduplication and chunking strategy for code/doc blocks
+   - Provide commands to re-index and validate index health
+
+5. Cross-cutting tasks
+   - Add configuration surface to `.windsurf/rules/` and `.clinerules`
+   - Surface provider selection and credentials via env vars
+   - Provide compatibility matrix and migration notes between providers
+   - Add golden tests for retrieval and time queries
+   - Add GitHub Actions job to run memory integration tests
+
 ## Documentation Maintenance
 
 ### Update Project Documentation
