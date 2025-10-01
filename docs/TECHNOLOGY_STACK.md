@@ -1,8 +1,6 @@
-# Vibecode Blueprint Technology Stack
+# Vibecode Blueprint - Technology Stack
 
-> **Note**: For complete technology stack documentation, see **[docs/TECHNOLOGY_STACK.md](../../docs/TECHNOLOGY_STACK.md)**
-
-## Quick Reference
+## Core Technologies
 
 ### Runtime & Language
 
@@ -49,23 +47,37 @@ git clone <repository-url>
 cd vibecode
 pnpm install
 
-# Run interactive setup
-pnpm run setup
+# Or use Makefile
+make install
 
-# Development mode
-pnpm run dev
+# Run interactive setup
+make setup
+# OR
+pnpm run setup
 ```
 
-### Available Scripts
+### Available Commands
+
+See `make help` for all available commands, or use these common ones:
 
 ```bash
-pnpm run setup        # Interactive project setup
-pnpm run test-setup   # Validate setup configuration
-pnpm run dev          # Development mode setup
-pnpm run test         # Run test suite
-pnpm run lint         # Code linting
-pnpm run format       # Code formatting
-pnpm run validate     # Project validation
+# Setup and installation
+make install              # Install dependencies
+make setup               # Interactive project setup
+
+# Development
+pnpm run dev             # Development mode setup
+pnpm run test-setup      # Validate setup configuration
+
+# Quality checks
+make validate            # Run all validation checks
+make lint                # Code linting
+make format              # Code formatting
+make test                # Run test suite
+
+# Pre-commit hooks
+make pre-commit-install  # Install pre-commit hooks
+make pre-commit-run      # Run pre-commit hooks manually
 ```
 
 ## Technical Constraints
@@ -93,8 +105,10 @@ pnpm run validate     # Project validation
 ### Supported AI Coding Tools
 
 - **Windsurf**: Cascade, Memories, Supercomplete modes
-- **Roo Code**: Multi-agent collaboration with slash commands  
+- **Roo Code**: Multi-agent collaboration with slash commands
 - **KiloCode**: Open-source orchestration (architect → code → debug)
+- **Cline**: Memory Bank integration for context preservation
+- **Claude Desktop**: MCP server integration
 - **Generic**: Any agentic IDE following established conventions
 
 ### Integration Patterns
@@ -104,6 +118,13 @@ pnpm run validate     # Project validation
 - **Quality Gates**: Validation hooks for AI-generated code
 - **Workflow Integration**: CI/CD pipeline compatibility
 
+### Memory Bank Systems
+
+For AI tools that support memory banks:
+
+- **KiloCode**: `.kilocode/rules/memory-bank/` - See [.kilocode/rules/memory-bank-instructions.md](../.kilocode/rules/memory-bank-instructions.md)
+- **Cline**: `memory-bank/` - See [Cline Memory Bank documentation](https://docs.cline.bot/prompting/cline-memory-bank)
+
 ## Development Workflow
 
 ### Code Quality Stack
@@ -111,6 +132,7 @@ pnpm run validate     # Project validation
 ```bash
 # Pre-commit validation
 ./scripts/agent-guardrails.sh
+./scripts/pre-commit-validate-structure.sh
 
 # Linting and formatting
 eslint src/ templates/
@@ -126,6 +148,8 @@ node --test test/**/*.test.js
 - **Quality Gates**: ESLint, Prettier, and custom validation
 - **Documentation**: Automated docs generation and validation
 - **Release**: Semantic versioning and automated releases
+
+See `.github/workflows/` for complete CI/CD configuration.
 
 ## Tool Usage Patterns
 
@@ -150,27 +174,37 @@ node --test test/**/*.test.js
 - **CI Pipeline**: Continuous integration with quality gates
 - **Metrics Collection**: Development workflow analytics
 
-## KiloCode-Specific Setup
+## Security Considerations
 
-### Memory Bank Integration
+### Dependency Management
 
-- Memory Bank files located in `.kilocode/rules/memory-bank/`
-- Automatic context loading when KiloCode AI starts
-- See `memory-bank-instructions.md` for complete setup
-
-### Development with KiloCode
+- **PNPM Overrides**: Explicit security patch management
+- **Version Pinning**: Controlled dependency updates
+- **Audit**: Regular security vulnerability scanning
 
 ```bash
-# KiloCode will automatically read memory bank files
-# Use standard development commands
-make install
-make setup
-make validate
+# Security audit
+make security-audit
+# OR
+pnpm audit
 ```
+
+### Template Security
+
+- **Input Validation**: User input sanitization in templates
+- **File Permissions**: Secure file generation and permissions
+- **Path Traversal**: Prevention of directory traversal attacks
 
 ## Related Documentation
 
-- **[docs/TECHNOLOGY_STACK.md](../../docs/TECHNOLOGY_STACK.md)** - Complete technology stack, dependencies, setup, and security
-- **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)** - Project overview
-- **[docs/architecture/SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md)** - System architecture
-- **[Makefile](../../Makefile)** - All available commands (`make help`)
+- **[docs/PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md)** - Project overview and objectives
+- **[docs/architecture/SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md)** - System architecture
+- **[docs/PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)** - Complete directory structure
+- **[docs/guides/CONTRIBUTING.md](guides/CONTRIBUTING.md)** - Development workflow
+- **[README.md](../README.md)** - Quick start guide
+- **[Makefile](../Makefile)** - All available commands
+
+---
+
+**Last Updated**: 2025-10-01  
+**Maintained By**: Vibecode Team

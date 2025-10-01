@@ -1,6 +1,8 @@
 # Vibecode Blueprint Architecture
 
-## System Architecture
+> **Note**: For complete system architecture, see **[docs/architecture/SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md)**
+
+## Quick Reference
 
 ### High-Level Design
 
@@ -119,25 +121,30 @@ User Input → Inquirer Prompts → Template Selection → Handlebars Processing
 Code Changes → Pre-commit Hooks → Golden Tests → CI/CD Pipeline → Quality Gates → Deployment
 ```
 
-## Critical Implementation Paths
+## KiloCode Memory Bank Architecture
 
-### 1. Project Initialization
+### Memory Bank Structure
 
-- Template selection and customization
-- File generation and directory structure creation
-- Dependency installation and configuration
-- Initial validation and setup verification
+```
+.kilocode/rules/memory-bank/
+├── brief.md          # Project overview (references docs/PROJECT_OVERVIEW.md)
+├── product.md        # Product definition (references docs/PROJECT_OVERVIEW.md)
+├── architecture.md   # This file (references docs/architecture/SYSTEM_ARCHITECTURE.md)
+├── tech.md          # Technology stack (references docs/TECHNOLOGY_STACK.md)
+├── context.md       # Current work context (tool-specific, frequently updated)
+└── tasks.md         # Workflows and tasks (tool-specific)
+```
 
-### 2. AI Tool Integration
+### Integration with Universal Docs
 
-- Detection of available AI coding tools
-- Configuration of tool-specific settings
-- Setup of prompt templates and workflows
-- Integration with quality assurance processes
+- Memory bank files provide quick reference and KiloCode-specific context
+- Universal documentation in `docs/` serves as single source of truth
+- Memory bank references docs for complete information
+- Follows Single Source of Truth (SSOT) principle
 
-### 3. Quality Validation
+## Related Documentation
 
-- Pre-commit hook execution
-- Golden test validation
-- CI/CD pipeline integration
-- Metrics collection and reporting
+- **[docs/architecture/SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md)** - Complete system architecture
+- **[docs/TECHNOLOGY_STACK.md](../../docs/TECHNOLOGY_STACK.md)** - Technology stack and technical decisions
+- **[docs/PROJECT_STRUCTURE.md](../../docs/PROJECT_STRUCTURE.md)** - Complete directory structure
+- **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)** - Project overview

@@ -22,6 +22,9 @@ build/
 *.swp
 *.swo
 *~
+*.iml
+out
+gen
 
 # OS files
 .DS_Store
@@ -68,3 +71,4 @@ jspm_packages/
 
 # Test output (generated during testing)
 test-output/
+/sources/

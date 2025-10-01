@@ -22,7 +22,7 @@ jobs:
           "AGENTS.md"
           "CLAUDE.md" 
           "README.md"
-          "PROJECT_STRUCTURE.md"
+          "docs/PROJECT_STRUCTURE.md"
           "package.json"
           "src/setup.js"
           "scripts/agent-guardrails.sh"

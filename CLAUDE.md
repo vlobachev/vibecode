@@ -91,7 +91,7 @@ The `scripts/agent-guardrails.sh` script enforces:
 
 ### Documentation
 
-- `PROJECT_STRUCTURE.md`: Detailed directory overview and usage patterns
+- `docs/PROJECT_STRUCTURE.md`: Detailed directory overview and usage patterns
 - `/docs/guides/CONTRIBUTING.md`: Development contribution guidelines
 - `/docs/guides/ONBOARDING.md`: New team member setup guide
 

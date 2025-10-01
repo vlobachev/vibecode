@@ -108,7 +108,7 @@ Create memory: "All database operations must be transactional"
 - **Type Safety**: Use TypeScript strictly, avoid `any`
 - **Error Handling**: Always handle errors gracefully
 - **Testing**: Minimum 80% coverage for new code
-- **Documentation**: Self-documenting code + API docs
+- **Documentation**: Self-documenting code + API docs (see [DOCUMENTATION_STANDARDS.md](DOCUMENTATION_STANDARDS.md))
 
 ### Patterns to Follow
 

@@ -20,9 +20,9 @@ Since Windsurf's built-in memory is personal to each user, teams need structured
 
 ### Dedicated Planning Files
 
-- `windsurf-mcp-memory-todo.md` - Windsurf-specific TODOs
-- `.claude/mcp-memory-todo.md` - Claude-specific TODOs
+- `docs/MCP_MEMORY_IMPLEMENTATION.md` - Universal MCP Memory Server implementation plan
 - Project-specific planning documents in `docs/`
+- Feature-specific planning in feature branches
 
 ## 2. Git-Based Collaboration Workflow
 
@@ -121,11 +121,15 @@ When switching between team members:
 project/
 ├── memory-bank/           # Cline memory bank (shared)
 ├── .kilocode/rules/       # KiloCode memory bank (shared)
-├── .claude/               # Claude-specific files (shared)
-├── windsurf-*.md          # Windsurf-specific files (shared)
+├── .windsurf/             # Windsurf workflows and rules (shared)
 ├── docs/                  # Team documentation (shared)
-└── .windsurf/             # Personal Windsurf config (not shared)
+│   ├── guides/            # Development guides
+│   ├── architecture/      # Architecture docs
+│   └── *.md               # Implementation plans
+└── .windsurf/memories/    # Personal Windsurf memories (not shared)
 ```
+
+**Note**: For complete project structure, see **[docs/PROJECT_STRUCTURE.md](../PROJECT_STRUCTURE.md)**.
 
 ### Communication Patterns
 
@@ -165,3 +169,15 @@ project/
 5. Merge and communicate completion
 
 This approach ensures that while Windsurf's personal memory enhances individual productivity, the team maintains shared context and planning through structured, git-based documentation.
+
+## Related Documentation
+
+- **[docs/PROJECT_STRUCTURE.md](../PROJECT_STRUCTURE.md)** - Complete repository structure
+- **[docs/MCP_MEMORY_IMPLEMENTATION.md](../MCP_MEMORY_IMPLEMENTATION.md)** - Universal MCP Memory Server plan
+- **[docs/guides/DOCUMENTATION_STANDARDS.md](DOCUMENTATION_STANDARDS.md)** - Documentation best practices
+- **[docs/guides/CONTRIBUTING.md](CONTRIBUTING.md)** - Development workflow
+- **[AGENTS.md](../../AGENTS.md)** - AI agent guidelines
+
+---
+
+**Last Updated**: 2025-10-01

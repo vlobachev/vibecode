@@ -1,6 +1,72 @@
 # System Architecture Overview
 
-**High-level architecture for collaborative vibecoding projects**
+**High-level architecture for the Vibecode Blueprint and collaborative vibecoding projects**
+
+## Vibecode Blueprint Architecture
+
+### Template-Driven Architecture
+
+The Vibecode Blueprint follows a **template-driven architecture** with intelligent setup automation. The system is designed as a reusable blueprint that generates customized project structures for AI-assisted collaborative development.
+
+### Core Components
+
+#### 1. Setup System (`src/setup.js`)
+
+- **Interactive CLI**: Handlebars-powered templating with inquirer.js prompts
+- **Project Generation**: Creates customized project structures from templates
+- **Validation**: Ensures generated projects meet quality standards
+- **Configuration Management**: Handles project-specific customizations
+
+#### 2. Template Engine (`templates/`)
+
+- **Handlebars Templates**: `.hbs` files for dynamic content generation
+- **Configuration Files**: ESLint, Prettier, Git configurations
+- **Documentation Templates**: PR templates, commit message formats
+- **Workflow Templates**: GitHub Actions, CI/CD pipelines
+
+#### 3. Documentation Framework (`docs/`)
+
+- **Architecture Documentation**: System design and technical decisions
+- **Guides**: Contributing guidelines, onboarding materials
+- **Standards**: Code review processes, quality metrics
+
+#### 4. Quality Assurance (`scripts/`, `tests/`)
+
+- **Pre-commit Hooks**: Validation scripts for code quality
+- **Golden Tests**: Baseline snapshots for regression prevention
+- **CI/CD Integration**: Automated quality checks
+
+### Key Technical Decisions
+
+#### 1. Node.js + ESM Architecture
+
+- **Rationale**: Modern JavaScript with ES modules for better tooling support
+- **Benefits**: Native async/await, better tree-shaking, future-proof
+- **Requirements**: Node.js 18+ for optimal compatibility
+
+#### 2. Handlebars Templating
+
+- **Rationale**: Logic-less templates prevent complex template code
+- **Benefits**: Clear separation of data and presentation, security
+- **Usage**: Dynamic generation of configuration files and documentation
+
+#### 3. Interactive Setup with Inquirer.js
+
+- **Rationale**: User-friendly CLI experience for project customization
+- **Benefits**: Guided setup, validation, consistent user experience
+- **Integration**: Seamless integration with template generation
+
+#### 4. PNPM Package Management
+
+- **Rationale**: Efficient disk usage, strict dependency resolution
+- **Benefits**: Faster installs, better monorepo support, security
+- **Version**: PNPM 8+ for optimal performance
+
+---
+
+## Generated Project Architecture
+
+**Architecture for projects created using the Vibecode Blueprint**
 
 ## Architecture Principles
 

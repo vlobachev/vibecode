@@ -113,9 +113,10 @@
 **Frequency**: After major features or architectural changes
 
 1. Update `README.md` with new features
-2. Refresh `PROJECT_STRUCTURE.md` if structure changes
+2. Refresh `docs/PROJECT_STRUCTURE.md` if structure changes
 3. Update architecture documentation
 4. Refresh onboarding materials in `docs/guides/`
+5. Follow documentation standards in `docs/guides/DOCUMENTATION_STANDARDS.md`
 
 ### Prompt Template Maintenance
 

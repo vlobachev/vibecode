@@ -94,10 +94,11 @@ jobs:
           "README.md"
           "AGENTS.md"
           "CLAUDE.md"
-          "PROJECT_STRUCTURE.md"
+          "docs/PROJECT_STRUCTURE.md"
           "LICENSE"
           "docs/architecture/SYSTEM_ARCHITECTURE.md"
           "docs/guides/CONTRIBUTING.md"
+          "docs/MCP_MEMORY_IMPLEMENTATION.md"
           "docs/guides/ONBOARDING.md"
         )
         

@@ -1,45 +1,36 @@
 # Vibecode Blueprint Product Definition
 
-## Why This Project Exists
+> **Note**: For complete product information, see **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)**
 
-The software development landscape is rapidly evolving with the emergence of AI-powered coding assistants and agentic IDEs. However, teams struggle with:
+## Quick Summary
 
-- **Inconsistent AI collaboration patterns** leading to unpredictable code quality
-- **Lack of standardized workflows** for human-AI development partnerships
-- **Manual setup overhead** when starting new AI-assisted projects
-- **Quality control challenges** with AI-generated code contributions
-- **Knowledge gaps** in best practices for collaborative AI development
+Vibecode Blueprint solves the challenges teams face when adopting AI-assisted development by providing a ready-to-use framework with standardized workflows, quality guardrails, and comprehensive documentation.
 
 ## Problems Being Solved
 
-### Primary Problems
+1. **Setup Friction** - Ready-to-use blueprint eliminates manual configuration
+2. **Quality Inconsistency** - Guardrails and validation for AI contributions
+3. **Workflow Ambiguity** - Clear human-in-the-loop processes
+4. **Tool Fragmentation** - Unified approach across AI coding tools
 
-1. **Setup Friction**: Eliminates hours of manual configuration by providing a ready-to-use blueprint
-2. **Quality Inconsistency**: Establishes guardrails and validation processes for AI contributions
-3. **Workflow Ambiguity**: Defines clear human-in-the-loop processes for AI collaboration
-4. **Tool Fragmentation**: Provides unified approach that works across different AI coding tools
+## Core Workflow
 
-### Secondary Problems
+1. Blueprint Installation: `make install` and `make setup`
+2. AI Tool Integration: Works with Windsurf, Roo Code, KiloCode, Cline, Claude
+3. Guided Development: Prompt templates for consistency
+4. Quality Validation: Automated checks before merge
+5. Continuous Improvement: Metrics tracking
 
-- Lack of documentation standards for AI-assisted projects
-- Inconsistent code review processes for AI contributions
-- Missing quality metrics for measuring AI collaboration effectiveness
-- Absence of onboarding materials for teams new to AI-assisted development
+## User Experience Goals
 
-## How the Product Works
+- 10-minute setup from blueprint to productive environment
+- Intuitive workflows for all experience levels
+- Confidence in AI contributions through validation
+- Scalable adoption for any team size
+- Tool flexibility for current and future AI assistants
 
-### Core Workflow
+## Related Documentation
 
-1. **Blueprint Installation**: Teams use `pnpm run setup` to generate customized project structure
-2. **AI Tool Integration**: Framework adapts to Windsurf, Roo Code, KiloCode, or other agentic IDEs
-3. **Guided Development**: Developers use prompt templates for consistent AI interactions
-4. **Quality Validation**: Automated checks ensure AI contributions meet standards before merge
-5. **Continuous Improvement**: Metrics tracking helps teams optimize their AI collaboration
-
-### User Experience Goals
-
-- **10-minute setup**: From blueprint to productive development environment
-- **Intuitive workflows**: Clear guidance for both AI-experienced and novice developers
-- **Confidence in AI contributions**: Robust validation ensures code quality
-- **Scalable adoption**: Framework grows with team size and complexity
-- **Tool flexibility**: Works with current and future AI coding assistants
+- **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)** - Complete overview with problems, solutions, and goals
+- **[README.md](../../README.md)** - Quick start and installation
+- **[docs/guides/ONBOARDING.md](../../docs/guides/ONBOARDING.md)** - New team member guide

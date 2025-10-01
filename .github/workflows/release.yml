@@ -53,7 +53,7 @@ jobs:
           "LICENSE"
           "AGENTS.md"
           "CLAUDE.md"
-          "PROJECT_STRUCTURE.md"
+          "docs/PROJECT_STRUCTURE.md"
           "package.json"
           "src/setup.js"
           "src/test-setup.js"
@@ -173,8 +173,8 @@ jobs:
         cp README.md release/vibecode-framework/
         cp AGENTS.md release/vibecode-framework/
         cp CLAUDE.md release/vibecode-framework/
-        cp PROJECT_STRUCTURE.md release/vibecode-framework/
         cp LICENSE release/vibecode-framework/
+        cp -r docs/ release/vibecode-framework/
         cp -r src/ release/vibecode-framework/
         cp package.json release/vibecode-framework/
         

@@ -6,13 +6,19 @@
 vibecode/
 ├── README.md                           # Main project documentation
 ├── AGENTS.md                           # AI agent guidelines (standard location)
+├── CLAUDE.md                           # Claude-specific guidance
+├── Makefile                            # Automation for common operations
+├── .pre-commit-config.yaml             # Pre-commit hooks configuration
 │
 ├── docs/                               # Documentation
+│   ├── README.md                       # Documentation index
 │   ├── architecture/                   
 │   │   └── SYSTEM_ARCHITECTURE.md      # System design overview
 │   └── guides/                         
 │       ├── CONTRIBUTING.md              # Development guidelines
-│       └── ONBOARDING.md               # New team member guide
+│       ├── ONBOARDING.md               # New team member guide
+│       ├── PRE_COMMIT.md               # Pre-commit hooks setup guide
+│       └── WINDSURF_TEAM_COLLABORATION.md # Windsurf collaboration guide
 │
 ├── policies/                           # Governance and rules
 │   ├── CODEOWNERS                      # Package ownership definitions
@@ -28,7 +34,10 @@ vibecode/
 │   └── CommitMessage.md               # Commit message format guide
 │
 ├── scripts/                            # Automation scripts
-│   └── agent-guardrails.sh            # Pre-commit validation script
+│   ├── agent-guardrails.sh            # Pre-commit validation script
+│   ├── setup-pre-commit.sh            # Pre-commit hooks setup script
+│   ├── pre-commit-validate-structure.sh # Structure validation script
+│   └── pre-commit-check-agents.sh     # AGENTS.md validation script
 │
 ├── tests/                              # Testing artifacts
 │   └── golden/                         # Golden/snapshot tests
@@ -66,11 +75,7 @@ vibecode/
 
 ## 🚀 Quick Start
 
-1. **Copy this structure** to your project repository
-2. **Run the setup script**: `node src/setup.js`
-3. **Customize AGENTS.md** with your project specifics
-4. **Configure your AI tool** (Windsurf, Roo Code, KiloCode, etc.)
-5. **Start vibecoding** using the prompt templates!
+For setup instructions and getting started, see the main **[README.md](../README.md#-quick-start)**.
 
 ## 🛠 Key Features
 
@@ -79,18 +84,32 @@ vibecode/
 - **Golden test protection**: Prevent regression in critical functionality  
 - **Automated quality checks**: Pre-commit validation and CI/CD integration
 - **Comprehensive examples**: Real-world patterns and best practices
+- **Makefile automation**: Self-documenting commands for common operations
+- **Pre-commit hooks**: Automatic code quality validation before commits
+- **Documentation index**: Organized documentation by role and purpose
 
 ## 📖 Usage
 
 This structure provides everything needed to implement collaborative vibecoding in your team:
 
-- Use **prompt templates** to get consistent AI results
-- Follow **review guidelines** to maintain code quality
-- Leverage **golden tests** to protect critical business logic
-- Run **guardrail scripts** to catch issues before they reach production
+- Use **prompt templates** (see `/prompts/`) to get consistent AI results
+- Follow **review guidelines** (see `policies/REVIEW.md`) to maintain code quality
+- Leverage **golden tests** (see `tests/golden/`) to protect critical business logic
+- Run **guardrail scripts** (see `scripts/`) to catch issues before they reach production
+- Use **Makefile commands** (run `make help`) for common operations
+- Setup **pre-commit hooks** (see [docs/guides/PRE_COMMIT.md](guides/PRE_COMMIT.md)) for automatic validation
 
-The framework scales from small teams to large organizations and adapts to different AI coding tools while maintaining consistent quality and collaboration patterns.
+## 📚 Related Documentation
+
+- **[README.md](../README.md)** - Main project overview and quick start
+- **[AGENTS.md](../AGENTS.md)** - Comprehensive AI agent guidelines
+- **[CLAUDE.md](../CLAUDE.md)** - Claude-specific guidance
+- **[docs/README.md](README.md)** - Complete documentation index
+- **[docs/guides/CONTRIBUTING.md](guides/CONTRIBUTING.md)** - Development workflow
+- **[docs/guides/ONBOARDING.md](guides/ONBOARDING.md)** - New team member guide
+- **[docs/guides/PRE_COMMIT.md](guides/PRE_COMMIT.md)** - Pre-commit hooks setup
+- **[docs/MCP_MEMORY_IMPLEMENTATION.md](MCP_MEMORY_IMPLEMENTATION.md)** - MCP Memory Server plan
 
 ---
 
-**Ready to start vibecoding?** Check out `docs/guides/ONBOARDING.md` to get your team up and running!
+**Ready to start vibecoding?** Check out [docs/guides/ONBOARDING.md](guides/ONBOARDING.md) to get your team up and running!

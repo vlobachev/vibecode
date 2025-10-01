@@ -18,12 +18,22 @@ Vibecoding = natural-language driven development through agentic IDEs. The devel
 
 ```bash
 # Install dependencies
+make install
+# OR
 pnpm install
 
 # Run interactive setup
+make setup
+# OR
 pnpm run setup
 
-# Follow the prompts to customize your project
+# Setup pre-commit hooks (recommended)
+make pre-commit-install
+# OR
+./scripts/setup-pre-commit.sh
+
+# View all available commands
+make help
 ```
 
 ### Traditional Approach (Legacy)
@@ -35,28 +45,7 @@ pnpm run setup
 
 ## Repository Structure
 
-```
-/docs
-   /architecture/        → diagrams, system maps
-   /guides/              → onboarding, coding rules
-/prompts
-   /feature.md           → template for new feature prompt
-   /bugfix.md            → template for fixing a bug
-   /refactor.md          → template for migration/refactor
-/policies
-   CODEOWNERS            → package ownership
-   REVIEW.md             → human review guidelines
-/templates
-   PR.md                 → pull request template
-   CommitMessage.md      → commit message format
-/tests
-   /golden               → baseline snapshots
-/scripts
-   agent-guardrails.sh   → pre-commit checks
-/examples
-   /                     → real-world examples
-AGENTS.md                → AI agent guidelines (root level)
-```
+For a complete directory structure with detailed descriptions, see **[docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)**.
 
 ## Core Rules
 
@@ -77,10 +66,33 @@ AGENTS.md                → AI agent guidelines (root level)
 ## Getting Started
 
 1. Copy this structure to your monorepo
-2. Customize `AGENTS.md` with your project specifics
-3. Set up your CI/CD pipeline with the provided scripts
-4. Train your team on the prompt templates
-5. Start vibecoding!
+2. Install dependencies: `make install`
+3. Setup pre-commit hooks: `make pre-commit-install`
+4. Customize `AGENTS.md` with your project specifics
+5. Set up your CI/CD pipeline with the provided scripts
+6. Train your team on the prompt templates
+7. Start vibecoding!
+
+## Automation & Quality
+
+### Makefile Commands
+
+This project includes a comprehensive Makefile for common operations. Run `make help` to see all available commands, or view the [Makefile](Makefile) directly.
+
+Key commands:
+
+- **`make install`** - Install dependencies
+- **`make setup`** - Run interactive setup
+- **`make validate`** - Run all validation checks
+- **`make pre-commit-install`** - Install pre-commit hooks
+
+### Pre-commit Hooks
+
+Automatic code quality validation runs before every commit. This catches issues early and prevents CI/CD failures.
+
+**Setup**: Run `make pre-commit-install` or `./scripts/setup-pre-commit.sh`
+
+For complete documentation, see **[docs/guides/PRE_COMMIT.md](docs/guides/PRE_COMMIT.md)**.
 
 ## Quality Metrics
 
@@ -92,9 +104,23 @@ Track these metrics to ensure healthy vibecoding practices:
 - Rollback ratio
 - AI contribution vs. post-release defect rate
 
+## Documentation
+
+For complete documentation, see **[docs/README.md](docs/README.md)** - the documentation index organized by role and topic.
+
+Key documentation:
+
+- **[docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)** - Complete directory structure
+- **[docs/guides/CONTRIBUTING.md](docs/guides/CONTRIBUTING.md)** - Contribution guidelines
+- **[docs/guides/ONBOARDING.md](docs/guides/ONBOARDING.md)** - New team member guide
+- **[docs/guides/PRE_COMMIT.md](docs/guides/PRE_COMMIT.md)** - Pre-commit hooks setup
+- **[docs/MCP_MEMORY_IMPLEMENTATION.md](docs/MCP_MEMORY_IMPLEMENTATION.md)** - MCP Memory Server plan
+- **[AGENTS.md](AGENTS.md)** - AI agent guidelines
+- **[CLAUDE.md](CLAUDE.md)** - Claude-specific guidance
+
 ## Contributing
 
-See `/docs/guides/CONTRIBUTING.md` for detailed contribution guidelines.
+See **[docs/guides/CONTRIBUTING.md](docs/guides/CONTRIBUTING.md)** for detailed contribution guidelines.
 
 ## License
 
