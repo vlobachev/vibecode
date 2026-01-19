@@ -56,12 +56,15 @@ For a complete directory structure with detailed descriptions, see **[docs/PROJE
 - **Context enforcement**: Agents only work within defined package boundaries
 - **Style enforcement**: One formatter/linter config applied in CI
 
-## Supported Tools
+## Supported Tools (2025-2026)
 
+- **Claude Code**: Primary support with MCP integration (planned)
+- **GitHub Copilot Agent Mode**: Agent mode and coding agent workflows
 - **Windsurf**: Cascade, Memories, Supercomplete modes
 - **Roo Code**: Multi-agent collaboration with slash commands
 - **KiloCode**: Open-source orchestration (architect → code → debug)
-- **Generic**: Any agentic IDE following our conventions
+- **Cline**: Memory Bank integration for context persistence
+- **Generic**: Any agentic IDE following AGENTS.md conventions
 
 ## Getting Started
 
