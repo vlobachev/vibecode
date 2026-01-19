@@ -6,7 +6,8 @@
 
 - **Node.js 18+**: Modern JavaScript runtime with ES modules support
 - **JavaScript (ESM)**: ES2022+ features, native async/await, top-level await
-- **Package Manager**: PNPM 8.15.0 for efficient dependency management and workspace support
+- **Package Manager**: PNPM 8.15.0 for efficient dependency management and
+  workspace support
 
 ### Key Dependencies
 
@@ -21,7 +22,8 @@
 
 - **Chalk 5.3.0**: Terminal string styling and colors for better UX
 - **Ora 7.0.1**: Elegant terminal spinners and progress indicators
-- **validate-npm-package-name 5.0.0**: Package name validation for generated projects
+- **validate-npm-package-name 5.0.0**: Package name validation for generated
+  projects
 
 #### Development and Quality Tools
 
@@ -64,17 +66,20 @@ pnpm run validate     # Project validation
 
 ### Platform Requirements
 
-- **Node.js Version**: Minimum 18.0.0 for ES modules and modern JavaScript features
+- **Node.js Version**: Minimum 18.0.0 for ES modules and modern JavaScript
+  features
 - **Package Manager**: PNPM 8+ required for workspace and dependency management
 - **Operating Systems**: Cross-platform support for Windows, macOS, and Linux
 - **Git**: Required for repository initialization and version control
 
 ### Performance Considerations
 
-- **Template Processing**: Efficient handling of large template sets using streams
+- **Template Processing**: Efficient handling of large template sets using
+  streams
 - **File Operations**: Async/await patterns for non-blocking I/O operations
 - **Memory Usage**: Optimized for processing multiple templates simultaneously
-- **Dependency Resolution**: PNPM's efficient node_modules structure reduces disk usage
+- **Dependency Resolution**: PNPM's efficient node_modules structure reduces
+  disk usage
 
 ### Security Constraints
 
@@ -95,16 +100,20 @@ pnpm run validate     # Project validation
 ### Memory Bank Technologies
 
 - **KiloCode Memory Bank**: Located in `.kilocode/rules/memory-bank/`
-- **Cline Memory Bank**: Located in `memory-bank/` with .clinerules configuration
+- **Cline Memory Bank**: Located in `memory-bank/` with .clinerules
+  configuration
 - **File Format**: Markdown files for cross-tool compatibility
 - **Synchronization**: Manual sync between different memory bank systems
 
 ### Configuration Management
 
-- **Tool-Specific Settings**: Individual configuration files for each AI assistant
-- **Prompt Templates**: Standardized interaction patterns in `prompts/` directory
+- **Tool-Specific Settings**: Individual configuration files for each AI
+  assistant
+- **Prompt Templates**: Standardized interaction patterns in `prompts/`
+  directory
 - **Quality Gates**: Validation hooks for AI-generated code contributions
-- **Workflow Integration**: CI/CD pipeline compatibility for AI-assisted development
+- **Workflow Integration**: CI/CD pipeline compatibility for AI-assisted
+  development
 
 ## Development Workflow Technologies
 
@@ -142,7 +151,8 @@ node --test test/**/*.test.js  # Built-in Node.js test runner
 
 - **Interactive Setup**: User-guided project customization through CLI prompts
 - **Batch Processing**: Efficient template processing using glob patterns
-- **Validation Pipeline**: Post-generation project structure and configuration validation
+- **Validation Pipeline**: Post-generation project structure and configuration
+  validation
 - **Tool Configuration**: Automated setup of development tools and AI assistants
 
 ### Quality Assurance Automation
@@ -150,7 +160,8 @@ node --test test/**/*.test.js  # Built-in Node.js test runner
 - **Golden Tests**: Snapshot-based regression testing for template outputs
 - **Pre-commit Hooks**: Automated quality checks before code commits
 - **CI Pipeline**: Continuous integration with comprehensive quality gates
-- **Metrics Collection**: Development workflow analytics and performance tracking
+- **Metrics Collection**: Development workflow analytics and performance
+  tracking
 
 ## Dependencies and Tool Configurations
 

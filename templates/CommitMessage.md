@@ -25,7 +25,8 @@ Refs: #[issue number]
 - **perf**: A code change that improves performance
 - **test**: Adding missing tests or correcting existing tests
 - **docs**: Documentation only changes
-- **style**: Changes that do not affect the meaning of the code (formatting, etc.)
+- **style**: Changes that do not affect the meaning of the code (formatting,
+  etc.)
 - **ci**: Changes to CI configuration files and scripts
 - **chore**: Other changes that don't modify src or test files
 - **revert**: Reverts a previous commit
@@ -150,7 +151,7 @@ Changed password comparison to use constant-time comparison function.
 - Add security tests for timing consistency
 - Update security documentation
 
-AI-Generated: No  
+AI-Generated: No
 Reviewed-by: Security Team
 Refs: SECURITY-001
 ```

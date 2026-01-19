@@ -4,8 +4,8 @@ Use this template when asking AI agents to develop new features.
 
 ## System Goal
 
-**Business Objective**: [Describe what the feature should accomplish in business terms]
-**User Story**: As a [user type], I want [goal] so that [benefit]
+**Business Objective**: [Describe what the feature should accomplish in business
+terms] **User Story**: As a [user type], I want [goal] so that [benefit]
 
 ## Technical Specifications
 
@@ -40,10 +40,10 @@ Use this template when asking AI agents to develop new features.
 
 ## Dependencies
 
-**Affected Packages**: [List all packages that might be impacted]
-**Shared Components**: [Any shared utilities or types to use/update]
-**Database Changes**: [Schema changes needed, if any]
-**API Changes**: [New endpoints or modifications needed]
+**Affected Packages**: [List all packages that might be impacted] **Shared
+Components**: [Any shared utilities or types to use/update] **Database
+Changes**: [Schema changes needed, if any] **API Changes**: [New endpoints or
+modifications needed]
 
 ## Testing Requirements
 
@@ -70,9 +70,9 @@ expect(result).toEqual(expectedOutput);
 
 ## Implementation Notes
 
-**Preferred Approach**: [Any specific implementation guidance]
-**Things to Avoid**: [Known pitfalls or anti-patterns]
-**References**: [Links to relevant documentation or examples]
+**Preferred Approach**: [Any specific implementation guidance] **Things to
+Avoid**: [Known pitfalls or anti-patterns] **References**: [Links to relevant
+documentation or examples]
 
 ---
 

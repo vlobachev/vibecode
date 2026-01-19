@@ -2,19 +2,29 @@
 
 **AI Agent Guidelines for Vibecode Blueprint (2025-2026 Edition)**
 
-This is the **primary interface** for AI agents working with the Vibecode Blueprint. This repository is a **template/blueprint** for creating collaborative AI development projects - not a production application.
+This is the **primary interface** for AI agents working with the Vibecode
+Blueprint. This repository is a **template/blueprint** for creating
+collaborative AI development projects - not a production application.
 
 ## Project Overview
 
-**Mission**: Provide a production-ready blueprint that enables teams to set up collaborative AI-assisted development environments with best practices, intelligent tooling, and seamless workflows.
+**Mission**: Provide a production-ready blueprint that enables teams to set up
+collaborative AI-assisted development environments with best practices,
+intelligent tooling, and seamless workflows.
 
-**What This Is**: A **template repository** with a Node.js-powered setup system that generates projects with AI agent support, validation guardrails, and modern development workflows.
+**What This Is**: A **template repository** with a Node.js-powered setup system
+that generates projects with AI agent support, validation guardrails, and modern
+development workflows.
 
 **Development Philosophy**:
+
 - **Human-in-the-loop**: AI proposes, humans approve via review process
-- **Contract-driven**: Interfaces and tests define boundaries, AI modifies implementations
-- **Agent-loop friendly**: Agents run tests, observe output, self-correct, finish with clean validation
-- **Multi-agent compatible**: Works with Claude Code, GitHub Copilot, Windsurf, Roo Code, KiloCode, Cline, etc.
+- **Contract-driven**: Interfaces and tests define boundaries, AI modifies
+  implementations
+- **Agent-loop friendly**: Agents run tests, observe output, self-correct,
+  finish with clean validation
+- **Multi-agent compatible**: Works with Claude Code, GitHub Copilot, Windsurf,
+  Roo Code, KiloCode, Cline, etc.
 
 ## 🚀 Setup Commands (Run These First)
 
@@ -118,7 +128,8 @@ vibecode/
 
 ### 1. This Is a Template Repository
 
-**IMPORTANT**: This is NOT a production application. It's a **blueprint** that generates other projects.
+**IMPORTANT**: This is NOT a production application. It's a **blueprint** that
+generates other projects.
 
 - **DO**: Modify templates in `templates/` to improve generated output
 - **DO**: Update `src/setup.js` to add new setup options
@@ -143,7 +154,8 @@ vibecode/
 
 ### 3. Do Not Edit Generated Files (in test output)
 
-- When running `pnpm run test-setup`, files are generated to test output directories
+- When running `pnpm run test-setup`, files are generated to test output
+  directories
 - **Never edit these directly** - they'll be overwritten
 - Instead, edit the templates in `templates/`
 - Re-run test-setup to see changes
@@ -157,6 +169,7 @@ make validate   # Must pass: lint + format-check + test
 ```
 
 **Agent Loop Pattern**:
+
 1. Make changes
 2. Run `make validate`
 3. Observe failures
@@ -227,12 +240,13 @@ make validate   # Must pass: lint + format-check + test
 ### Code Style
 
 **This blueprint uses**:
+
 - **Prettier** for formatting
 - **ESLint** for linting
 - **Markdown linting** for documentation
 
-**Important**: The root project currently has **no .prettierrc or .eslintrc** (these are in templates/).
-This is a known gap that needs fixing.
+**Important**: The root project currently has **no .prettierrc or .eslintrc**
+(these are in templates/). This is a known gap that needs fixing.
 
 ### Commands
 
@@ -266,6 +280,7 @@ Use conventional commits for this repository:
 **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
 
 **Examples**:
+
 ```bash
 feat(templates): add AGENTS.md template for generated projects
 fix(setup): handle edge case when package.json already exists
@@ -278,7 +293,8 @@ test(golden): add snapshot tests for template generator
 1. **Description**: Explain what changed and why
 2. **Testing**: Show evidence that validation passed
 3. **Breaking changes**: Document migration path
-4. **AI-generated**: Mark with "AI-Generated: Yes" and include "Reviewed-by: [name]"
+4. **AI-generated**: Mark with "AI-Generated: Yes" and include "Reviewed-by:
+   [name]"
 
 ### File Naming
 
@@ -310,6 +326,7 @@ This blueprint project uses:
 ### Template Technologies
 
 Templates can generate projects with:
+
 - TypeScript/JavaScript
 - React, Vue, or other frameworks
 - Node.js backends
@@ -338,20 +355,12 @@ This blueprint uses **Handlebars** for templating:
 **Example template** (`templates/package.json.hbs`):
 
 ```handlebars
-{
-  "name": "{{projectName}}",
-  "version": "1.0.0",
-  "description": "{{description}}",
-  {{#if useTypeScript}}
-  "scripts": {
-    "build": "tsc",
-    "dev": "ts-node src/index.ts"
-  }
-  {{else}}
-  "scripts": {
-    "dev": "node src/index.js"
-  }
-  {{/if}}
+{ "name": "{{projectName}}", "version": "1.0.0", "description": "{{description}}",
+{{#if useTypeScript}}
+  "scripts": { "build": "tsc", "dev": "ts-node src/index.ts" }
+{{else}}
+  "scripts": { "dev": "node src/index.js" }
+{{/if}}
 }
 ```
 
@@ -390,7 +399,8 @@ Any fail? ❌ Fix and retry
 
 ### Template Security
 
-**CRITICAL**: Templates get copied to user projects. Security issues here affect ALL generated projects.
+**CRITICAL**: Templates get copied to user projects. Security issues here affect
+ALL generated projects.
 
 - **Never hardcode secrets** in templates (API keys, tokens, passwords)
 - **Use environment variable examples** in templates: `process.env.API_KEY`
@@ -406,7 +416,7 @@ Any fail? ❌ Fix and retry
 await fs.writeFile(filePath, content);
 
 // ❌ BAD: Never use exec/spawn with user input
-exec(`mkdir ${userInput}`);  // Command injection risk!
+exec(`mkdir ${userInput}`); // Command injection risk!
 
 // ✅ GOOD: Validate and sanitize
 const validated = validatePackageName(userInput);
@@ -428,7 +438,8 @@ if (!validated.validForNewPackages) {
 This blueprint is designed for AI agents. Be aware of prompt injection risks:
 
 - **User-provided descriptions** go into generated files
-- **Sanitize markdown** in templates (prevent injection via project descriptions)
+- **Sanitize markdown** in templates (prevent injection via project
+  descriptions)
 - **Validate file paths** before writing (prevent directory traversal)
 - **Limit file sizes** when reading user input
 
@@ -480,12 +491,14 @@ their-project/
 **CURRENT STATUS**: ⚠️ No tests exist yet (critical gap!)
 
 **REQUIRED**:
+
 - Add golden/snapshot tests for generated output
 - Add unit tests for setup.js logic
 - Add integration tests for template rendering
 - Test error handling and edge cases in setup flow
 
 **WHEN IMPLEMENTED**:
+
 - Minimum 80% coverage for src/ directory
 - 100% coverage for template generation logic
 - Golden tests for all template files
@@ -500,6 +513,7 @@ make validate   # Must pass: lint + format-check + test
 ```
 
 **CI/CD Integration**:
+
 - GitHub Actions runs validation on every PR
 - Pre-commit hooks run locally before commits
 - Markdown linting for documentation
@@ -519,10 +533,13 @@ make validate   # Must pass: lint + format-check + test
 ### Communication Style
 
 - **Explain your reasoning**: "I'm updating template X because Y"
-- **Ask for clarification**: "Should this template include ESLint config by default?"
+- **Ask for clarification**: "Should this template include ESLint config by
+  default?"
 - **Highlight assumptions**: "Assuming users want TypeScript by default..."
-- **Suggest alternatives**: "We could use Handlebars helpers OR conditional templates"
-- **Be honest about uncertainty**: "I'm not sure if this breaks backward compatibility"
+- **Suggest alternatives**: "We could use Handlebars helpers OR conditional
+  templates"
+- **Be honest about uncertainty**: "I'm not sure if this breaks backward
+  compatibility"
 
 ### Code Review Expectations
 
@@ -559,12 +576,14 @@ make validate   # Must pass: lint + format-check + test
 ```
 
 **Common CI Failures**:
+
 - Markdown linting (docs must follow .markdownlint.json)
 - Security scanning (no hardcoded secrets)
 - Missing required files (AGENTS.md, CLAUDE.md, etc.)
 - Structure validation (required directories must exist)
 
-**NEVER ignore workflow failures** - they indicate real issues that affect users.
+**NEVER ignore workflow failures** - they indicate real issues that affect
+users.
 
 ### Self-Correction Loop
 
@@ -588,7 +607,8 @@ This loop ensures quality and prevents shipping broken templates.
 
 ## 🤖 Supported AI Tools (2025-2026)
 
-This blueprint works with all modern AI coding agents. Each tool has specific configuration files:
+This blueprint works with all modern AI coding agents. Each tool has specific
+configuration files:
 
 ### Claude Code (Primary Support)
 
@@ -663,6 +683,7 @@ This blueprint works with all modern AI coding agents. Each tool has specific co
 **Vision**: Universal memory server that works across all MCP-compatible agents
 
 **Planned Features**:
+
 - Persistent memory across sessions
 - Semantic search for retrieving context
 - Memory types: notes, decisions, tasks, code references
@@ -695,7 +716,8 @@ This blueprint works with all modern AI coding agents. Each tool has specific co
 - **"How do I add a new template file?"** → Add to `templates/`, run test-setup
 - **"How do I test my changes?"** → Run `pnpm run test-setup`, check output
 - **"What Handlebars helpers are available?"** → See `src/setup.js` lines 13-35
-- **"How do I make a template conditional?"** → Use `{{#if useFeature}}...{{/if}}`
+- **"How do I make a template conditional?"** → Use
+  `{{#if useFeature}}...{{/if}}`
 
 ## 🎯 Success Criteria
 
@@ -709,7 +731,8 @@ You're doing this right if:
 - ✅ You ask questions when uncertain
 - ✅ You follow the agent loop pattern (test → fix → repeat)
 
-Remember: Your goal is to **make this blueprint better** so teams can quickly set up high-quality AI-assisted development environments. Quality > speed.
+Remember: Your goal is to **make this blueprint better** so teams can quickly
+set up high-quality AI-assisted development environments. Quality > speed.
 
 ---
 
@@ -727,4 +750,6 @@ Remember: Your goal is to **make this blueprint better** so teams can quickly se
 
 ---
 
-*This AGENTS.md file is the primary interface for AI agents working with the Vibecode Blueprint. It follows the AGENTS.md standard and is optimized for 2025-2026 agentic coding practices. Last updated: January 2025*
+_This AGENTS.md file is the primary interface for AI agents working with the
+Vibecode Blueprint. It follows the AGENTS.md standard and is optimized for
+2025-2026 agentic coding practices. Last updated: January 2025_

@@ -1,10 +1,13 @@
 # Vibecode Blueprint Project Brief
 
-> **Note**: For complete project overview, see **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)**
+> **Note**: For complete project overview, see
+> **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)**
 
 ## Quick Summary
 
-Vibecode Blueprint is a comprehensive template and framework for setting up AI-assisted collaborative development projects. It enables "vibecoding" - natural-language driven development through agentic IDEs.
+Vibecode Blueprint is a comprehensive template and framework for setting up
+AI-assisted collaborative development projects. It enables "vibecoding" -
+natural-language driven development through agentic IDEs.
 
 ## Core Objectives
 
@@ -24,13 +27,17 @@ Vibecode Blueprint is a comprehensive template and framework for setting up AI-a
 ## KiloCode-Specific Context
 
 - Memory Bank located in `.kilocode/rules/memory-bank/`
-- Core files: brief.md, product.md, context.md, architecture.md, tech.md, tasks.md
+- Core files: brief.md, product.md, context.md, architecture.md, tech.md,
+  tasks.md
 - Integration with KiloCode AI for context preservation
 - See `memory-bank-instructions.md` for setup details
 
 ## Related Documentation
 
-- **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)** - Complete project overview
-- **[docs/TECHNOLOGY_STACK.md](../../docs/TECHNOLOGY_STACK.md)** - Technology stack
-- **[docs/architecture/SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md)** - System architecture
+- **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)** - Complete
+  project overview
+- **[docs/TECHNOLOGY_STACK.md](../../docs/TECHNOLOGY_STACK.md)** - Technology
+  stack
+- **[docs/architecture/SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md)** -
+  System architecture
 - **[README.md](../../README.md)** - Quick start guide

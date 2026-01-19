@@ -4,7 +4,8 @@
 
 ## Review Philosophy
 
-**Trust but Verify**: AI can produce high-quality code, but human oversight ensures correctness, maintainability, and alignment with business goals.
+**Trust but Verify**: AI can produce high-quality code, but human oversight
+ensures correctness, maintainability, and alignment with business goals.
 
 ## Review Priorities
 
@@ -166,15 +167,16 @@
 ### Sample Feedback
 
 ```markdown
-**Security Concern (Must Fix)**:
-Line 45: User input is not validated before database query. This could lead to SQL injection.
-Suggested fix: Use parameterized queries or ORM methods.
+**Security Concern (Must Fix)**: Line 45: User input is not validated before
+database query. This could lead to SQL injection. Suggested fix: Use
+parameterized queries or ORM methods.
 
-**Architecture (Should Fix)**:
-The new service is directly accessing the database. Consider using the existing repository pattern for consistency with the rest of the codebase.
+**Architecture (Should Fix)**: The new service is directly accessing the
+database. Consider using the existing repository pattern for consistency with
+the rest of the codebase.
 
-**Quality (Consider)**:
-The error messages could be more user-friendly. Consider using our standard error format from utils/errors.ts.
+**Quality (Consider)**: The error messages could be more user-friendly. Consider
+using our standard error format from utils/errors.ts.
 ```
 
 ## Approval Guidelines
@@ -234,4 +236,6 @@ You can approve with minor issues if:
 
 ---
 
-**Remember**: The goal is to maintain high quality while enabling the speed and creativity benefits of AI-assisted development. Focus your human expertise where it adds the most value.
+**Remember**: The goal is to maintain high quality while enabling the speed and
+creativity benefits of AI-assisted development. Focus your human expertise where
+it adds the most value.

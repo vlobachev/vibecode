@@ -2,7 +2,6 @@
 
 **Brief description of changes**:
 
-
 **Related issue**: Closes #
 
 ## Acceptance Criteria Verification
@@ -37,14 +36,10 @@ $ make validate
 
 -
 -
--
-
-**New files added**:
+- **New files added**:
 
 -
--
-
-**Files deleted**:
+- **Files deleted**:
 
 -
 
@@ -53,13 +48,9 @@ $ make validate
 **Tests added**:
 
 -
--
+- **Tests updated**:
 
-**Tests updated**:
-
--
-
-**Manual testing performed**:
+- **Manual testing performed**:
 
 -
 -
@@ -70,9 +61,7 @@ $ make validate
 
 **If yes, explain**:
 
--
-
-**Migration guide** (if needed):
+- **Migration guide** (if needed):
 
 1. Step 1
 2. Step 2
@@ -113,9 +102,7 @@ $ make validate
 **Potential issues identified**:
 
 -
--
-
-**Mitigation strategies**:
+- **Mitigation strategies**:
 
 -
 -
@@ -131,10 +118,10 @@ $ make validate
 
 **Anything else reviewers should know**:
 
-
 ---
 
-**AI-Generated**: Yes
-**Reviewed-by**: (Human to fill)
+**AI-Generated**: Yes **Reviewed-by**: (Human to fill)
 
-**Agent**: This PR was created following [AGENTS.md](../../AGENTS.md) guidelines and the agent-loop pattern (implement → test → fix → repeat until validation passes).
+**Agent**: This PR was created following [AGENTS.md](../../AGENTS.md) guidelines
+and the agent-loop pattern (implement → test → fix → repeat until validation
+passes).

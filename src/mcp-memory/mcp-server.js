@@ -158,7 +158,7 @@ export class MCPServer {
   /**
    * Handle initialize method
    */
-  handleInitialize(params) {
+  handleInitialize(_params) {
     return {
       protocolVersion: '1.0',
       serverInfo: {

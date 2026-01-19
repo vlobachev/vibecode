@@ -2,7 +2,8 @@
 
 ## Overview
 
-This example shows how to use AI assistance to create a complete feature from requirements to deployment.
+This example shows how to use AI assistance to create a complete feature from
+requirements to deployment.
 
 **Task**: Create a new API endpoint for updating user profiles
 
@@ -12,8 +13,9 @@ Used `/prompts/feature.md` template with these details:
 
 ### System Goal
 
-**Business Objective**: Allow users to update their profile information (name, email, bio)
-**User Story**: As a logged-in user, I want to update my profile so that other users see current information about me
+**Business Objective**: Allow users to update their profile information (name,
+email, bio) **User Story**: As a logged-in user, I want to update my profile so
+that other users see current information about me
 
 ### Technical Specifications
 
@@ -113,7 +115,6 @@ export const updateUserProfile = [
         },
         timestamp: new Date().toISOString()
       });
-
     } catch (error) {
       console.error('Profile update failed:', error);
       res.status(500).json({
@@ -188,7 +189,7 @@ describe('PATCH /api/users/:id', () => {
 
   it('should reject unauthorized profile update', async () => {
     const otherUser = await createTestUser();
-    
+
     const response = await request(app)
       .patch(`/api/users/${otherUser.id}`)
       .set('Authorization', `Bearer ${authToken}`)
@@ -225,7 +226,7 @@ describe('PATCH /api/users/:id', () => {
 // Fixed error handling
 } catch (error) {
   logger.error('Profile update failed:', { error: error.message, userId });
-  
+
   if (error.message === 'Email already in use') {
     return res.status(409).json({
       success: false,
@@ -233,7 +234,7 @@ describe('PATCH /api/users/:id', () => {
       timestamp: new Date().toISOString()
     });
   }
-  
+
   res.status(500).json({
     success: false,
     error: 'Unable to update profile at this time',
@@ -313,4 +314,5 @@ Refs: #USER-123
 - **Issues Found in Review**: 4 (all addressed)
 - **Post-deployment Issues**: 0
 
-This example demonstrates the effective collaboration between AI code generation and human oversight to deliver production-ready features quickly and safely.
+This example demonstrates the effective collaboration between AI code generation
+and human oversight to deliver production-ready features quickly and safely.

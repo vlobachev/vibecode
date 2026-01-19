@@ -12,9 +12,9 @@ vibecode/
 │
 ├── docs/                               # Documentation
 │   ├── README.md                       # Documentation index
-│   ├── architecture/                   
+│   ├── architecture/
 │   │   └── SYSTEM_ARCHITECTURE.md      # System design overview
-│   └── guides/                         
+│   └── guides/
 │       ├── CONTRIBUTING.md              # Development guidelines
 │       ├── ONBOARDING.md               # New team member guide
 │       ├── PRE_COMMIT.md               # Pre-commit hooks setup guide
@@ -55,7 +55,7 @@ vibecode/
 
 - **Complete project structure** for collaborative AI-assisted development
 - **AGENTS.md file** following the standard format for AI agent guidance
-- **Standardized templates** for common development scenarios  
+- **Standardized templates** for common development scenarios
 - **Quality guardrails** to ensure AI-generated code meets standards
 - **Documentation** for onboarding and ongoing development
 
@@ -75,13 +75,14 @@ vibecode/
 
 ## 🚀 Quick Start
 
-For setup instructions and getting started, see the main **[README.md](../README.md#-quick-start)**.
+For setup instructions and getting started, see the main
+**[README.md](../README.md#-quick-start)**.
 
 ## 🛠 Key Features
 
 - **Human-in-the-loop workflow**: AI proposes, humans approve
 - **Contract-driven development**: Clear boundaries and expectations
-- **Golden test protection**: Prevent regression in critical functionality  
+- **Golden test protection**: Prevent regression in critical functionality
 - **Automated quality checks**: Pre-commit validation and CI/CD integration
 - **Comprehensive examples**: Real-world patterns and best practices
 - **Makefile automation**: Self-documenting commands for common operations
@@ -90,14 +91,19 @@ For setup instructions and getting started, see the main **[README.md](../README
 
 ## 📖 Usage
 
-This structure provides everything needed to implement collaborative vibecoding in your team:
+This structure provides everything needed to implement collaborative vibecoding
+in your team:
 
 - Use **prompt templates** (see `/prompts/`) to get consistent AI results
-- Follow **review guidelines** (see `policies/REVIEW.md`) to maintain code quality
-- Leverage **golden tests** (see `tests/golden/`) to protect critical business logic
-- Run **guardrail scripts** (see `scripts/`) to catch issues before they reach production
+- Follow **review guidelines** (see `policies/REVIEW.md`) to maintain code
+  quality
+- Leverage **golden tests** (see `tests/golden/`) to protect critical business
+  logic
+- Run **guardrail scripts** (see `scripts/`) to catch issues before they reach
+  production
 - Use **Makefile commands** (run `make help`) for common operations
-- Setup **pre-commit hooks** (see [docs/guides/PRE_COMMIT.md](guides/PRE_COMMIT.md)) for automatic validation
+- Setup **pre-commit hooks** (see
+  [docs/guides/PRE_COMMIT.md](guides/PRE_COMMIT.md)) for automatic validation
 
 ## 📚 Related Documentation
 
@@ -105,11 +111,15 @@ This structure provides everything needed to implement collaborative vibecoding 
 - **[AGENTS.md](../AGENTS.md)** - Comprehensive AI agent guidelines
 - **[CLAUDE.md](../CLAUDE.md)** - Claude-specific guidance
 - **[docs/README.md](README.md)** - Complete documentation index
-- **[docs/guides/CONTRIBUTING.md](guides/CONTRIBUTING.md)** - Development workflow
+- **[docs/guides/CONTRIBUTING.md](guides/CONTRIBUTING.md)** - Development
+  workflow
 - **[docs/guides/ONBOARDING.md](guides/ONBOARDING.md)** - New team member guide
 - **[docs/guides/PRE_COMMIT.md](guides/PRE_COMMIT.md)** - Pre-commit hooks setup
-- **[docs/MCP_MEMORY_IMPLEMENTATION.md](MCP_MEMORY_IMPLEMENTATION.md)** - MCP Memory Server plan
+- **[docs/MCP_MEMORY_IMPLEMENTATION.md](MCP_MEMORY_IMPLEMENTATION.md)** - MCP
+  Memory Server plan
 
 ---
 
-**Ready to start vibecoding?** Check out [docs/guides/ONBOARDING.md](guides/ONBOARDING.md) to get your team up and running!
+**Ready to start vibecoding?** Check out
+[docs/guides/ONBOARDING.md](guides/ONBOARDING.md) to get your team up and
+running!

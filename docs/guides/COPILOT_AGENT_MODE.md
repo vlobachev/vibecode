@@ -4,11 +4,14 @@
 
 ## Overview
 
-GitHub Copilot's **agent mode** and **coding agent** capabilities enable autonomous code generation, testing, and iteration within your GitHub workflow. This guide shows how to use Copilot effectively with the Vibecode Blueprint.
+GitHub Copilot's **agent mode** and **coding agent** capabilities enable
+autonomous code generation, testing, and iteration within your GitHub workflow.
+This guide shows how to use Copilot effectively with the Vibecode Blueprint.
 
 ## What is Copilot Agent Mode?
 
 **Agent Mode** allows GitHub Copilot to:
+
 - Autonomously implement features from issue descriptions
 - Run tests and observe failures
 - Self-correct based on test output
@@ -16,6 +19,7 @@ GitHub Copilot's **agent mode** and **coding agent** capabilities enable autonom
 - Create pull requests with complete implementation
 
 **Key Difference from Traditional Copilot**:
+
 - **Traditional**: Suggests code completions as you type
 - **Agent Mode**: Autonomously implements entire features end-to-end
 
@@ -38,6 +42,7 @@ Use the provided issue template (`.github/ISSUE_TEMPLATE/agent-feature.md`):
 **Description**: Clear, concise description of what to build
 
 **Acceptance Criteria**:
+
 - [ ] Criterion 1 (testable)
 - [ ] Criterion 2 (testable)
 - [ ] Validation passes (`make validate`)
@@ -68,6 +73,7 @@ Use the provided issue template (`.github/ISSUE_TEMPLATE/agent-feature.md`):
 ### Issue Creation
 
 **✅ DO**:
+
 - Provide clear, measurable acceptance criteria
 - Link to relevant code or documentation
 - Specify validation requirements explicitly
@@ -75,6 +81,7 @@ Use the provided issue template (`.github/ISSUE_TEMPLATE/agent-feature.md`):
 - Reference AGENTS.md for coding standards
 
 **❌ DON'T**:
+
 - Be vague ("make it better")
 - Skip acceptance criteria
 - Forget to mention testing requirements
@@ -85,9 +92,11 @@ Use the provided issue template (`.github/ISSUE_TEMPLATE/agent-feature.md`):
 ```markdown
 ## Add User Profile API Endpoint
 
-**Description**: Create a GET /api/users/:id endpoint that returns user profile data
+**Description**: Create a GET /api/users/:id endpoint that returns user profile
+data
 
 **Acceptance Criteria**:
+
 - [ ] Endpoint responds with 200 for valid user IDs
 - [ ] Returns 404 for non-existent users
 - [ ] Response includes: id, name, email, bio, createdAt
@@ -96,11 +105,13 @@ Use the provided issue template (`.github/ISSUE_TEMPLATE/agent-feature.md`):
 - [ ] `make validate` passes
 
 **Test Strategy**:
+
 - Unit tests with mocked database
 - Integration test with test database
 - Golden test for response format
 
 **Context**:
+
 - See existing endpoints in `packages/api/src/routes/`
 - Response format: [API Response Standard](../docs/api-standards.md)
 - Related: #123 (User authentication)
@@ -137,6 +148,7 @@ Copilot agent mode works best with clear feedback loops:
 
 ```markdown
 **Acceptance Criteria**:
+
 - [ ] All tests pass
 - [ ] `make validate` completes successfully
 - [ ] No ESLint errors
@@ -150,8 +162,8 @@ This is **mandatory** - never skip validation requirements.
 
 Keep issues focused to prevent scope creep:
 
-**✅ DO**: "Add email validation to the signup form"
-**❌ DON'T**: "Improve the entire authentication system"
+**✅ DO**: "Add email validation to the signup form" **❌ DON'T**: "Improve the
+entire authentication system"
 
 **Guideline**: One issue = one PR = one feature or fix
 
@@ -161,6 +173,7 @@ Help agents find what they need:
 
 ```markdown
 **Context**:
+
 - Related code: `src/auth/signup-handler.ts:45-67`
 - Existing tests: `tests/auth/signup.test.ts`
 - Type definitions: `packages/shared-types/src/auth.ts`
@@ -224,6 +237,7 @@ The blueprint's AGENTS.md includes a section specifically for Copilot:
 ```
 
 Copilot agents should:
+
 1. **Read AGENTS.md first** every session
 2. **Follow setup commands** to understand project structure
 3. **Use validation commands** before marking tasks complete
@@ -238,6 +252,7 @@ Located in `.github/ISSUE_TEMPLATE/`:
 - `agent-refactor.md` - Refactoring tasks for agents
 
 Each template includes:
+
 - Clear structure for requirements
 - Acceptance criteria checklist
 - Validation requirements
@@ -249,6 +264,7 @@ Each template includes:
 Located in `.github/PULL_REQUEST_TEMPLATE/agent-pr.md`:
 
 Includes:
+
 - What changed and why
 - Acceptance criteria verification
 - Validation evidence
@@ -264,6 +280,7 @@ For complex tasks, use the agent task checklist template:
 # Agent Task Checklist: [Feature Name]
 
 ## Planning Phase
+
 - [ ] Read AGENTS.md for project guidelines
 - [ ] Review related code and documentation
 - [ ] Understand acceptance criteria
@@ -271,6 +288,7 @@ For complex tasks, use the agent task checklist template:
 - [ ] Plan testing strategy
 
 ## Implementation Phase
+
 - [ ] Implement feature following patterns
 - [ ] Add unit tests
 - [ ] Add integration tests (if applicable)
@@ -279,6 +297,7 @@ For complex tasks, use the agent task checklist template:
 - [ ] Run `make format`
 
 ## Validation Phase
+
 - [ ] All new tests pass
 - [ ] All existing tests still pass
 - [ ] `make validate` completes successfully
@@ -287,6 +306,7 @@ For complex tasks, use the agent task checklist template:
 - [ ] Prettier applied
 
 ## Review Phase
+
 - [ ] Code follows project patterns
 - [ ] Tests are comprehensive
 - [ ] Documentation is updated
@@ -294,10 +314,12 @@ For complex tasks, use the agent task checklist template:
 - [ ] PR description is complete
 
 ## Risks Identified
+
 - Risk 1: [Description]
 - Risk 2: [Description]
 
 ## Follow-up Tasks
+
 - [ ] Task 1
 - [ ] Task 2
 ```
@@ -312,6 +334,7 @@ This checklist is available as a template in `.github/agent-task-checklist.md`.
 ## Issue: Add User Bio Field
 
 **Acceptance Criteria**:
+
 - [ ] Migration adds `bio` column to users table
 - [ ] Migration is reversible (down migration)
 - [ ] User model includes bio field
@@ -320,6 +343,7 @@ This checklist is available as a template in `.github/agent-task-checklist.md`.
 - [ ] `make validate` passes
 
 **Migration Strategy**:
+
 1. Create migration file
 2. Update TypeScript types
 3. Update API response serializer
@@ -334,6 +358,7 @@ This checklist is available as a template in `.github/agent-task-checklist.md`.
 ## Issue: Add Search Endpoint
 
 **Acceptance Criteria**:
+
 - [ ] GET /api/search?q=term implemented
 - [ ] Returns paginated results (limit, offset)
 - [ ] Handles empty query gracefully
@@ -343,6 +368,7 @@ This checklist is available as a template in `.github/agent-task-checklist.md`.
 - [ ] `make validate` passes
 
 **Context**:
+
 - Follow existing pagination pattern in /api/users
 - Use same error response format
 - See docs/api-standards.md for response structure
@@ -354,6 +380,7 @@ This checklist is available as a template in `.github/agent-task-checklist.md`.
 ## Issue: Extract Button Component
 
 **Acceptance Criteria**:
+
 - [ ] Button component extracted to packages/shared-ui
 - [ ] All existing Button uses migrated
 - [ ] Props interface well-typed
@@ -363,11 +390,13 @@ This checklist is available as a template in `.github/agent-task-checklist.md`.
 - [ ] `make validate` passes
 
 **Contracts**:
+
 - Existing Button API must not change (props same)
 - All consuming components must work unchanged
 - Golden tests must pass (proving no regression)
 
 **Context**:
+
 - Current Button uses: components/forms/, components/modals/
 - See packages/shared-ui/README.md for package structure
 ```
@@ -379,10 +408,12 @@ This checklist is available as a template in `.github/agent-task-checklist.md`.
 **Problem**: Copilot ignores AGENTS.md or doesn't run validation
 
 **Solution**:
+
 1. Ensure AGENTS.md is in repository root
 2. Add explicit instruction in issue:
    ```markdown
-   **Important**: Read AGENTS.md before starting. Run `make validate` before creating PR.
+   **Important**: Read AGENTS.md before starting. Run `make validate` before
+   creating PR.
    ```
 3. Include validation in acceptance criteria (not optional)
 
@@ -391,6 +422,7 @@ This checklist is available as a template in `.github/agent-task-checklist.md`.
 **Problem**: Agent keeps trying same failing approach
 
 **Solution**:
+
 1. Provide more specific hints in issue
 2. Link to similar working code
 3. Break task into smaller issues
@@ -401,6 +433,7 @@ This checklist is available as a template in `.github/agent-task-checklist.md`.
 **Problem**: Agent can't get tests to pass
 
 **Solution**:
+
 1. Ensure test expectations are correct
 2. Provide test examples in issue
 3. Check if acceptance criteria are achievable
@@ -411,6 +444,7 @@ This checklist is available as a template in `.github/agent-task-checklist.md`.
 **Problem**: PR doesn't meet standards despite passing validation
 
 **Solution**:
+
 1. Update AGENTS.md with specific patterns
 2. Add golden tests for expected output
 3. Make quality standards explicit in acceptance criteria
@@ -462,6 +496,7 @@ Track these metrics to measure agent effectiveness:
 - **Rollback rate**: % of merged PRs that needed reverting (lower is better)
 
 **Target benchmarks**:
+
 - Acceptance rate: >80%
 - Iteration count: <3 runs
 - Test coverage: >80%
@@ -476,7 +511,7 @@ Track these metrics to measure agent effectiveness:
 
 ---
 
-**Last Updated**: January 2025
-**Maintained By**: Blueprint Maintainers
+**Last Updated**: January 2025 **Maintained By**: Blueprint Maintainers
 
-*This guide is part of the Vibecode Blueprint's 2025-2026 modernization for agentic coding.*
+_This guide is part of the Vibecode Blueprint's 2025-2026 modernization for
+agentic coding._

@@ -1,6 +1,8 @@
 # Pre-commit Hooks for Code Quality Validation
 
-This project uses [pre-commit](https://pre-commit.com/) to automatically validate code quality before committing changes. This catches issues early and prevents CI/CD failures.
+This project uses [pre-commit](https://pre-commit.com/) to automatically
+validate code quality before committing changes. This catches issues early and
+prevents CI/CD failures.
 
 ## Quick Setup
 

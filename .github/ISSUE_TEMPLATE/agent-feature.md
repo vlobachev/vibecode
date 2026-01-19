@@ -1,7 +1,7 @@
 ---
 name: Agent Feature Request
 about: Feature implementation for AI agents (optimized for agent mode)
-title: "[FEATURE] "
+title: '[FEATURE] '
 labels: enhancement, agent-task
 assignees: ''
 ---
@@ -9,7 +9,6 @@ assignees: ''
 ## Feature Description
 
 **Clear, concise description of what to build**:
-
 
 ## Acceptance Criteria
 
@@ -59,4 +58,5 @@ assignees: ''
 
 ---
 
-**Agent Guidelines**: Read [AGENTS.md](../../AGENTS.md) before starting. Follow the agent-loop pattern: implement → test → fix → repeat until validation passes.
+**Agent Guidelines**: Read [AGENTS.md](../../AGENTS.md) before starting. Follow
+the agent-loop pattern: implement → test → fix → repeat until validation passes.

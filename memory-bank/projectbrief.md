@@ -2,16 +2,24 @@
 
 ## Project Overview
 
-Vibecode Blueprint is a comprehensive template and framework for setting up AI-assisted collaborative development projects. The project enables "vibecoding" - natural-language driven development through agentic IDEs where developers specify intent, AI agents generate code, and validation happens via tests and execution.
+Vibecode Blueprint is a comprehensive template and framework for setting up
+AI-assisted collaborative development projects. The project enables
+"vibecoding" - natural-language driven development through agentic IDEs where
+developers specify intent, AI agents generate code, and validation happens via
+tests and execution.
 
 ## Core Requirements
 
 ### Primary Goals
 
-1. **Reusable Blueprint System**: Create a template that teams can use to quickly set up collaborative AI development environments
-2. **Intelligent Setup Automation**: Provide Node.js-powered setup system with Handlebars templating for generating production-ready projects
-3. **Multi-AI Tool Support**: Support Windsurf, Roo Code, KiloCode, Cline, and other agentic IDEs
-4. **Quality Assurance Framework**: Implement guardrails and validation processes for AI-generated code
+1. **Reusable Blueprint System**: Create a template that teams can use to
+   quickly set up collaborative AI development environments
+2. **Intelligent Setup Automation**: Provide Node.js-powered setup system with
+   Handlebars templating for generating production-ready projects
+3. **Multi-AI Tool Support**: Support Windsurf, Roo Code, KiloCode, Cline, and
+   other agentic IDEs
+4. **Quality Assurance Framework**: Implement guardrails and validation
+   processes for AI-generated code
 
 ### Key Features
 
@@ -44,8 +52,11 @@ Vibecode Blueprint is a comprehensive template and framework for setting up AI-a
 
 ## Success Criteria
 
-1. **Setup Time**: Teams can generate a production-ready AI development environment in under 10 minutes
-2. **Quality Metrics**: High percentage of AI-generated PRs accepted without post-review changes
+1. **Setup Time**: Teams can generate a production-ready AI development
+   environment in under 10 minutes
+2. **Quality Metrics**: High percentage of AI-generated PRs accepted without
+   post-review changes
 3. **Adoption**: Framework scales from small teams to large organizations
 4. **Tool Compatibility**: Works seamlessly with multiple AI coding assistants
-5. **Documentation Quality**: Comprehensive guides enable teams to onboard quickly and effectively
+5. **Documentation Quality**: Comprehensive guides enable teams to onboard
+   quickly and effectively

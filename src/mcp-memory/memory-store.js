@@ -79,13 +79,7 @@ export class MemoryStore {
       VALUES (?, ?, ?, ?, ?)
     `);
 
-    const result = stmt.run(
-      content,
-      JSON.stringify(tags),
-      JSON.stringify(metadata),
-      now,
-      now
-    );
+    const result = stmt.run(content, JSON.stringify(tags), JSON.stringify(metadata), now, now);
 
     return {
       id: result.lastInsertRowid,

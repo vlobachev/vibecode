@@ -1,12 +1,16 @@
 # System Architecture Overview
 
-**High-level architecture for the Vibecode Blueprint and collaborative vibecoding projects**
+**High-level architecture for the Vibecode Blueprint and collaborative
+vibecoding projects**
 
 ## Vibecode Blueprint Architecture
 
 ### Template-Driven Architecture
 
-The Vibecode Blueprint follows a **template-driven architecture** with intelligent setup automation. The system is designed as a reusable blueprint that generates customized project structures for AI-assisted collaborative development.
+The Vibecode Blueprint follows a **template-driven architecture** with
+intelligent setup automation. The system is designed as a reusable blueprint
+that generates customized project structures for AI-assisted collaborative
+development.
 
 ### Core Components
 
@@ -73,7 +77,7 @@ The Vibecode Blueprint follows a **template-driven architecture** with intellige
 ### 1. AI-Human Collaboration
 
 - **AI generates code** based on structured prompts
-- **Humans provide oversight** through review and testing  
+- **Humans provide oversight** through review and testing
 - **Contracts define boundaries** between AI and human responsibilities
 - **Golden tests provide guardrails** for maintaining behavior
 
@@ -280,4 +284,6 @@ api → shared-types → core
 - **Intelligent Refactoring**: AI-suggested architectural improvements
 - **Predictive Analytics**: AI-driven insights into code quality and performance
 
-This architecture provides a solid foundation for collaborative development while maintaining the flexibility to evolve with changing requirements and advancing AI capabilities.
+This architecture provides a solid foundation for collaborative development
+while maintaining the flexibility to evolve with changing requirements and
+advancing AI capabilities.

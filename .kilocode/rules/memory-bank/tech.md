@@ -1,6 +1,7 @@
 # Vibecode Blueprint Technology Stack
 
-> **Note**: For complete technology stack documentation, see **[docs/TECHNOLOGY_STACK.md](../../docs/TECHNOLOGY_STACK.md)**
+> **Note**: For complete technology stack documentation, see
+> **[docs/TECHNOLOGY_STACK.md](../../docs/TECHNOLOGY_STACK.md)**
 
 ## Quick Reference
 
@@ -93,7 +94,7 @@ pnpm run validate     # Project validation
 ### Supported AI Coding Tools
 
 - **Windsurf**: Cascade, Memories, Supercomplete modes
-- **Roo Code**: Multi-agent collaboration with slash commands  
+- **Roo Code**: Multi-agent collaboration with slash commands
 - **KiloCode**: Open-source orchestration (architect → code → debug)
 - **Generic**: Any agentic IDE following established conventions
 
@@ -170,7 +171,10 @@ make validate
 
 ## Related Documentation
 
-- **[docs/TECHNOLOGY_STACK.md](../../docs/TECHNOLOGY_STACK.md)** - Complete technology stack, dependencies, setup, and security
-- **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)** - Project overview
-- **[docs/architecture/SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md)** - System architecture
+- **[docs/TECHNOLOGY_STACK.md](../../docs/TECHNOLOGY_STACK.md)** - Complete
+  technology stack, dependencies, setup, and security
+- **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)** - Project
+  overview
+- **[docs/architecture/SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md)** -
+  System architecture
 - **[Makefile](../../Makefile)** - All available commands (`make help`)

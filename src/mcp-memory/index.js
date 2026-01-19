@@ -18,7 +18,6 @@
  * MCP Clients should communicate via stdio (standard input/output).
  */
 
-import { createReadStream, createWriteStream } from 'fs';
 import { MemoryStore } from './memory-store.js';
 import { MCPServer } from './mcp-server.js';
 
@@ -42,7 +41,7 @@ const output = process.stdout;
 // Handle incoming JSON-RPC messages
 let buffer = '';
 
-input.on('data', (chunk) => {
+input.on('data', chunk => {
   buffer += chunk.toString();
 
   // Process complete JSON-RPC messages (newline-delimited)
@@ -108,13 +107,13 @@ function sendError(id, code, message, data) {
 }
 
 // Error handling
-process.on('uncaughtException', (error) => {
+process.on('uncaughtException', error => {
   console.error('Uncaught exception:', error);
   sendError(null, -32603, 'Internal error', { message: error.message });
   process.exit(1);
 });
 
-process.on('unhandledRejection', (reason, promise) => {
+process.on('unhandledRejection', (reason, _promise) => {
   console.error('Unhandled rejection:', reason);
   sendError(null, -32603, 'Internal error', { message: String(reason) });
 });

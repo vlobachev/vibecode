@@ -1,8 +1,10 @@
 # MCP Memory Server
 
-**Minimal Model Context Protocol (MCP) memory server for persistent agent context**
+**Minimal Model Context Protocol (MCP) memory server for persistent agent
+context**
 
-A lightweight, SQLite-based memory server that implements the MCP specification. Provides persistent storage and retrieval of agent memories across sessions.
+A lightweight, SQLite-based memory server that implements the MCP specification.
+Provides persistent storage and retrieval of agent memories across sessions.
 
 ## Features
 
@@ -202,18 +204,19 @@ Get statistics about stored memories.
 
 ### `memories` table
 
-| Column     | Type    | Description                    |
-|------------|---------|--------------------------------|
-| id         | INTEGER | Primary key (auto-increment)   |
-| content    | TEXT    | Memory content                 |
-| tags       | TEXT    | JSON array of tags             |
-| metadata   | TEXT    | JSON object of metadata        |
-| created_at | INTEGER | Unix timestamp (milliseconds)  |
-| updated_at | INTEGER | Unix timestamp (milliseconds)  |
+| Column     | Type    | Description                   |
+| ---------- | ------- | ----------------------------- |
+| id         | INTEGER | Primary key (auto-increment)  |
+| content    | TEXT    | Memory content                |
+| tags       | TEXT    | JSON array of tags            |
+| metadata   | TEXT    | JSON object of metadata       |
+| created_at | INTEGER | Unix timestamp (milliseconds) |
+| updated_at | INTEGER | Unix timestamp (milliseconds) |
 
 ### Full-Text Search
 
-Uses SQLite FTS5 for fast content search. Automatically kept in sync with the memories table via triggers.
+Uses SQLite FTS5 for fast content search. Automatically kept in sync with the
+memories table via triggers.
 
 ## Configuration
 
@@ -224,7 +227,8 @@ Uses SQLite FTS5 for fast content search. Automatically kept in sync with the me
 
 ### Database Location
 
-By default, the database is created in the current working directory as `mcp-memory.db`.
+By default, the database is created in the current working directory as
+`mcp-memory.db`.
 
 For production use, specify a stable path:
 
@@ -255,7 +259,8 @@ This is a **minimal reference implementation**. For production use, consider:
 
 ## Future Enhancements
 
-**Optional features not implemented** (see `docs/MCP_MEMORY_IMPLEMENTATION.md` for roadmap):
+**Optional features not implemented** (see `docs/MCP_MEMORY_IMPLEMENTATION.md`
+for roadmap):
 
 - Semantic search with embeddings
 - Vector storage (SQLite-vec, Chroma, Qdrant)
@@ -268,7 +273,8 @@ This is a **minimal reference implementation**. For production use, consider:
 ## See Also
 
 - [MCP Specification](https://modelcontextprotocol.io/)
-- [docs/MCP_MEMORY_IMPLEMENTATION.md](../../docs/MCP_MEMORY_IMPLEMENTATION.md) - Full implementation plan
+- [docs/MCP_MEMORY_IMPLEMENTATION.md](../../docs/MCP_MEMORY_IMPLEMENTATION.md) -
+  Full implementation plan
 - [docs/guides/MCP.md](../../docs/guides/MCP.md) - Integration guide
 
 ## License
@@ -277,5 +283,4 @@ MIT License - See main repository LICENSE file.
 
 ---
 
-**Part of**: Vibecode Blueprint
-**Version**: 0.1.0 (January 2025)
+**Part of**: Vibecode Blueprint **Version**: 0.1.0 (January 2025)

@@ -1,12 +1,11 @@
 # Agent Task Checklist Template
 
-**Use this checklist for complex, multi-step tasks to track progress and ensure quality.**
+**Use this checklist for complex, multi-step tasks to track progress and ensure
+quality.**
 
 ## Task: [Feature/Bug/Refactor Name]
 
-**Issue**: #
-**Started**: [Date]
-**Completed**: [Date]
+**Issue**: # **Started**: [Date] **Completed**: [Date]
 
 ---
 
@@ -20,19 +19,15 @@
 - [ ] Plan testing strategy
 - [ ] Identify potential risks
 
-**Files to Modify**:
--
--
+## **Files to Modify**:
 
-**Related Documentation**:
--
--
+- **Related Documentation**:
 
-**Dependencies**:
 -
--
+- **Dependencies**:
 
----
+-
+- ***
 
 ## Phase 2: Implementation
 
@@ -44,15 +39,12 @@
 - [ ] Add inline documentation for complex logic
 - [ ] Avoid hardcoding values
 
-**Implementation Notes**:
--
--
+## **Implementation Notes**:
 
-**Decisions Made**:
--
--
+- **Decisions Made**:
 
----
+-
+- ***
 
 ## Phase 3: Testing
 
@@ -64,13 +56,11 @@
 - [ ] Run test suite: all tests pass
 - [ ] Check test coverage (aim for >80%)
 
-**Tests Added**:
--
--
+## **Tests Added**:
 
-**Test Coverage**: ___%
+- **Test Coverage**: \_\_\_%
 
----
+  ***
 
 ## Phase 4: Validation
 
@@ -101,11 +91,9 @@ $ make validate
 - [ ] Update relevant guides
 - [ ] Add migration notes (if breaking changes)
 
-**Documentation Updated**:
--
--
+## **Documentation Updated**:
 
----
+- ***
 
 ## Phase 6: Review Preparation
 
@@ -132,10 +120,10 @@ $ make validate
 
 **Potential issues and mitigation strategies**:
 
-| Risk | Impact | Mitigation | Status |
-|------|--------|------------|--------|
-| Risk 1 | High/Medium/Low | Strategy | Mitigated/Open |
-| Risk 2 | High/Medium/Low | Strategy | Mitigated/Open |
+| Risk   | Impact          | Mitigation | Status         |
+| ------ | --------------- | ---------- | -------------- |
+| Risk 1 | High/Medium/Low | Strategy   | Mitigated/Open |
+| Risk 2 | High/Medium/Low | Strategy   | Mitigated/Open |
 
 ---
 
@@ -150,33 +138,28 @@ $ make validate
 
 ## Agent Notes
 
-**Things learned during implementation**:
--
--
+## **Things learned during implementation**:
 
-**Challenges encountered**:
--
--
+- **Challenges encountered**:
 
-**Decisions made**:
 -
--
+- **Decisions made**:
 
-**Recommended improvements** (for future):
 -
--
+- **Recommended improvements** (for future):
 
----
+-
+- ***
 
 ## Validation Timeline
 
-| Phase | Attempt | Result | Notes |
-|-------|---------|--------|-------|
-| First | `make validate` | Pass/Fail | |
-| Second | `make validate` | Pass/Fail | |
-| Final | `make validate` | ✅ Pass | |
+| Phase  | Attempt         | Result    | Notes |
+| ------ | --------------- | --------- | ----- |
+| First  | `make validate` | Pass/Fail |       |
+| Second | `make validate` | Pass/Fail |       |
+| Final  | `make validate` | ✅ Pass   |       |
 
-**Total iterations to success**: ___
+**Total iterations to success**: \_\_\_
 
 ---
 
@@ -188,10 +171,9 @@ $ make validate
 - [ ] PR created
 - [ ] Ready for human review
 
-**Agent signature**: [Agent name/version]
-**Completion date**: [Date]
+**Agent signature**: [Agent name/version] **Completion date**: [Date]
 
 ---
 
-**Template version**: 1.0 (January 2025)
-**Part of**: Vibecode Blueprint - GitHub Copilot Agent Mode Support
+**Template version**: 1.0 (January 2025) **Part of**: Vibecode Blueprint -
+GitHub Copilot Agent Mode Support

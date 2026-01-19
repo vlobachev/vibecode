@@ -1,7 +1,7 @@
 ---
 name: Agent Refactoring Task
 about: Code refactoring for AI agents (optimized for agent mode)
-title: "[REFACTOR] "
+title: '[REFACTOR] '
 labels: refactor, agent-task
 assignees: ''
 ---
@@ -10,12 +10,9 @@ assignees: ''
 
 **What to improve and why**:
 
-
 **Current problem**:
 
-
 **Desired state**:
-
 
 ## Contracts (Do NOT Break)
 
@@ -47,9 +44,7 @@ assignees: ''
 
 -
 -
--
-
-**Tests to verify**:
+- **Tests to verify**:
 
 -
 -
@@ -111,4 +106,6 @@ assignees: ''
 
 ---
 
-**Agent Guidelines**: Read [AGENTS.md](../../AGENTS.md) before starting. Refactoring MUST NOT break contracts. Run tests before and after. Golden tests are your regression safety net.
+**Agent Guidelines**: Read [AGENTS.md](../../AGENTS.md) before starting.
+Refactoring MUST NOT break contracts. Run tests before and after. Golden tests
+are your regression safety net.

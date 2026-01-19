@@ -52,11 +52,10 @@ describe('MemoryStore', () => {
     });
 
     it('should add a memory with metadata', () => {
-      const memory = store.addMemory(
-        'Memory with metadata',
-        [],
-        { priority: 'high', project: 'test' }
-      );
+      const memory = store.addMemory('Memory with metadata', [], {
+        priority: 'high',
+        project: 'test'
+      });
 
       assert.ok(memory.id);
       assert.deepStrictEqual(memory.metadata, { priority: 'high', project: 'test' });

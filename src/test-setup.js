@@ -15,9 +15,11 @@ Handlebars.registerHelper('or', (a, b) => a || b);
 Handlebars.registerHelper('and', (a, b) => a && b);
 Handlebars.registerHelper('includes', (array, item) => array && array.includes(item));
 Handlebars.registerHelper('contains', (array, item) => array && array.includes(item));
-Handlebars.registerHelper('capitalize', (str) => str.charAt(0).toUpperCase() + str.slice(1));
-Handlebars.registerHelper('kebabCase', (str) => str.replace(/\s+/g, '-').toLowerCase());
-Handlebars.registerHelper('camelCase', (str) => str.replace(/[-_\s]+(.)?/g, (_, c) => c ? c.toUpperCase() : ''));
+Handlebars.registerHelper('capitalize', str => str.charAt(0).toUpperCase() + str.slice(1));
+Handlebars.registerHelper('kebabCase', str => str.replace(/\s+/g, '-').toLowerCase());
+Handlebars.registerHelper('camelCase', str =>
+  str.replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''))
+);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -51,7 +53,7 @@ class VibecodeTestSetup {
       await this.checkEnvironment();
       console.log(chalk.yellow('\n📝 Using Test Configuration:'));
       console.log(JSON.stringify(this.config, null, 2));
-      
+
       await this.generateProject();
       await this.setupGitHooks();
       await this.finalizeSetup();
@@ -65,7 +67,7 @@ class VibecodeTestSetup {
 
   async checkEnvironment() {
     this.spinner = ora('Checking environment...').start();
-    
+
     // Check if we're in a git repository
     try {
       await fs.access('.git');
@@ -112,7 +114,7 @@ class VibecodeTestSetup {
   async processTemplate(templateFile, outputDir) {
     const templatePath = path.join(TEMPLATES_DIR, templateFile);
     const template = await fs.readFile(templatePath, 'utf8');
-    
+
     // Skip binary files or files that shouldn't be templated
     if (this.shouldSkipFile(templateFile)) {
       console.log(chalk.yellow(`  Skipping binary file: ${templateFile}`));
@@ -125,7 +127,7 @@ class VibecodeTestSetup {
 
     // Determine output path (remove .hbs extension if present)
     let outputPath = templateFile.replace(/\.hbs$/, '');
-    
+
     // Handle conditional files
     if (this.shouldSkipConditionalFile(outputPath)) {
       console.log(chalk.yellow(`  Skipping conditional file: ${outputPath}`));
@@ -137,7 +139,7 @@ class VibecodeTestSetup {
 
     // Ensure output directory exists
     await fs.ensureDir(path.dirname(fullOutputPath));
-    
+
     // Write file
     await fs.writeFile(fullOutputPath, output);
     console.log(chalk.green(`  ✓ Generated: ${outputPath}`));
@@ -154,7 +156,7 @@ class VibecodeTestSetup {
     if (!this.config.useTypeScript && outputPath.includes('tsconfig')) {
       return true;
     }
-    
+
     // Skip GitHub Actions if not requested
     if (!this.config.setupGithubActions && outputPath.includes('.github/workflows')) {
       return true;
@@ -179,10 +181,12 @@ class VibecodeTestSetup {
         test: 'node --test test/**/*.test.js'
       },
       dependencies: {},
-      devDependencies: this.config.useTypeScript ? {
-        typescript: '^5.3.0',
-        '@types/node': '^20.10.0'
-      } : {}
+      devDependencies: this.config.useTypeScript
+        ? {
+            typescript: '^5.3.0',
+            '@types/node': '^20.10.0'
+          }
+        : {}
     };
 
     await fs.writeJson(packageJsonPath, packageJson, { spaces: 2 });
@@ -232,13 +236,13 @@ exec ./scripts/agent-guardrails.sh
 `;
 
     await fs.writeFile('.gitmessage', commitTemplate);
-    
+
     this.spinner.succeed('Setup finalized');
   }
 
   showCompletionMessage() {
     console.log(chalk.green.bold('\n🎉 Vibecode Blueprint Test Complete!\n'));
-    
+
     console.log(chalk.yellow('📋 Test Results:'));
     console.log('✅ Template system working correctly');
     console.log('✅ Handlebars helpers functioning');

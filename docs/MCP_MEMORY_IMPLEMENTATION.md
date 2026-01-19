@@ -2,7 +2,9 @@
 
 **Universal AI Memory System for Collaborative Development**
 
-A comprehensive plan for implementing a Supermemory-like MCP (Model Context Protocol) memory server that works across different AI coding tools (Windsurf, Cline, Roo Code, KiloCode, Claude Desktop, etc.).
+A comprehensive plan for implementing a Supermemory-like MCP (Model Context
+Protocol) memory server that works across different AI coding tools (Windsurf,
+Cline, Roo Code, KiloCode, Claude Desktop, etc.).
 
 ## 🎯 Project Goals
 

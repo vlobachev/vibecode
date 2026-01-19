@@ -1,7 +1,7 @@
 ---
 name: Agent Bug Report
 about: Bug fix for AI agents (optimized for agent mode)
-title: "[BUG] "
+title: '[BUG] '
 labels: bug, agent-task
 assignees: ''
 ---
@@ -10,12 +10,9 @@ assignees: ''
 
 **What's broken**:
 
-
 **Expected behavior**:
 
-
 **Actual behavior**:
-
 
 ## Reproduction Steps
 
@@ -95,4 +92,6 @@ Paste stack trace here
 
 ---
 
-**Agent Guidelines**: Read [AGENTS.md](../../AGENTS.md) before starting. Always start by adding a failing test that reproduces the bug, then fix it and verify the test passes.
+**Agent Guidelines**: Read [AGENTS.md](../../AGENTS.md) before starting. Always
+start by adding a failing test that reproduces the bug, then fix it and verify
+the test passes.

@@ -17,20 +17,31 @@ Handlebars.registerHelper('or', (a, b) => a || b);
 Handlebars.registerHelper('and', (a, b) => a && b);
 Handlebars.registerHelper('includes', (array, item) => array && array.includes(item));
 Handlebars.registerHelper('contains', (array, item) => array && array.includes(item));
-Handlebars.registerHelper('capitalize', (str) => str.charAt(0).toUpperCase() + str.slice(1));
-Handlebars.registerHelper('kebabCase', (str) => str.replace(/\s+/g, '-').toLowerCase());
-Handlebars.registerHelper('camelCase', (str) => str.replace(/[-_\s]+(.)?/g, (_, c) => c ? c.toUpperCase() : ''));
-Handlebars.registerHelper('ifCond', function(v1, operator, v2, options) {
+Handlebars.registerHelper('capitalize', str => str.charAt(0).toUpperCase() + str.slice(1));
+Handlebars.registerHelper('kebabCase', str => str.replace(/\s+/g, '-').toLowerCase());
+Handlebars.registerHelper('camelCase', str =>
+  str.replace(/[-_\s]+(.)?/g, (_, c) => (c ? c.toUpperCase() : ''))
+);
+Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
   switch (operator) {
-    case '==': return (v1 == v2) ? options.fn(this) : options.inverse(this);
-    case '===': return (v1 === v2) ? options.fn(this) : options.inverse(this);
-    case '!=': return (v1 != v2) ? options.fn(this) : options.inverse(this);
-    case '!==': return (v1 !== v2) ? options.fn(this) : options.inverse(this);
-    case '<': return (v1 < v2) ? options.fn(this) : options.inverse(this);
-    case '<=': return (v1 <= v2) ? options.fn(this) : options.inverse(this);
-    case '>': return (v1 > v2) ? options.fn(this) : options.inverse(this);
-    case '>=': return (v1 >= v2) ? options.fn(this) : options.inverse(this);
-    default: return options.inverse(this);
+    case '==':
+      return v1 == v2 ? options.fn(this) : options.inverse(this);
+    case '===':
+      return v1 === v2 ? options.fn(this) : options.inverse(this);
+    case '!=':
+      return v1 != v2 ? options.fn(this) : options.inverse(this);
+    case '!==':
+      return v1 !== v2 ? options.fn(this) : options.inverse(this);
+    case '<':
+      return v1 < v2 ? options.fn(this) : options.inverse(this);
+    case '<=':
+      return v1 <= v2 ? options.fn(this) : options.inverse(this);
+    case '>':
+      return v1 > v2 ? options.fn(this) : options.inverse(this);
+    case '>=':
+      return v1 >= v2 ? options.fn(this) : options.inverse(this);
+    default:
+      return options.inverse(this);
   }
 });
 
@@ -64,7 +75,7 @@ class VibecodeSetup {
 
   async checkEnvironment() {
     this.spinner = ora('Checking environment...').start();
-    
+
     // Check if we're in a git repository
     try {
       await fs.access('.git');
@@ -86,14 +97,14 @@ class VibecodeSetup {
 
   async gatherUserInput() {
     console.log(chalk.yellow('\n📝 Project Configuration'));
-    
+
     const questions = [
       {
         type: 'input',
         name: 'projectName',
         message: 'Project name:',
         default: path.basename(process.cwd()),
-        validate: (input) => {
+        validate: input => {
           const result = validatePackageName(input);
           return result.validForNewPackages || result.errors?.[0] || result.warnings?.[0] || true;
         }
@@ -133,7 +144,7 @@ class VibecodeSetup {
           { name: 'shared-types - Shared TypeScript types', value: 'shared-types', checked: true },
           { name: 'cli - Command line interface', value: 'cli', checked: false }
         ],
-        when: (answers) => answers.useMonorepo
+        when: answers => answers.useMonorepo
       },
       {
         type: 'list',
@@ -157,7 +168,7 @@ class VibecodeSetup {
     ];
 
     this.config = await inquirer.prompt(questions);
-    
+
     // Set derived values
     this.config.packageNameScoped = `@${this.config.projectName}`;
     this.config.currentYear = new Date().getFullYear();
@@ -193,7 +204,7 @@ class VibecodeSetup {
   async processTemplate(templateFile) {
     const templatePath = path.join(TEMPLATES_DIR, templateFile);
     const template = await fs.readFile(templatePath, 'utf8');
-    
+
     // Skip binary files or files that shouldn't be templated
     if (this.shouldSkipFile(templateFile)) {
       return;
@@ -205,7 +216,7 @@ class VibecodeSetup {
 
     // Determine output path (remove .hbs extension if present)
     let outputPath = templateFile.replace(/\.hbs$/, '');
-    
+
     // Handle conditional files
     if (this.shouldSkipConditionalFile(outputPath)) {
       return;
@@ -213,7 +224,7 @@ class VibecodeSetup {
 
     // Ensure output directory exists
     await fs.ensureDir(path.dirname(outputPath));
-    
+
     // Write file
     await fs.writeFile(outputPath, output);
   }
@@ -229,7 +240,7 @@ class VibecodeSetup {
     if (!this.config.useTypeScript && outputPath.includes('tsconfig')) {
       return true;
     }
-    
+
     // Skip GitHub Actions if not requested
     if (!this.config.setupGithubActions && outputPath.includes('.github/workflows')) {
       return true;
@@ -254,10 +265,12 @@ class VibecodeSetup {
         test: 'node --test test/**/*.test.js'
       },
       dependencies: {},
-      devDependencies: this.config.useTypeScript ? {
-        typescript: '^5.3.0',
-        '@types/node': '^20.10.0'
-      } : {}
+      devDependencies: this.config.useTypeScript
+        ? {
+            typescript: '^5.3.0',
+            '@types/node': '^20.10.0'
+          }
+        : {}
     };
 
     await fs.writeJson(packageJsonPath, packageJson, { spaces: 2 });
@@ -302,7 +315,7 @@ exec ./scripts/agent-guardrails.sh
 `;
 
     await fs.writeFile('.gitmessage', commitTemplate);
-    
+
     // Configure git to use the template
     const { execSync } = await import('child_process');
     try {
@@ -316,7 +329,7 @@ exec ./scripts/agent-guardrails.sh
 
   showCompletionMessage() {
     console.log(chalk.green.bold('\n🎉 Vibecode Blueprint Setup Complete!\n'));
-    
+
     console.log(chalk.yellow('📋 Next Steps:'));
     console.log('1. Install dependencies:', chalk.cyan(`${this.config.packageManager} install`));
     console.log('2. Customize AGENTS.md with your project specifics');

@@ -1,10 +1,13 @@
 # Vibecode Blueprint Product Definition
 
-> **Note**: For complete product information, see **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)**
+> **Note**: For complete product information, see
+> **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)**
 
 ## Quick Summary
 
-Vibecode Blueprint solves the challenges teams face when adopting AI-assisted development by providing a ready-to-use framework with standardized workflows, quality guardrails, and comprehensive documentation.
+Vibecode Blueprint solves the challenges teams face when adopting AI-assisted
+development by providing a ready-to-use framework with standardized workflows,
+quality guardrails, and comprehensive documentation.
 
 ## Problems Being Solved
 
@@ -31,6 +34,8 @@ Vibecode Blueprint solves the challenges teams face when adopting AI-assisted de
 
 ## Related Documentation
 
-- **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)** - Complete overview with problems, solutions, and goals
+- **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)** - Complete
+  overview with problems, solutions, and goals
 - **[README.md](../../README.md)** - Quick start and installation
-- **[docs/guides/ONBOARDING.md](../../docs/guides/ONBOARDING.md)** - New team member guide
+- **[docs/guides/ONBOARDING.md](../../docs/guides/ONBOARDING.md)** - New team
+  member guide

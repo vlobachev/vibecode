@@ -4,11 +4,15 @@
 
 ## Overview
 
-The **Model Context Protocol (MCP)** is an open standard for connecting AI applications with data sources and tools. The Vibecode Blueprint includes a **minimal MCP memory server** that provides persistent context storage across agent sessions.
+The **Model Context Protocol (MCP)** is an open standard for connecting AI
+applications with data sources and tools. The Vibecode Blueprint includes a
+**minimal MCP memory server** that provides persistent context storage across
+agent sessions.
 
 ## What is MCP?
 
 MCP enables:
+
 - **Persistent memory**: Store context that survives beyond single conversations
 - **Universal compatibility**: Works with any MCP-compatible client
 - **Local-first**: Privacy-focused, SQLite-based storage
@@ -65,23 +69,25 @@ Then restart Claude.
 
 #### GitHub Copilot
 
-MCP support in GitHub Copilot is planned. Check GitHub's documentation for updates.
+MCP support in GitHub Copilot is planned. Check GitHub's documentation for
+updates.
 
 #### Other MCP Clients
 
-Any MCP-compatible client can connect. See [MCP Specification](https://modelcontextprotocol.io/) for details.
+Any MCP-compatible client can connect. See
+[MCP Specification](https://modelcontextprotocol.io/) for details.
 
 ### 4. Use Memory in Your Agent
 
 Once connected, agents can:
 
 ```markdown
-**Agent**: I'll remember this pattern for future reference.
-[Calls addMemory tool with content: "Use agent-loop pattern: implement → test → fix → repeat"]
+**Agent**: I'll remember this pattern for future reference. [Calls addMemory
+tool with content: "Use agent-loop pattern: implement → test → fix → repeat"]
 
-**Agent**: Let me check what we decided about validation...
-[Calls searchMemories tool with query: "validation"]
-[Retrieves: "Remember to run make validate before committing"]
+**Agent**: Let me check what we decided about validation... [Calls
+searchMemories tool with query: "validation"] [Retrieves: "Remember to run make
+validate before committing"]
 
 **Agent**: Based on previous memory, I'll run validation now.
 ```
@@ -93,6 +99,7 @@ Once connected, agents can:
 **Purpose**: Store a new memory for future retrieval.
 
 **When to use**:
+
 - Important decisions or patterns
 - Project-specific conventions
 - User preferences
@@ -120,6 +127,7 @@ Once connected, agents can:
 **Purpose**: Find relevant memories using full-text search.
 
 **When to use**:
+
 - Before implementing a feature (check for patterns)
 - When encountering an error (check for solutions)
 - To recall project decisions
@@ -142,6 +150,7 @@ Once connected, agents can:
 **Purpose**: List memories, optionally filtered by tags.
 
 **When to use**:
+
 - Review all memories for a category
 - Check what's been remembered
 - Pagination through large memory sets
@@ -163,6 +172,7 @@ Once connected, agents can:
 **Purpose**: Retrieve a specific memory by ID.
 
 **When to use**:
+
 - Follow up on a specific memory
 - Get full details of a search result
 
@@ -182,6 +192,7 @@ Once connected, agents can:
 **Purpose**: Remove outdated or incorrect memories.
 
 **When to use**:
+
 - Decisions changed
 - Incorrect information stored
 - Cleanup old memories
@@ -216,6 +227,7 @@ Get statistics about stored memories.
 ### What to Store
 
 **✅ DO store**:
+
 - Architecture decisions and their rationale
 - Project-specific patterns and conventions
 - User preferences and configuration choices
@@ -224,6 +236,7 @@ Get statistics about stored memories.
 - Cross-cutting concerns (security, performance, etc.)
 
 **❌ DON'T store**:
+
 - Sensitive data (passwords, API keys, secrets)
 - Large code blocks (use file references instead)
 - Temporary or session-specific data
@@ -242,6 +255,7 @@ Get statistics about stored memories.
 ```
 
 **Common tag patterns**:
+
 - By type: `decision`, `pattern`, `convention`, `lesson`
 - By domain: `security`, `performance`, `testing`, `ui`
 - By component: `api`, `database`, `frontend`
@@ -250,17 +264,20 @@ Get statistics about stored memories.
 ### Memory Lifecycle
 
 **Add memories** when:
+
 1. Making important decisions
 2. Discovering useful patterns
 3. Solving non-obvious problems
 4. Learning project-specific knowledge
 
 **Update memories** when:
+
 - Decisions change
 - Patterns evolve
 - Better approaches are found
 
 **Delete memories** when:
+
 - Information becomes obsolete
 - Decisions are reversed
 - Mistakes are corrected
@@ -293,11 +310,11 @@ Get statistics about stored memories.
 ```markdown
 **Human**: Should we use REST or GraphQL for the API?
 
-**Agent**: [Searches memories for "API architecture"]
-[Finds: Previous decision to use REST for simplicity]
+**Agent**: [Searches memories for "API architecture"] [Finds: Previous decision
+to use REST for simplicity]
 
-Based on the previous decision (Memory #12), this project uses REST
-for simplicity and consistency.
+Based on the previous decision (Memory #12), this project uses REST for
+simplicity and consistency.
 
 [Adds memory: "API design pattern: Use REST with consistent response format"]
 ```
@@ -309,10 +326,11 @@ for simplicity and consistency.
 ```markdown
 **Agent**: I need to add a new API endpoint.
 
-[Searches memories for "API endpoint pattern"]
-[Finds: Template for creating endpoints in this project]
+[Searches memories for "API endpoint pattern"] [Finds: Template for creating
+endpoints in this project]
 
 I'll follow the established pattern:
+
 1. Define route in src/routes/
 2. Add validation schema
 3. Add integration test
@@ -328,13 +346,11 @@ I'll follow the established pattern:
 ```markdown
 **Agent**: Fixed XSS vulnerability in user profile rendering.
 
-[Adds memory: {
-  content: "SECURITY: Always escape user content in templates. Use DOMPurify for HTML sanitization.",
-  tags: ["security", "XSS", "lesson-learned"]
+[Adds memory: { content: "SECURITY: Always escape user content in templates. Use
+DOMPurify for HTML sanitization.", tags: ["security", "XSS", "lesson-learned"]
 }]
 
-**Agent**: Now implementing comment rendering...
-[Searches memories for "XSS"]
+**Agent**: Now implementing comment rendering... [Searches memories for "XSS"]
 [Finds: Recent security lesson]
 
 I'll apply the same XSS protection here.
@@ -347,6 +363,7 @@ I'll apply the same XSS protection here.
 **Problem**: Server crashes on startup
 
 **Solutions**:
+
 1. Check Node.js version (>= 18.0.0 required)
 2. Install dependencies: `cd src/mcp-memory && npm install`
 3. Check database path permissions
@@ -357,6 +374,7 @@ I'll apply the same XSS protection here.
 **Problem**: Agent doesn't see MCP memory tools
 
 **Solutions**:
+
 1. Verify config file path and format
 2. Check absolute paths (not relative)
 3. Restart AI client after config changes
@@ -367,6 +385,7 @@ I'll apply the same XSS protection here.
 **Problem**: Memories disappear between sessions
 
 **Solutions**:
+
 1. Check `MCP_MEMORY_DB_PATH` environment variable
 2. Verify database file is being created
 3. Check write permissions on database directory
@@ -377,6 +396,7 @@ I'll apply the same XSS protection here.
 **Problem**: Search returns no results for known content
 
 **Solutions**:
+
 1. Check search query syntax (FTS5 syntax)
 2. Verify memories were added successfully
 3. Check if FTS index is corrupted (rebuild database)
@@ -443,11 +463,13 @@ cp mcp-memory.db mcp-memory-backup-$(date +%Y%m%d).db
 ### Data Protection
 
 **DO**:
+
 - Restrict database file permissions (chmod 600)
 - Backup regularly
 - Review stored memories periodically
 
 **DON'T**:
+
 - Store secrets or credentials
 - Commit database files to git
 - Share database files publicly
@@ -477,14 +499,17 @@ See `docs/MCP_MEMORY_IMPLEMENTATION.md` for roadmap of potential enhancements.
 
 ## See Also
 
-- [src/mcp-memory/README.md](../../src/mcp-memory/README.md) - Server implementation details
-- [docs/MCP_MEMORY_IMPLEMENTATION.md](../MCP_MEMORY_IMPLEMENTATION.md) - Full implementation plan
+- [src/mcp-memory/README.md](../../src/mcp-memory/README.md) - Server
+  implementation details
+- [docs/MCP_MEMORY_IMPLEMENTATION.md](../MCP_MEMORY_IMPLEMENTATION.md) - Full
+  implementation plan
 - [MCP Specification](https://modelcontextprotocol.io/) - Official MCP docs
 - [AGENTS.md](../../AGENTS.md) - How MCP integrates with agent workflows
 
 ---
 
-**Last Updated**: January 2025
-**Part of**: Vibecode Blueprint Phase 3 Implementation
+**Last Updated**: January 2025 **Part of**: Vibecode Blueprint Phase 3
+Implementation
 
-*This MCP server is a minimal reference implementation. It demonstrates the MCP protocol and provides practical memory persistence for AI agents.*
+_This MCP server is a minimal reference implementation. It demonstrates the MCP
+protocol and provides practical memory persistence for AI agents._
