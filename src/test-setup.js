@@ -37,7 +37,7 @@ class VibecodeTestSetup {
       setupGitHooks: true,
       setupGithubActions: true,
       packageNameScoped: '@test-vibecode-project',
-      currentYear: new Date().getFullYear(),
+      currentYear: Number.parseInt(process.env.VIBECODE_TEST_YEAR, 10) || new Date().getFullYear(),
       useWorkspaces: true
     };
     this.spinner = null;
@@ -157,6 +157,17 @@ class VibecodeTestSetup {
     
     // Skip GitHub Actions if not requested
     if (!this.config.setupGithubActions && outputPath.includes('.github/workflows')) {
+      return true;
+    }
+
+    // Skip workspace package templates when not using monorepo
+    if (!this.config.useMonorepo && outputPath.startsWith('packages/')) {
+      return true;
+    }
+
+    // Skip package-specific templates when the package is not selected
+    const packageMatch = outputPath.match(/^packages\/([^/]+)\//);
+    if (packageMatch && !this.config.packages.includes(packageMatch[1])) {
       return true;
     }
 

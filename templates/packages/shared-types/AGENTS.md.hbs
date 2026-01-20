@@ -1,0 +1,19 @@
+# AGENTS.md (shared-types package)
+
+This package inherits all rules from the repository root `AGENTS.md`.
+
+## Package Scope
+
+Shared TypeScript types and contracts.
+
+## Commands
+
+```bash
+{{packageManager}} --filter shared-types run test
+{{packageManager}} --filter shared-types run build
+```
+
+## Notes
+
+- Changes here affect every consumer package.
+- Treat updates as contract changes and update tests accordingly.

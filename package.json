@@ -11,10 +11,12 @@
     "setup": "node src/setup.js",
     "test-setup": "node src/test-setup.js",
     "dev": "node src/setup.js --dev",
-    "test": "node --test test/**/*.test.js",
+    "test": "node --test tests/**/*.test.js",
     "lint": "eslint src/ templates/",
     "format": "prettier --write .",
-    "validate": "node src/validate.js"
+    "format:check": "prettier --check .",
+    "validate": "node src/validate.js",
+    "mcp-memory": "node src/mcp-memory/server.js"
   },
   "keywords": [
     "ai-coding",

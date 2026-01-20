@@ -18,23 +18,33 @@ Welcome to the Vibecode Blueprint documentation.
 
 ### Implementation Plans
 
-- **[MCP_MEMORY_IMPLEMENTATION.md](MCP_MEMORY_IMPLEMENTATION.md)** - Universal MCP Memory Server implementation plan
+- **[MCP_MEMORY_IMPLEMENTATION.md](MCP_MEMORY_IMPLEMENTATION.md)** - MCP Memory Server plan
 
 ### Guides
 
 - **[guides/](guides/)** - Operational guides and procedures
   - [CONTRIBUTING.md](guides/CONTRIBUTING.md) - How to contribute to the project
   - [ONBOARDING.md](guides/ONBOARDING.md) - New team member onboarding guide
+  - [ONBOARDING_30_MINUTES.md](guides/ONBOARDING_30_MINUTES.md) - Fast-track onboarding
   - [WINDSURF_TEAM_COLLABORATION.md](guides/WINDSURF_TEAM_COLLABORATION.md) - Windsurf collaboration guide
   - [PRE_COMMIT.md](guides/PRE_COMMIT.md) - Pre-commit hooks setup and usage
   - [DOCUMENTATION_STANDARDS.md](guides/DOCUMENTATION_STANDARDS.md) - Documentation best practices and standards
+  - [AGENTS_AND_TOOL_RULES.md](guides/AGENTS_AND_TOOL_RULES.md) - AGENTS.md and tool rule alignment
+  - [COPILOT_AGENT_MODE.md](guides/COPILOT_AGENT_MODE.md) - GitHub Copilot agent mode usage
+  - [CLAUDE_CODE.md](guides/CLAUDE_CODE.md) - Claude Code usage
+  - [MCP.md](guides/MCP.md) - MCP memory server usage
+
+### Templates
+
+- **[templates/](templates/)** - Reusable templates
+  - [AGENT_TASK_CHECKLIST.md](templates/AGENT_TASK_CHECKLIST.md) - Agent coordination checklist
 
 ## 🎯 Documentation by Role
 
 ### For New Team Members
 
 1. Start with [README.md](../README.md)
-2. Read [guides/ONBOARDING.md](guides/ONBOARDING.md)
+2. Read [guides/ONBOARDING_30_MINUTES.md](guides/ONBOARDING_30_MINUTES.md)
 3. Review [architecture/SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md)
 4. Follow [guides/CONTRIBUTING.md](guides/CONTRIBUTING.md)
 
@@ -47,9 +57,9 @@ Welcome to the Vibecode Blueprint documentation.
 
 ### For AI Agents
 
-1. [../AGENTS.md](../AGENTS.md) - AI agent guidelines (comprehensive)
+1. [../AGENTS.md](../AGENTS.md) - AI agent guidelines (canonical)
 2. [../CLAUDE.md](../CLAUDE.md) - Claude-specific guidance
-3. [guides/WINDSURF_TEAM_COLLABORATION.md](guides/WINDSURF_TEAM_COLLABORATION.md) - Windsurf collaboration
+3. [guides/AGENTS_AND_TOOL_RULES.md](guides/AGENTS_AND_TOOL_RULES.md) - Tool alignment
 
 ### For Project Managers
 
@@ -83,6 +93,8 @@ For complete documentation standards and best practices, see **[guides/DOCUMENTA
 - **Roo Code**: <https://roosoft.io/>
 - **KiloCode**: <https://kilocode.ai/>
 - **Cline**: <https://docs.cline.bot/>
+- **Claude Code**: <https://claude.ai/code>
+- **GitHub Copilot**: <https://github.com/features/copilot>
 
 ## 🛠️ Quick Commands
 
@@ -105,5 +117,5 @@ make pre-commit-install
 
 ---
 
-**Last Updated**: 2025-10-01
+**Last Updated**: 2026-01-01
 **Maintained By**: Development Team

@@ -2,7 +2,7 @@
 
 **Universal AI Memory System for Collaborative Development**
 
-A comprehensive plan for implementing a Supermemory-like MCP (Model Context Protocol) memory server that works across different AI coding tools (Windsurf, Cline, Roo Code, KiloCode, Claude Desktop, etc.).
+This plan now includes a **minimal, working MCP memory server** located at `src/mcp-memory/`. The reference server is local-first, dependency-free, and suitable for agent demos or small teams.
 
 ## 🎯 Project Goals
 
@@ -12,6 +12,15 @@ A comprehensive plan for implementing a Supermemory-like MCP (Model Context Prot
 - **Lightweight**: Easy to set up and maintain
 - **Privacy-First**: Local-first storage with optional cloud sync
 
+## ✅ Current Implementation (Reference MVP)
+
+- JSON-RPC 2.0 MCP server over HTTP
+- File-backed JSON storage (default: `memory-bank/mcp-memory.json`)
+- Tools: `add_memory`, `search_memory`, `summarize_memory`
+- Resources: list/read memory entries
+
+See **[docs/guides/MCP.md](guides/MCP.md)** for usage and wiring instructions.
+
 ## 📋 Implementation Phases
 
 ### Phase 1: Core Memory Server (MVP)
@@ -20,33 +29,32 @@ A comprehensive plan for implementing a Supermemory-like MCP (Model Context Prot
 
 #### 1.1 Server Setup
 
-- [ ] Initialize Node.js/TypeScript MCP server project
-- [ ] Implement MCP protocol handlers (stdio transport)
-- [ ] Set up SQLite database for local storage
-- [ ] Define memory schema (id, content, tags, timestamp, metadata)
-- [ ] Add basic CRUD operations (create, read, update, delete)
+- [x] Implement Node.js MCP server (HTTP JSON-RPC)
+- [x] Define memory schema (id, content, tags, timestamp, metadata)
+- [x] Add basic CRUD operations (create, read, list/search, delete)
+- [ ] Optional: stdio transport (future)
+- [ ] Optional: SQLite storage (future)
 
 #### 1.2 Core Tools
 
-- [ ] `addMemory` - Store new memory with tags and metadata
-- [ ] `searchMemories` - Search by keywords or tags
-- [ ] `getMemory` - Retrieve specific memory by ID
-- [ ] `listMemories` - List recent memories with pagination
-- [ ] `deleteMemory` - Remove memory by ID
+- [x] `add_memory` - Store new memory with tags and metadata
+- [x] `search_memory` - Search by keywords or tags
+- [x] `resources/read` - Retrieve specific memory by ID
+- [x] `resources/list` - List recent memories
+- [ ] `delete_memory` - Remove memory by ID (future)
 
 #### 1.3 Configuration
 
-- [ ] Create configuration file (`.mcp-memory/config.json`)
-- [ ] Support environment variables for settings
-- [ ] Add database path configuration
-- [ ] Implement logging system
+- [x] Support environment variables for settings
+- [x] Add storage path configuration
+- [ ] Optional: config file + structured logging
 
 #### 1.4 Testing & Documentation
 
-- [ ] Unit tests for core operations
-- [ ] Integration tests with MCP protocol
-- [ ] Quick start guide
-- [ ] API documentation
+- [x] Unit tests for core operations
+- [x] Integration tests with MCP protocol
+- [x] Quick start guide
+- [ ] API documentation (optional)
 
 **Deliverable**: Working MCP server with basic memory operations
 
@@ -174,23 +182,11 @@ A comprehensive plan for implementing a Supermemory-like MCP (Model Context Prot
 
 ### Core Technologies
 
-- **Language**: TypeScript/Node.js
-- **Protocol**: MCP (Model Context Protocol)
-- **Database**: SQLite (primary) + Vector DB (Chroma/SQLite-vec)
-- **Embeddings**: OpenAI API or local models (sentence-transformers)
-- **Transport**: stdio (standard MCP transport)
+- **Language**: Node.js (ESM)\n+- **Protocol**: MCP (Model Context Protocol)\n+- **Storage**: JSON file (reference), SQLite optional\n+- **Transport**: HTTP JSON-RPC (reference), stdio optional
 
-### Dependencies
+### Dependencies (Optional)
 
-```json
-{
-  "@modelcontextprotocol/sdk": "^0.5.0",
-  "better-sqlite3": "^9.0.0",
-  "chromadb": "^1.8.0",
-  "openai": "^4.0.0",
-  "zod": "^3.22.0"
-}
-```
+The reference server is dependency-free. Optional additions may include:\n\n- MCP SDK\n- SQLite drivers\n- Embedding providers
 
 ## 🔧 Configuration Example
 

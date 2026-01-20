@@ -58,9 +58,13 @@ For a complete directory structure with detailed descriptions, see **[docs/PROJE
 
 ## Supported Tools
 
+- **Claude Code**: Claude-powered agent workflows
+- **GitHub Copilot**: Agent mode / coding agent workflows
 - **Windsurf**: Cascade, Memories, Supercomplete modes
 - **Roo Code**: Multi-agent collaboration with slash commands
 - **KiloCode**: Open-source orchestration (architect → code → debug)
+- **Codex**: Agentic coding workflows
+- **MCP integrations**: Local MCP servers for memory and context
 - **Generic**: Any agentic IDE following our conventions
 
 ## Getting Started
@@ -115,6 +119,9 @@ Key documentation:
 - **[docs/guides/ONBOARDING.md](docs/guides/ONBOARDING.md)** - New team member guide
 - **[docs/guides/PRE_COMMIT.md](docs/guides/PRE_COMMIT.md)** - Pre-commit hooks setup
 - **[docs/MCP_MEMORY_IMPLEMENTATION.md](docs/MCP_MEMORY_IMPLEMENTATION.md)** - MCP Memory Server plan
+- **[docs/guides/MCP.md](docs/guides/MCP.md)** - MCP memory server usage
+- **[docs/guides/COPILOT_AGENT_MODE.md](docs/guides/COPILOT_AGENT_MODE.md)** - Copilot agent mode guide
+- **[docs/guides/CLAUDE_CODE.md](docs/guides/CLAUDE_CODE.md)** - Claude Code guide
 - **[AGENTS.md](AGENTS.md)** - AI agent guidelines
 - **[CLAUDE.md](CLAUDE.md)** - Claude-specific guidance
 

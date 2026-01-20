@@ -1,0 +1,82 @@
+[
+  {
+    "path": ".eslintrc.js",
+    "sha256": "eeab71dcd5811364a0d8f0639c48cc1afcec7d125ad1b738f4a4ba2fbb9ff92d"
+  },
+  {
+    "path": ".github/workflows/ci.yml",
+    "sha256": "4c546fccb0792bb14e35dca29f40f02e526401fc97736c4431652a4f6da979be"
+  },
+  {
+    "path": ".gitignore",
+    "sha256": "dea1161932547f94b02a66086722cd7d600fd045ecd324cc0fb98a0a919550a1"
+  },
+  {
+    "path": ".prettierrc",
+    "sha256": "a269bd3d163c78646eb66e9a6688c608c0bc206519cac760084bd41db94b2edf"
+  },
+  {
+    "path": "AGENTS.md",
+    "sha256": "c4abcd0aad002e10202c4a921fb1e3aa4184ac517ee898a9ad7e87d9d9d4a850"
+  },
+  {
+    "path": "CLAUDE.md",
+    "sha256": "c492dd4f08a5b852c26b359be4d9a5adf26be317e48ee508d4d9f32da0c88d44"
+  },
+  {
+    "path": "CommitMessage.md",
+    "sha256": "fc8b3a57ad041fce2ead9fbebf772e0fa66350fb48f13546521f5cd7a7d49376"
+  },
+  {
+    "path": "PR.md",
+    "sha256": "44910836cbfcb20915e5043def2381a77ad13962d59e66b62c5a5b0e31153a95"
+  },
+  {
+    "path": "PROJECT_STRUCTURE.md",
+    "sha256": "c8e12a3665c4528c7097fb38f756449ee3b2bc8d960c8a07d960b094e313fe5a"
+  },
+  {
+    "path": "README.md",
+    "sha256": "6c354aed12013b033e0778496190afcf8a6579bf9b56b7a668e5d64b035f4c7b"
+  },
+  {
+    "path": "package.json",
+    "sha256": "278c8e9455bea2bfe0d1debab60b4bf0d67b95e49bb8a7fde066548373a9c908"
+  },
+  {
+    "path": "packages/api/AGENTS.md",
+    "sha256": "4108339ec92ce5561444ef4b6c8767f18504dca8b3c9d602616bedfeee3f775f"
+  },
+  {
+    "path": "packages/api/package.json",
+    "sha256": "f9861fb72043ad0808d23c9a7407480290715e981be3a91d86dcb4bfe9c02c73"
+  },
+  {
+    "path": "packages/core/AGENTS.md",
+    "sha256": "09790c03d9aa9f13e5798513eef86f591de8d0c5c1bbf6d2751cb6f21c77c5a8"
+  },
+  {
+    "path": "packages/core/package.json",
+    "sha256": "c0f6c70d30a648dc3b04a9650440d955dc4e61b2599bad8750647ff82fc0d735"
+  },
+  {
+    "path": "packages/shared-types/AGENTS.md",
+    "sha256": "e4e4bbfc9334488002b07966dd6fbefc06fa7e31a09441d82a4df032a7241d48"
+  },
+  {
+    "path": "packages/shared-types/package.json",
+    "sha256": "f15b4cc9ecc28e258a002b1c65c88ff9b5e860dbb55634574652dcb4cc3ee277"
+  },
+  {
+    "path": "packages/web/AGENTS.md",
+    "sha256": "aac1ee02abd4185ca5637819a56b792dfb2e18d57fab148f7ea6a2c87f9380fd"
+  },
+  {
+    "path": "packages/web/package.json",
+    "sha256": "f3624679b5a026848b4be1b11625a54a4cae979036be1e7fd2e9a48ae7498358"
+  },
+  {
+    "path": "tsconfig.json",
+    "sha256": "83232214f321d62dcb21c2a87a2ee59845f5833aa876c7b8c0a0b947208fb7a5"
+  }
+]

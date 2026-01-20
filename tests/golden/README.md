@@ -13,6 +13,16 @@ Golden tests are especially valuable in AI-assisted development because:
 
 ## Test Categories
 
+### 0. Generator Output Snapshots
+
+Capture the scaffolded file tree and file hashes to protect the blueprint generator:
+
+```bash
+pnpm run test-setup
+```
+
+The snapshot file lives at `tests/golden/setup-output.snapshot.json`.
+
 ### 1. API Response Snapshots
 
 Capture complete API responses for critical endpoints:

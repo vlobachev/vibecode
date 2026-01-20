@@ -32,6 +32,7 @@
 {{#each packages}}
 │   ├── {{this}}/                       # {{#if (eq this "core")}}Core utilities and shared functionality{{else if (eq this "api")}}API services and endpoints{{else if (eq this "web")}}Frontend web application{{else if (eq this "shared-types")}}Shared TypeScript type definitions{{else}}{{this}} package{{/if}}
 │   │   ├── package.json                # Package-specific configuration
+│   │   ├── AGENTS.md                   # Package-level agent guidance
 {{#if ../useTypeScript}}
 │   │   ├── tsconfig.json               # Package TypeScript config
 {{/if}}

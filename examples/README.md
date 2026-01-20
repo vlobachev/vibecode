@@ -5,11 +5,12 @@ This directory contains real examples of successful vibecoding practices.
 ## Examples Included
 
 1. **feature-example/**: Complete feature development workflow
-2. **bugfix-example/**: Bug fix with AI assistance
-3. **refactor-example/**: Code refactoring guided by AI
-4. **pr-examples/**: Successful PR descriptions and workflows
-5. **windsurf-memories/**: Saved Windsurf context examples
-6. **roo-commands/**: Custom Roo Code slash commands
+2. **contract-first/**: Minimal contract test pattern for safe refactors
+3. **bugfix-example/**: Bug fix with AI assistance
+4. **refactor-example/**: Code refactoring guided by AI
+5. **pr-examples/**: Successful PR descriptions and workflows
+6. **windsurf-memories/**: Saved Windsurf context examples
+7. **roo-commands/**: Custom Roo Code slash commands
 
 ## How to Use These Examples
 

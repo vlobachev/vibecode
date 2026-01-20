@@ -235,6 +235,17 @@ class VibecodeSetup {
       return true;
     }
 
+    // Skip workspace package templates when not using monorepo
+    if (!this.config.useMonorepo && outputPath.startsWith('packages/')) {
+      return true;
+    }
+
+    // Skip package-specific templates when the package is not selected
+    const packageMatch = outputPath.match(/^packages\/([^/]+)\//);
+    if (packageMatch && !this.config.packages.includes(packageMatch[1])) {
+      return true;
+    }
+
     return false;
   }
 

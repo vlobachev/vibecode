@@ -14,11 +14,18 @@ vibecode/
 │   ├── README.md                       # Documentation index
 │   ├── architecture/                   
 │   │   └── SYSTEM_ARCHITECTURE.md      # System design overview
-│   └── guides/                         
-│       ├── CONTRIBUTING.md              # Development guidelines
-│       ├── ONBOARDING.md               # New team member guide
-│       ├── PRE_COMMIT.md               # Pre-commit hooks setup guide
-│       └── WINDSURF_TEAM_COLLABORATION.md # Windsurf collaboration guide
+│   ├── guides/                         
+│   │   ├── CONTRIBUTING.md             # Development guidelines
+│   │   ├── ONBOARDING.md               # New team member guide
+│   │   ├── ONBOARDING_30_MINUTES.md    # Fast-track onboarding
+│   │   ├── PRE_COMMIT.md               # Pre-commit hooks setup guide
+│   │   ├── WINDSURF_TEAM_COLLABORATION.md # Windsurf collaboration guide
+│   │   ├── COPILOT_AGENT_MODE.md       # Copilot agent mode guide
+│   │   ├── CLAUDE_CODE.md              # Claude Code guide
+│   │   ├── MCP.md                      # MCP memory server guide
+│   │   └── AGENTS_AND_TOOL_RULES.md    # Tool rule alignment
+│   └── templates/
+│       └── AGENT_TASK_CHECKLIST.md     # Agent coordination checklist
 │
 ├── policies/                           # Governance and rules
 │   ├── CODEOWNERS                      # Package ownership definitions
@@ -30,8 +37,11 @@ vibecode/
 │   └── refactor.md                     # Code refactoring template
 │
 ├── templates/                          # Standard templates
-│   ├── PR.md                          # Pull request template
-│   └── CommitMessage.md               # Commit message format guide
+│   ├── PR.md                           # Pull request template
+│   ├── CommitMessage.md                # Commit message format guide
+│   ├── AGENTS.md.hbs                   # Generator template for AGENTS.md
+│   └── packages/                       # Package-level AGENTS templates
+│       └── */AGENTS.md.hbs             # Per-package guidance
 │
 ├── scripts/                            # Automation scripts
 │   ├── agent-guardrails.sh            # Pre-commit validation script
@@ -39,14 +49,22 @@ vibecode/
 │   ├── pre-commit-validate-structure.sh # Structure validation script
 │   └── pre-commit-check-agents.sh     # AGENTS.md validation script
 │
-├── tests/                              # Testing artifacts
-│   └── golden/                         # Golden/snapshot tests
-│       └── README.md                   # Golden test documentation
+├── src/                                # Implementation
+│   ├── setup.js                        # Project setup generator
+│   ├── test-setup.js                   # Deterministic generator run
+│   └── mcp-memory/                     # Reference MCP memory server
+│       ├── server.js                   # JSON-RPC MCP server
+│       └── memory-store.js             # File-backed memory store
+│
+├── tests/                              # Tests
+│   ├── golden/                         # Generator snapshots
+│   ├── mcp-memory/                     # MCP server tests
+│   └── setup/                          # Generator tests
 │
 └── examples/                           # Real-world examples
     ├── README.md                       # Examples overview
-    └── feature-example/                # Complete feature workflow example
-        └── complete-workflow.md        # Step-by-step feature development
+    ├── feature-example/                # Complete feature workflow example
+    └── contract-first/                 # Contract-first testing example
 ```
 
 ## 🎯 What This Provides
@@ -106,10 +124,9 @@ This structure provides everything needed to implement collaborative vibecoding 
 - **[CLAUDE.md](../CLAUDE.md)** - Claude-specific guidance
 - **[docs/README.md](README.md)** - Complete documentation index
 - **[docs/guides/CONTRIBUTING.md](guides/CONTRIBUTING.md)** - Development workflow
-- **[docs/guides/ONBOARDING.md](guides/ONBOARDING.md)** - New team member guide
-- **[docs/guides/PRE_COMMIT.md](guides/PRE_COMMIT.md)** - Pre-commit hooks setup
-- **[docs/MCP_MEMORY_IMPLEMENTATION.md](MCP_MEMORY_IMPLEMENTATION.md)** - MCP Memory Server plan
+- **[docs/guides/ONBOARDING_30_MINUTES.md](guides/ONBOARDING_30_MINUTES.md)** - Fast onboarding
+- **[docs/guides/MCP.md](guides/MCP.md)** - MCP memory server usage
 
 ---
 
-**Ready to start vibecoding?** Check out [docs/guides/ONBOARDING.md](guides/ONBOARDING.md) to get your team up and running!
+**Ready to start vibecoding?** Check out [docs/guides/ONBOARDING_30_MINUTES.md](guides/ONBOARDING_30_MINUTES.md) to get your team up and running!
