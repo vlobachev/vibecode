@@ -2,7 +2,9 @@
 
 ## Sharing Plans and Context with Teammates
 
-Since Windsurf's built-in memory is personal to each user, teams need structured approaches to share plans, decisions, and context. Here are the recommended strategies:
+Since Windsurf's built-in memory is personal to each user, teams need structured
+approaches to share plans, decisions, and context. Here are the recommended
+strategies:
 
 ## 1. File-Based Plan Sharing
 
@@ -12,7 +14,6 @@ Since Windsurf's built-in memory is personal to each user, teams need structured
   - `brief.md` - Project overview and goals
   - `tasks.md` - Current TODO items and workflows
   - `context.md` - Active development context
-  
 - **Cline Memory Bank** (`memory-bank/`)
   - `progress.md` - What's completed and what's next
   - `activeContext.md` - Current focus areas
@@ -20,7 +21,8 @@ Since Windsurf's built-in memory is personal to each user, teams need structured
 
 ### Dedicated Planning Files
 
-- `docs/MCP_MEMORY_IMPLEMENTATION.md` - Universal MCP Memory Server implementation plan
+- `docs/MCP_MEMORY_IMPLEMENTATION.md` - Universal MCP Memory Server
+  implementation plan
 - Project-specific planning documents in `docs/`
 - Feature-specific planning in feature branches
 
@@ -129,7 +131,8 @@ project/
 └── .windsurf/memories/    # Personal Windsurf memories (not shared)
 ```
 
-**Note**: For complete project structure, see **[docs/PROJECT_STRUCTURE.md](../PROJECT_STRUCTURE.md)**.
+**Note**: For complete project structure, see
+**[docs/PROJECT_STRUCTURE.md](../PROJECT_STRUCTURE.md)**.
 
 ### Communication Patterns
 
@@ -168,13 +171,18 @@ project/
 4. Create handoff documentation
 5. Merge and communicate completion
 
-This approach ensures that while Windsurf's personal memory enhances individual productivity, the team maintains shared context and planning through structured, git-based documentation.
+This approach ensures that while Windsurf's personal memory enhances individual
+productivity, the team maintains shared context and planning through structured,
+git-based documentation.
 
 ## Related Documentation
 
-- **[docs/PROJECT_STRUCTURE.md](../PROJECT_STRUCTURE.md)** - Complete repository structure
-- **[docs/MCP_MEMORY_IMPLEMENTATION.md](../MCP_MEMORY_IMPLEMENTATION.md)** - Universal MCP Memory Server plan
-- **[docs/guides/DOCUMENTATION_STANDARDS.md](DOCUMENTATION_STANDARDS.md)** - Documentation best practices
+- **[docs/PROJECT_STRUCTURE.md](../PROJECT_STRUCTURE.md)** - Complete repository
+  structure
+- **[docs/MCP_MEMORY_IMPLEMENTATION.md](../MCP_MEMORY_IMPLEMENTATION.md)** -
+  Universal MCP Memory Server plan
+- **[docs/guides/DOCUMENTATION_STANDARDS.md](DOCUMENTATION_STANDARDS.md)** -
+  Documentation best practices
 - **[docs/guides/CONTRIBUTING.md](CONTRIBUTING.md)** - Development workflow
 - **[AGENTS.md](../../AGENTS.md)** - AI agent guidelines
 

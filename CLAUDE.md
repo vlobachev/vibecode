@@ -1,10 +1,14 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Claude Code (claude.ai/code) when working with
+code in this repository.
 
 ## Project Overview
 
-This is a collaborative vibecoding project - a framework for natural-language driven development through agentic IDEs for team collaboration. The project provides rules, shared prompts, examples, and collaboration artifacts to enable teams to co-develop in a monorepo using AI coding tools.
+This is a collaborative vibecoding project - a framework for natural-language
+driven development through agentic IDEs for team collaboration. The project
+provides rules, shared prompts, examples, and collaboration artifacts to enable
+teams to co-develop in a monorepo using AI coding tools.
 
 ## Development Commands
 
@@ -39,16 +43,20 @@ turbo run dev              # Turbo development mode (when configured)
 
 ### Core Structure
 
-- **Framework-based**: Template repository providing standardized structure for AI-assisted development
-- **Documentation-driven**: Comprehensive guides in `/docs/` for architecture, contributing, and onboarding
-- **Quality-focused**: Built-in guardrails and validation scripts for AI-generated code
-- **Tool-agnostic**: Supports Windsurf, Roo Code, KiloCode, and other agentic IDEs
+- **Framework-based**: Template repository providing standardized structure for
+  AI-assisted development
+- **Documentation-driven**: Comprehensive guides in `/docs/` for architecture,
+  contributing, and onboarding
+- **Quality-focused**: Built-in guardrails and validation scripts for
+  AI-generated code
+- **Tool-agnostic**: Supports Windsurf, Roo Code, KiloCode, and other agentic
+  IDEs
 
 ### Key Directories
 
 ```
 /docs/architecture/    - System design and architecture documentation
-/docs/guides/          - Contributing guidelines and onboarding materials  
+/docs/guides/          - Contributing guidelines and onboarding materials
 /prompts/              - Standardized AI prompt templates (feature, bugfix, refactor)
 /policies/             - Code ownership and review guidelines
 /templates/            - PR and commit message templates
@@ -66,28 +74,36 @@ The `scripts/agent-guardrails.sh` script enforces:
 - TypeScript best practices (avoid `any` types, proper error handling)
 - Test coverage requirements alongside code changes
 - Commit message format validation (AI-Generated and Reviewed-by fields)
-- Branch naming conventions (feature/*, fix/*, etc.)
+- Branch naming conventions (feature/_, fix/_, etc.)
 
 ### Development Philosophy
 
 - **Human-in-the-loop**: AI proposes, humans approve via review process
-- **Contract-driven**: Interfaces and tests define boundaries, AI modifies implementations
-- **Golden test protection**: Stable snapshots prevent regression in critical functionality
+- **Contract-driven**: Interfaces and tests define boundaries, AI modifies
+  implementations
+- **Golden test protection**: Stable snapshots prevent regression in critical
+  functionality
 - **Context enforcement**: Clear package boundaries and import rules
 
 ## Important Files
 
 ### Configuration & Setup
 
-- `src/setup.js`: Comprehensive project initialization script that creates package.json, ESLint, Prettier, TypeScript configs, and GitHub Actions workflows
-- `AGENTS.md`: Detailed AI agent guidelines following standard format (285 lines of comprehensive rules)
-- `scripts/agent-guardrails.sh`: Pre-commit validation script (260 lines) with security and quality checks
+- `src/setup.js`: Comprehensive project initialization script that creates
+  package.json, ESLint, Prettier, TypeScript configs, and GitHub Actions
+  workflows
+- `AGENTS.md`: Detailed AI agent guidelines following standard format (285 lines
+  of comprehensive rules)
+- `scripts/agent-guardrails.sh`: Pre-commit validation script (260 lines) with
+  security and quality checks
 
-### Templates & Standards  
+### Templates & Standards
 
-- `/prompts/*.md`: Standardized templates for feature development, bug fixes, and refactoring
+- `/prompts/*.md`: Standardized templates for feature development, bug fixes,
+  and refactoring
 - `/templates/PR.md`: Pull request template for consistent documentation
-- `/templates/CommitMessage.md`: Commit message format with AI attribution tracking
+- `/templates/CommitMessage.md`: Commit message format with AI attribution
+  tracking
 
 ### Documentation
 
@@ -106,7 +122,7 @@ The `scripts/agent-guardrails.sh` script enforces:
 ### Quality Standards
 
 - Run `./scripts/agent-guardrails.sh` before commits to validate changes
-- Ensure AI-Generated and Reviewed-by fields are present in commit messages  
+- Ensure AI-Generated and Reviewed-by fields are present in commit messages
 - Include corresponding tests when modifying code
 - Follow TypeScript best practices and avoid `any` types
 - Respect package boundaries and import rules
@@ -118,9 +134,10 @@ When the setup script runs, it creates:
 ```
 packages/
 ├── core/           # Shared utilities
-├── shared-types/   # TypeScript definitions  
+├── shared-types/   # TypeScript definitions
 ├── api/            # Backend services
 └── web/            # Frontend application
 ```
 
-The project supports Turbo for monorepo orchestration with workspace-based dependency management.
+The project supports Turbo for monorepo orchestration with workspace-based
+dependency management.

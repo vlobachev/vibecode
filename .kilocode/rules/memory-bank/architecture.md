@@ -1,12 +1,16 @@
 # Vibecode Blueprint Architecture
 
-> **Note**: For complete system architecture, see **[docs/architecture/SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md)**
+> **Note**: For complete system architecture, see
+> **[docs/architecture/SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md)**
 
 ## Quick Reference
 
 ### High-Level Design
 
-The Vibecode Blueprint follows a **template-driven architecture** with intelligent setup automation. The system is designed as a reusable blueprint that generates customized project structures for AI-assisted collaborative development.
+The Vibecode Blueprint follows a **template-driven architecture** with
+intelligent setup automation. The system is designed as a reusable blueprint
+that generates customized project structures for AI-assisted collaborative
+development.
 
 ### Core Components
 
@@ -94,12 +98,15 @@ prompts/
 
 ### 1. Template Method Pattern
 
-- **Implementation**: Setup process follows defined steps with customization points
-- **Benefits**: Consistent setup flow with flexibility for project-specific needs
+- **Implementation**: Setup process follows defined steps with customization
+  points
+- **Benefits**: Consistent setup flow with flexibility for project-specific
+  needs
 
 ### 2. Strategy Pattern
 
-- **Implementation**: Different AI tool integrations (Windsurf, Roo Code, KiloCode)
+- **Implementation**: Different AI tool integrations (Windsurf, Roo Code,
+  KiloCode)
 - **Benefits**: Pluggable AI tool support without core changes
 
 ### 3. Factory Pattern
@@ -144,7 +151,11 @@ Code Changes → Pre-commit Hooks → Golden Tests → CI/CD Pipeline → Qualit
 
 ## Related Documentation
 
-- **[docs/architecture/SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md)** - Complete system architecture
-- **[docs/TECHNOLOGY_STACK.md](../../docs/TECHNOLOGY_STACK.md)** - Technology stack and technical decisions
-- **[docs/PROJECT_STRUCTURE.md](../../docs/PROJECT_STRUCTURE.md)** - Complete directory structure
-- **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)** - Project overview
+- **[docs/architecture/SYSTEM_ARCHITECTURE.md](../../docs/architecture/SYSTEM_ARCHITECTURE.md)** -
+  Complete system architecture
+- **[docs/TECHNOLOGY_STACK.md](../../docs/TECHNOLOGY_STACK.md)** - Technology
+  stack and technical decisions
+- **[docs/PROJECT_STRUCTURE.md](../../docs/PROJECT_STRUCTURE.md)** - Complete
+  directory structure
+- **[docs/PROJECT_OVERVIEW.md](../../docs/PROJECT_OVERVIEW.md)** - Project
+  overview

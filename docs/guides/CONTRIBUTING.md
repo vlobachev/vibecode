@@ -1,11 +1,13 @@
 # Contributing to the Collaborative Vibecoding Project
 
-Welcome to the team! This guide will help you understand how to contribute effectively using AI-assisted development tools.
+Welcome to the team! This guide will help you understand how to contribute
+effectively using AI-assisted development tools.
 
 ## Quick Start
 
 1. **Read the guidelines**: Familiarize yourself with `AGENTS.md`
-2. **Set up your IDE**: Configure Windsurf, Roo Code, KiloCode, or your preferred agentic IDE
+2. **Set up your IDE**: Configure Windsurf, Roo Code, KiloCode, or your
+   preferred agentic IDE
 3. **Review prompt templates**: Check `/prompts/` for standard templates
 4. **Understand the workflow**: AI proposes → human reviews → merge
 
@@ -108,7 +110,8 @@ Create memory: "All database operations must be transactional"
 - **Type Safety**: Use TypeScript strictly, avoid `any`
 - **Error Handling**: Always handle errors gracefully
 - **Testing**: Minimum 80% coverage for new code
-- **Documentation**: Self-documenting code + API docs (see [DOCUMENTATION_STANDARDS.md](DOCUMENTATION_STANDARDS.md))
+- **Documentation**: Self-documenting code + API docs (see
+  [DOCUMENTATION_STANDARDS.md](DOCUMENTATION_STANDARDS.md))
 
 ### Patterns to Follow
 
@@ -161,7 +164,7 @@ describe('UserService.createUser', () => {
   it('should create user with valid data', async () => {
     const userData = { email: 'test@example.com', name: 'Test User' };
     const result = await userService.createUser(userData);
-    
+
     expect(result.success).toBe(true);
     expect(result.data).toMatchObject({
       id: expect.any(String),
@@ -169,11 +172,14 @@ describe('UserService.createUser', () => {
       name: userData.name
     });
   });
-  
+
   it('should reject duplicate email', async () => {
     await userService.createUser({ email: 'test@example.com', name: 'First' });
-    const result = await userService.createUser({ email: 'test@example.com', name: 'Second' });
-    
+    const result = await userService.createUser({
+      email: 'test@example.com',
+      name: 'Second'
+    });
+
     expect(result.success).toBe(false);
     expect(result.error).toContain('email already exists');
   });
@@ -278,4 +284,5 @@ This document evolves with our learnings. Contribute improvements by:
 
 ---
 
-**Remember**: AI is a powerful tool that amplifies human intelligence. Use it wisely, review critically, and always prioritize quality and security.
+**Remember**: AI is a powerful tool that amplifies human intelligence. Use it
+wisely, review critically, and always prioritize quality and security.

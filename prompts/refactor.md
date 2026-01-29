@@ -20,16 +20,15 @@ Use this template when asking AI agents to refactor code or perform migrations.
 
 ### Target Scope
 
-**Components to Refactor**: [Specific files, packages, or modules]
-**Estimated Size**: [Small/Medium/Large - number of files affected]
-**Timeline**: [Expected duration or deadline]
+**Components to Refactor**: [Specific files, packages, or modules] **Estimated
+Size**: [Small/Medium/Large - number of files affected] **Timeline**: [Expected
+duration or deadline]
 
 ## Current State Analysis
 
 ### Existing Implementation
 
-**Current Architecture**: [How it works today]
-**Pain Points**:
+**Current Architecture**: [How it works today] **Pain Points**:
 
 1. [Issue 1]: [Description and impact]
 2. [Issue 2]: [Description and impact]
@@ -39,16 +38,16 @@ Use this template when asking AI agents to refactor code or perform migrations.
 
 ### Dependencies
 
-**Internal Dependencies**: [Other packages that depend on this code]
-**External Dependencies**: [Third-party libraries involved]
-**Database/Schema**: [Any data structure changes needed]
+**Internal Dependencies**: [Other packages that depend on this code] **External
+Dependencies**: [Third-party libraries involved] **Database/Schema**: [Any data
+structure changes needed]
 
 ## Target Architecture
 
 ### Desired End State
 
-**New Architecture**: [How it should work after refactoring]
-**Benefits Expected**:
+**New Architecture**: [How it should work after refactoring] **Benefits
+Expected**:
 
 - [Benefit 1]: [Measurable improvement]
 - [Benefit 2]: [Measurable improvement]
@@ -56,9 +55,9 @@ Use this template when asking AI agents to refactor code or perform migrations.
 
 ### Design Decisions
 
-**Patterns to Use**: [Preferred architectural patterns]
-**Patterns to Avoid**: [Anti-patterns to eliminate]
-**Technology Choices**: [New libraries or approaches to adopt]
+**Patterns to Use**: [Preferred architectural patterns] **Patterns to Avoid**:
+[Anti-patterns to eliminate] **Technology Choices**: [New libraries or
+approaches to adopt]
 
 ## Migration Strategy
 
@@ -90,9 +89,9 @@ Use this template when asking AI agents to refactor code or perform migrations.
 
 ### Potential Risks
 
-**High Risk Areas**: [Components most likely to break]
-**User Impact**: [What users might experience during migration]
-**Rollback Difficulty**: [How hard it would be to undo changes]
+**High Risk Areas**: [Components most likely to break] **User Impact**: [What
+users might experience during migration] **Rollback Difficulty**: [How hard it
+would be to undo changes]
 
 ### Mitigation Strategies
 

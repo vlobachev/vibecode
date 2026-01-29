@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+pnpm-lock.yaml
+
+# Build output
+dist/
+build/
+coverage/
+.turbo/
+test-output/
+
+# Handlebars templates (have special syntax)
+templates/**/*.hbs
+
+# Generated files
+*.log
+*.db
+
+# Config files that need special formatting
+.github/workflows/**/*.yml

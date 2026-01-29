@@ -1,13 +1,15 @@
 # Golden Tests
 
-Golden tests (also known as snapshot tests) capture the expected output of functions, components, or API endpoints. They serve as regression protection when AI agents modify code.
+Golden tests (also known as snapshot tests) capture the expected output of
+functions, components, or API endpoints. They serve as regression protection
+when AI agents modify code.
 
 ## Purpose
 
 Golden tests are especially valuable in AI-assisted development because:
 
 - **AI agents might change implementation details** while preserving behavior
-- **Complex business logic** can be accidentally altered during refactoring  
+- **Complex business logic** can be accidentally altered during refactoring
 - **API contracts** need to remain stable across AI-generated changes
 - **UI components** should maintain consistent rendering
 
@@ -24,7 +26,7 @@ describe('API Golden Tests', () => {
     const response = await request(app)
       .get('/api/users/123')
       .set('Authorization', 'Bearer valid-token');
-      
+
     expect(response.body).toMatchSnapshot('user-profile-response');
   });
 });
@@ -215,7 +217,7 @@ exports[`should calculate premium subscription with discount 1`] = {
 
 ```html
 <!-- __snapshots__/user-profile-card.snap -->
-exports[`should render admin user profile consistently 1`] = 
+exports[`should render admin user profile consistently 1`] =
 <div class="user-profile-card">
   <div class="avatar-container">
     <img src="https://example.com/avatar.jpg" alt="John Doe" class="avatar" />
@@ -244,4 +246,6 @@ exports[`should render admin user profile consistently 1`] =
 - **Provide context** for complex test scenarios
 - **Keep examples** updated with real-world data patterns
 
-Golden tests provide a safety net that allows AI agents to refactor and optimize code while preserving the critical behaviors that users and integrations depend on.
+Golden tests provide a safety net that allows AI agents to refactor and optimize
+code while preserving the critical behaviors that users and integrations depend
+on.

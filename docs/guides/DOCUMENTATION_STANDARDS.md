@@ -2,15 +2,19 @@
 
 ## Overview
 
-This guide defines standards for creating and maintaining documentation in the Vibecode Blueprint project. Following these standards ensures consistency, maintainability, and prevents information duplication.
+This guide defines standards for creating and maintaining documentation in the
+Vibecode Blueprint project. Following these standards ensures consistency,
+maintainability, and prevents information duplication.
 
 ## Core Principles
 
 ### 1. Single Source of Truth (SSOT)
 
-**Rule**: Each piece of information should exist in exactly ONE authoritative location.
+**Rule**: Each piece of information should exist in exactly ONE authoritative
+location.
 
-**Why**: Prevents conflicting information, reduces maintenance burden, ensures consistency.
+**Why**: Prevents conflicting information, reduces maintenance burden, ensures
+consistency.
 
 **How**:
 
@@ -20,7 +24,8 @@ This guide defines standards for creating and maintaining documentation in the V
 
 ### 2. Link, Don't Duplicate
 
-**Rule**: When referencing information that exists elsewhere, use links instead of duplicating content.
+**Rule**: When referencing information that exists elsewhere, use links instead
+of duplicating content.
 
 **Examples**:
 
@@ -29,13 +34,8 @@ This guide defines standards for creating and maintaining documentation in the V
 ```markdown
 ## Repository Structure
 
-vibecode/
-├── README.md
-├── AGENTS.md
-├── docs/
-│   ├── guides/
-│   └── architecture/
-...
+vibecode/ ├── README.md ├── AGENTS.md ├── docs/ │ ├── guides/ │ └──
+architecture/ ...
 ```
 
 ✅ **Good** - Linking to authoritative source:
@@ -43,12 +43,14 @@ vibecode/
 ```markdown
 ## Repository Structure
 
-For the complete directory structure, see **[docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)**.
+For the complete directory structure, see
+**[docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)**.
 ```
 
 ### 3. Brief Summary + Link Pattern
 
-**Rule**: When mentioning a topic covered in detail elsewhere, provide a brief 1-2 sentence summary followed by a link.
+**Rule**: When mentioning a topic covered in detail elsewhere, provide a brief
+1-2 sentence summary followed by a link.
 
 **Template**:
 
@@ -65,27 +67,29 @@ For complete details, see **[link to authoritative document]**.
 ```markdown
 ## Pre-commit Hooks
 
-Automatic code quality validation runs before every commit. This catches issues early and prevents CI/CD failures.
+Automatic code quality validation runs before every commit. This catches issues
+early and prevents CI/CD failures.
 
-For complete documentation, see **[docs/guides/PRE_COMMIT.md](docs/guides/PRE_COMMIT.md)**.
+For complete documentation, see
+**[docs/guides/PRE_COMMIT.md](docs/guides/PRE_COMMIT.md)**.
 ```
 
 ## Documentation Hierarchy
 
 ### Primary Documents (Authoritative Sources)
 
-| Document | Purpose | Audience |
-|----------|---------|----------|
-| `README.md` | Project overview, quick start | Everyone (entry point) |
-| `AGENTS.md` | AI agent guidelines | AI tools, developers |
-| `CLAUDE.md` | Claude-specific guidance | Claude users |
-| `docs/PROJECT_STRUCTURE.md` | Complete directory structure | Developers, new team members |
-| `docs/guides/CONTRIBUTING.md` | Development workflow | Contributors |
-| `docs/guides/ONBOARDING.md` | New team member setup | New developers |
-| `docs/guides/PRE_COMMIT.md` | Pre-commit hooks setup | Developers |
-| `docs/guides/DOCUMENTATION_STANDARDS.md` | This document | Documentation authors |
-| `docs/MCP_MEMORY_IMPLEMENTATION.md` | MCP Memory Server plan | Implementers |
-| `docs/README.md` | Documentation index | Everyone seeking docs |
+| Document                                 | Purpose                       | Audience                     |
+| ---------------------------------------- | ----------------------------- | ---------------------------- |
+| `README.md`                              | Project overview, quick start | Everyone (entry point)       |
+| `AGENTS.md`                              | AI agent guidelines           | AI tools, developers         |
+| `CLAUDE.md`                              | Claude-specific guidance      | Claude users                 |
+| `docs/PROJECT_STRUCTURE.md`              | Complete directory structure  | Developers, new team members |
+| `docs/guides/CONTRIBUTING.md`            | Development workflow          | Contributors                 |
+| `docs/guides/ONBOARDING.md`              | New team member setup         | New developers               |
+| `docs/guides/PRE_COMMIT.md`              | Pre-commit hooks setup        | Developers                   |
+| `docs/guides/DOCUMENTATION_STANDARDS.md` | This document                 | Documentation authors        |
+| `docs/MCP_MEMORY_IMPLEMENTATION.md`      | MCP Memory Server plan        | Implementers                 |
+| `docs/README.md`                         | Documentation index           | Everyone seeking docs        |
 
 ### Cross-Reference Rules
 
@@ -146,6 +150,7 @@ Always use underscores, never spaces in filenames.
 
    ```markdown
    ## Table of Contents
+
    - [Section 1](#section-1)
    - [Section 2](#section-2)
    ```
@@ -154,6 +159,7 @@ Always use underscores, never spaces in filenames.
 
    ```markdown
    ## Related Documentation
+
    - **[Link 1](path/to/doc1.md)** - Description
    - **[Link 2](path/to/doc2.md)** - Description
    ```
@@ -165,15 +171,15 @@ Always use underscores, never spaces in filenames.
 ✅ **Good**:
 
 ```markdown
-See [PROJECT_STRUCTURE.md](../PROJECT_STRUCTURE.md)
-See [CONTRIBUTING.md](guides/CONTRIBUTING.md)
+See [PROJECT_STRUCTURE.md](../PROJECT_STRUCTURE.md) See
+[CONTRIBUTING.md](guides/CONTRIBUTING.md)
 ```
 
 ❌ **Bad**:
 
 ```markdown
-See [PROJECT_STRUCTURE.md](/docs/PROJECT_STRUCTURE.md)
-See [CONTRIBUTING.md](https://github.com/.../CONTRIBUTING.md)
+See [PROJECT_STRUCTURE.md](/docs/PROJECT_STRUCTURE.md) See
+[CONTRIBUTING.md](https://github.com/.../CONTRIBUTING.md)
 ```
 
 ### 2. Use Descriptive Link Text
@@ -181,14 +187,15 @@ See [CONTRIBUTING.md](https://github.com/.../CONTRIBUTING.md)
 ✅ **Good**:
 
 ```markdown
-For setup instructions, see **[docs/guides/ONBOARDING.md](docs/guides/ONBOARDING.md)**.
+For setup instructions, see
+**[docs/guides/ONBOARDING.md](docs/guides/ONBOARDING.md)**.
 ```
 
 ❌ **Bad**:
 
 ```markdown
-For setup instructions, see [here](docs/guides/ONBOARDING.md).
-Click [this link](docs/guides/ONBOARDING.md) for setup.
+For setup instructions, see [here](docs/guides/ONBOARDING.md). Click
+[this link](docs/guides/ONBOARDING.md) for setup.
 ```
 
 ### 3. Link to Specific Sections When Appropriate
@@ -223,11 +230,13 @@ For details, see **[path/to/detailed-doc.md](path/to/detailed-doc.md)**.
 ## Topic Name
 
 Key points:
+
 - Point 1
 - Point 2
 - Point 3
 
-For complete information, see **[path/to/detailed-doc.md](path/to/detailed-doc.md)**.
+For complete information, see
+**[path/to/detailed-doc.md](path/to/detailed-doc.md)**.
 ```
 
 ### Pattern 3: Command Reference + Link
@@ -235,9 +244,11 @@ For complete information, see **[path/to/detailed-doc.md](path/to/detailed-doc.m
 ```markdown
 ## Commands
 
-Run `make help` to see all available commands, or view the [Makefile](Makefile) directly.
+Run `make help` to see all available commands, or view the [Makefile](Makefile)
+directly.
 
 Key commands:
+
 - `make install` - Install dependencies
 - `make test` - Run tests
 
@@ -290,7 +301,8 @@ For all commands and details, see the [Makefile](Makefile).
 ```markdown
 ## Repository Structure
 
-For a complete directory structure with detailed descriptions, see **[docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)**.
+For a complete directory structure with detailed descriptions, see
+**[docs/PROJECT_STRUCTURE.md](docs/PROJECT_STRUCTURE.md)**.
 ```
 
 **Why it's good**: Brief, clear purpose, links to authoritative source.
@@ -300,11 +312,13 @@ For a complete directory structure with detailed descriptions, see **[docs/PROJE
 ```markdown
 ### Pre-commit Hooks
 
-Automatic code quality validation runs before every commit. This catches issues early and prevents CI/CD failures.
+Automatic code quality validation runs before every commit. This catches issues
+early and prevents CI/CD failures.
 
 **Setup**: Run `make pre-commit-install` or `./scripts/setup-pre-commit.sh`
 
-For complete documentation, see **[docs/guides/PRE_COMMIT.md](docs/guides/PRE_COMMIT.md)**.
+For complete documentation, see
+**[docs/guides/PRE_COMMIT.md](docs/guides/PRE_COMMIT.md)**.
 ```
 
 **Why it's good**: Brief summary, quick setup command, link to detailed guide.
@@ -329,7 +343,8 @@ During PR review, check:
 
 ## Questions?
 
-If you're unsure where information should live or how to structure documentation:
+If you're unsure where information should live or how to structure
+documentation:
 
 1. Check existing documentation for similar patterns
 2. Review this guide

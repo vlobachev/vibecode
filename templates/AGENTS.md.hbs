@@ -1,169 +1,236 @@
 # AGENTS.md
 
-**AI Agent Guidelines for {{projectName}}**
+**AI Agent Guidelines for {{projectName}} (2025-2026 Edition)**
 
-This file provides guidance for AI agents working in this repository. It follows the AGENTS.md standard for clear AI-human collaboration.
+This is the **primary interface** for AI agents working on this project. Generated from the Vibecode Blueprint with best practices for agentic coding.
 
 ## Project Overview
 
 **Mission**: {{description}}
 
 {{#if useMonorepo}}
-**Architecture**: Monorepo with packages for {{#each packages}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}.
+**Architecture**: Monorepo with packages: {{#each packages}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}
 {{else}}
-**Architecture**: Single package application with modular structure.
+**Architecture**: Single-package application with modular structure
 {{/if}}
 
-**Development Philosophy**: AI proposes, humans approve. Contracts and tests define boundaries.
+**Development Philosophy**:
+- **Human-in-the-loop**: AI proposes, humans approve via code review
+- **Contract-driven**: Tests and interfaces define boundaries
+- **Agent-loop friendly**: Run tests, observe, fix, repeat until validation passes
 
-## What You Can Do
+## 🚀 Setup Commands (Run These First)
 
-✅ **Code Generation & Modification**
-- Generate new functions, classes, and components
-- Implement features following our established patterns
-{{#if useTypeScript}}
-- Write TypeScript code with proper type definitions
-{{/if}}
-- Write unit and integration tests for your code
-- Create API endpoints following REST conventions
-- Update documentation for code you write
-- Refactor code when explicitly asked
+```bash
+# Install dependencies
+{{#eq packageManager "pnpm"}}pnpm install{{/eq}}{{#eq packageManager "npm"}}npm install{{/eq}}{{#eq packageManager "yarn"}}yarn install{{/eq}}
 
-✅ **Testing & Quality**
-- Generate comprehensive test suites
-- Create test data and mock objects  
-{{#if useTypeScript}}
-- Write type-safe tests with proper TypeScript coverage
-{{/if}}
-- Write snapshot tests for UI components
-- Add error handling and edge case coverage
-- Update existing tests when code changes
+# Run validation (lint + format-check + test)
+{{#eq packageManager "pnpm"}}pnpm run validate{{/eq}}{{#eq packageManager "npm"}}npm run validate{{/eq}}{{#eq packageManager "yarn"}}yarn validate{{/eq}}
 
-✅ **Documentation & Communication**
-- Update README files and inline documentation
-- Create clear commit messages following our format
-- Write helpful code comments explaining complex logic
-- Generate API documentation
-- Update this AGENTS.md file when project scope changes
+# Run tests
+{{#eq packageManager "pnpm"}}pnpm test{{/eq}}{{#eq packageManager "npm"}}npm test{{/eq}}{{#eq packageManager "yarn"}}yarn test{{/eq}}
+
+# Build (if applicable)
+{{#eq packageManager "pnpm"}}pnpm run build{{/eq}}{{#eq packageManager "npm"}}npm run build{{/eq}}{{#eq packageManager "yarn"}}yarn build{{/eq}}
+```
+
+## 📁 Repository Map
 
 {{#if useMonorepo}}
-✅ **Monorepo Management**
-- Work across multiple packages while respecting boundaries
+```
+{{projectName}}/
+├── packages/
+{{#each packages}}
+│   ├── {{this}}/          # {{capitalize this}} package
+{{/each}}
+├── package.json           # Workspace configuration
+├── AGENTS.md              # This file
+└── scripts/               # Automation scripts
+```
+{{else}}
+```
+{{projectName}}/
+├── src/                   # Source code
+├── tests/                 # Test files
+├── package.json           # Project configuration
+├── AGENTS.md              # This file
+└── README.md              # Project documentation
+```
+{{/if}}
+
+## 🛡️ How to Work Safely
+
+### 1. Validation Before Finishing
+
+**CRITICAL**: Before marking any task complete, run:
+
+```bash
+{{#eq packageManager "pnpm"}}pnpm run validate{{/eq}}{{#eq packageManager "npm"}}npm run validate{{/eq}}{{#eq packageManager "yarn"}}yarn validate{{/eq}}
+```
+
+**Agent Loop Pattern**:
+1. Make changes
+2. Run validation
+3. Observe failures
+4. Fix issues
+5. Repeat until clean
+6. Only then mark as done
+
+### 2. Golden Tests & Contracts
+
+- **Don't delete tests** without explicit approval
+- **Don't modify contracts** (public APIs, interfaces) without discussion
+- **Add tests** when adding features
+- **Update tests** when fixing bugs
+
+### 3. Security Guidelines
+
+- **Never hardcode** secrets, API keys, or passwords
+- **Use** environment variables for sensitive config
+- **Validate** all user inputs
+- **Follow** security best practices for this stack
+
+## ✅ What You Can Do
+
+### Code Generation & Modification
+
+- Write new functions, classes, and components
+- Implement features following established patterns
+{{#if useTypeScript}}
+- Write TypeScript with proper type definitions
+{{/if}}
+- Add comprehensive tests for new code
+- Update documentation for changes
+- Refactor when explicitly requested
+
+### Testing & Quality
+
+- Write unit and integration tests
+- Add edge case and error handling tests
+{{#if useTypeScript}}
+- Ensure TypeScript type coverage
+{{/if}}
+- Create test data and mocks
+- Update existing tests when behavior changes
+
+{{#if useMonorepo}}
+### Monorepo Management
+
+- Work across packages while respecting boundaries
 - Update workspace dependencies appropriately
 - Maintain consistent patterns across packages
-- Use shared types and utilities from the shared package
+- Use shared types and utilities
 {{/if}}
 
-## What You Cannot Do
+## ❌ What You Cannot Do
 
-❌ **Restricted Actions**
-- Delete or modify existing tests without explicit permission
-- Change core architecture without discussion
-- Modify CI/CD workflows without approval
-- Update dependencies without security review
-- Access or modify sensitive configuration files
-- Make breaking changes to public APIs
+### Breaking Changes
 
-❌ **Security Boundaries**
-- Never hardcode secrets, API keys, or passwords
-- Don't bypass existing security measures
-- Avoid creating potential security vulnerabilities
-- Don't modify authentication or authorization logic without approval
+- **Don't delete** existing tests or golden snapshots
+- **Don't modify** public APIs without approval
+- **Don't change** CI/CD workflows without discussion
+- **Don't update** dependencies without security review
 
-## Development Guidelines
+### Security Boundaries
 
-### Code Style
+- **Never bypass** security measures
+- **Never hardcode** credentials
+- **Don't modify** authentication/authorization without approval
+
+## 🎨 Style & Conventions
+
+### Commands
+
+```bash
+# Lint code
+{{#eq packageManager "pnpm"}}pnpm run lint{{/eq}}{{#eq packageManager "npm"}}npm run lint{{/eq}}{{#eq packageManager "yarn"}}yarn lint{{/eq}}
+
+# Format code
+{{#eq packageManager "pnpm"}}pnpm run format{{/eq}}{{#eq packageManager "npm"}}npm run format{{/eq}}{{#eq packageManager "yarn"}}yarn format{{/eq}}
+
+# Run tests
+{{#eq packageManager "pnpm"}}pnpm test{{/eq}}{{#eq packageManager "npm"}}npm test{{/eq}}{{#eq packageManager "yarn"}}yarn test{{/eq}}
+```
+
+### Commit Format
+
+Use conventional commits:
+
+```
+<type>(<scope>): <description>
+
+AI-Generated: Yes
+Reviewed-by: [Human Name]
+```
+
+**Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+## 🤖 Supported AI Tools
+
+This project works with:
+- **Claude Code** - Read this AGENTS.md first every session
+- **GitHub Copilot** - Use agent mode with clear requirements
+- **Windsurf** - Leverage Memories and Cascade
+- **Roo Code** - Multi-agent collaboration
+- **KiloCode** - Architect → Code → Debug workflow
+- **Cline** - Memory Bank integration
+- **Others** - Follow this AGENTS.md as primary guidance
+
+## 👥 Working with Humans
+
+### Communication
+
+- **Explain reasoning**: "I'm implementing X because Y"
+- **Ask for clarification**: When requirements are unclear
+- **Highlight assumptions**: Make your thinking explicit
+- **Suggest alternatives**: Present options with tradeoffs
+
+### Agent Loop (CRITICAL)
+
+```
+1. Make changes
+2. Commit and push
+3. Check CI/CD: gh run list --limit 5
+4. If failures:
+   - Investigate: gh run view <run-id> --log-failed
+   - Fix issues
+   - GOTO step 2
+5. If pass: ✅ Done
+```
+
+### Quality Checklist
+
+Before marking complete:
+- ✅ Validation passes locally
+- ✅ Tests added/updated
+- ✅ Documentation updated
+- ✅ CI/CD passes
+- ✅ Human reviewer notified
+
+## 📚 Key Files
+
 {{#if useTypeScript}}
-- Use TypeScript for all new code
-- Prefer interfaces over types for object shapes
-- Use strict TypeScript configuration
+- `tsconfig.json` - TypeScript configuration
 {{/if}}
-- Follow existing naming conventions
-- Write self-documenting code with clear variable names
-- Use consistent formatting (Prettier handles this)
-- Add JSDoc comments for public APIs
+- `.eslintrc.js` - Linting rules
+- `package.json` - Dependencies and scripts
+- `README.md` - Project documentation
+- `AGENTS.md` - This file (update as project evolves)
 
-### Testing Strategy
-- Write tests for all new functionality
-- Maintain high test coverage (aim for >80%)
-- Use descriptive test names that explain the scenario
-- Group related tests in describe blocks
-- Mock external dependencies appropriately
+## 🎯 Success Criteria
 
-### Git Workflow
-- Create focused commits with clear messages
-- Use conventional commit format: `type(scope): description`
-- Include `AI-Generated: Yes` in commit messages for AI-created code
-- Reference issue numbers when applicable
-
-{{#if packageManager}}
-### Package Management
-- Use {{packageManager}} for all dependency management
-- Keep dependencies up to date and secure
-- Prefer exact versions for production dependencies
-- Document any new dependencies in commit messages
-{{/if}}
-
-## Communication Protocol
-
-### When to Ask for Help
-- Before making architectural decisions
-- When encountering ambiguous requirements
-- If you need to modify existing APIs
-- When security implications are unclear
-- If tests are failing and the cause isn't obvious
-
-### How to Communicate Changes
-- Explain your reasoning for code changes
-- Highlight any potential impacts or risks
-- Suggest alternatives when appropriate
-- Ask for feedback on complex implementations
-
-### GitHub Actions Validation (CRITICAL)
-**ALWAYS check GitHub Actions results after every push:**
-- Run `gh run list --limit 5` to see recent workflow status
-- If any workflows fail, investigate with `gh run view <run-id> --log-failed`
-- Fix any CI/CD failures before proceeding with new changes
-- Common failure types to watch for:
-  - Markdown linting errors in documentation
-  - Security scanning issues (secrets, vulnerabilities)
-  - Test failures or coverage drops
-  - Build/compilation errors
-  - Code quality violations (ESLint, Prettier)
-- Update relevant documentation templates if workflow patterns change
-- Never ignore workflow failures - they indicate real issues
-
-## Project-Specific Context
-
-### Key Technologies
-{{#if useTypeScript}}
-- **TypeScript**: Primary language for type safety
-{{/if}}
-{{#if packageManager}}
-- **{{packageManager}}**: Package manager and workspace tool
-{{/if}}
-- **ESLint & Prettier**: Code quality and formatting
-- **Git Hooks**: Pre-commit validation with agent-guardrails.sh
-
-### Important Files
-- `package.json`: Project configuration and dependencies
-{{#if useTypeScript}}
-- `tsconfig.json`: TypeScript configuration
-{{/if}}
-- `.eslintrc.js`: Linting rules and configuration
-- `scripts/agent-guardrails.sh`: Pre-commit validation script
-- `README.md`: Project documentation and setup instructions
-
-### Quality Standards
-- All code must pass ESLint validation
-- Pre-commit hooks must pass before commits
-- Tests must pass in CI/CD pipeline
-- Security scans must not reveal vulnerabilities
-- Documentation must be kept up to date
+You're doing this right if:
+- ✅ Validation passes before commits
+- ✅ CI/CD workflows stay green
+- ✅ Tests have good coverage
+- ✅ Documentation stays current
+- ✅ Human reviewers approve PRs
 
 ---
 
+**Generated by**: Vibecode Blueprint
 **Last Updated**: {{currentYear}}
 **Maintained By**: {{author}}
 
-*This file should be updated whenever project scope, architecture, or AI collaboration guidelines change.*
+*Update this file when project scope, architecture, or collaboration guidelines change.*

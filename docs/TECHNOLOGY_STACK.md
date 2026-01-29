@@ -122,8 +122,10 @@ make pre-commit-run      # Run pre-commit hooks manually
 
 For AI tools that support memory banks:
 
-- **KiloCode**: `.kilocode/rules/memory-bank/` - See [.kilocode/rules/memory-bank-instructions.md](../.kilocode/rules/memory-bank-instructions.md)
-- **Cline**: `memory-bank/` - See [Cline Memory Bank documentation](https://docs.cline.bot/prompting/cline-memory-bank)
+- **KiloCode**: `.kilocode/rules/memory-bank/` - See
+  [.kilocode/rules/memory-bank-instructions.md](../.kilocode/rules/memory-bank-instructions.md)
+- **Cline**: `memory-bank/` - See
+  [Cline Memory Bank documentation](https://docs.cline.bot/prompting/cline-memory-bank)
 
 ## Development Workflow
 
@@ -197,10 +199,14 @@ pnpm audit
 
 ## Related Documentation
 
-- **[docs/PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md)** - Project overview and objectives
-- **[docs/architecture/SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md)** - System architecture
-- **[docs/PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)** - Complete directory structure
-- **[docs/guides/CONTRIBUTING.md](guides/CONTRIBUTING.md)** - Development workflow
+- **[docs/PROJECT_OVERVIEW.md](PROJECT_OVERVIEW.md)** - Project overview and
+  objectives
+- **[docs/architecture/SYSTEM_ARCHITECTURE.md](architecture/SYSTEM_ARCHITECTURE.md)** -
+  System architecture
+- **[docs/PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)** - Complete directory
+  structure
+- **[docs/guides/CONTRIBUTING.md](guides/CONTRIBUTING.md)** - Development
+  workflow
 - **[README.md](../README.md)** - Quick start guide
 - **[Makefile](../Makefile)** - All available commands
 

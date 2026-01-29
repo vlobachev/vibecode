@@ -4,7 +4,8 @@
 
 ### High-Level Architecture Pattern
 
-The Vibecode Blueprint follows a **Template-Driven Generation Architecture** with intelligent automation and validation layers.
+The Vibecode Blueprint follows a **Template-Driven Generation Architecture**
+with intelligent automation and validation layers.
 
 ```
 User Input → Interactive CLI → Template Engine → File Generation → Validation → Ready Project
@@ -14,13 +15,16 @@ User Input → Interactive CLI → Template Engine → File Generation → Valid
 
 #### 1. Template Method Pattern
 
-- **Implementation**: Setup process follows defined steps with customization points
+- **Implementation**: Setup process follows defined steps with customization
+  points
 - **Location**: `src/setup.js` orchestrates the entire setup workflow
-- **Benefits**: Consistent setup flow while allowing project-specific customizations
+- **Benefits**: Consistent setup flow while allowing project-specific
+  customizations
 
 #### 2. Strategy Pattern
 
-- **Implementation**: Different AI tool integrations (Windsurf, Roo Code, KiloCode, Cline)
+- **Implementation**: Different AI tool integrations (Windsurf, Roo Code,
+  KiloCode, Cline)
 - **Location**: Template selection and AI-specific configuration files
 - **Benefits**: Pluggable AI tool support without modifying core framework
 
@@ -49,7 +53,8 @@ User Input → Interactive CLI → Template Engine → File Generation → Valid
 ### 3. PNPM Package Management
 
 - **Decision**: Use PNPM over npm/yarn
-- **Rationale**: Efficient disk usage, strict dependency resolution, better monorepo support
+- **Rationale**: Efficient disk usage, strict dependency resolution, better
+  monorepo support
 - **Impact**: Requires PNPM 8+ for optimal performance
 - **Configuration**: `pnpm-lock.yaml` and `.npmrc` configuration
 
@@ -57,7 +62,8 @@ User Input → Interactive CLI → Template Engine → File Generation → Valid
 
 - **Decision**: Support both KiloCode and Cline Memory Bank systems
 - **Rationale**: Different AI tools have different memory bank requirements
-- **Impact**: Parallel systems in `.kilocode/rules/memory-bank/` and `memory-bank/`
+- **Impact**: Parallel systems in `.kilocode/rules/memory-bank/` and
+  `memory-bank/`
 - **Maintenance**: Keep both systems synchronized with project changes
 
 ## Design Patterns in Use
@@ -76,7 +82,8 @@ User Input → Interactive CLI → Template Engine → File Generation → Valid
 
 ### 3. Builder Pattern
 
-- **Implementation**: Progressive project configuration through interactive prompts
+- **Implementation**: Progressive project configuration through interactive
+  prompts
 - **Location**: `src/setup.js` with inquirer.js integration
 - **Usage**: Step-by-step project customization and generation
 
@@ -119,28 +126,28 @@ Quality System
 ### 1. Project Initialization Flow
 
 ```
-User Command → CLI Prompts → Template Selection → Variable Collection → 
+User Command → CLI Prompts → Template Selection → Variable Collection →
 File Generation → Dependency Installation → Validation → Success
 ```
 
 ### 2. AI Tool Integration Flow
 
 ```
-Tool Detection → Configuration Generation → Memory Bank Setup → 
+Tool Detection → Configuration Generation → Memory Bank Setup →
 Prompt Template Installation → Workflow Configuration → Ready for Use
 ```
 
 ### 3. Quality Validation Flow
 
 ```
-Code Changes → Pre-commit Hooks → Linting/Formatting → 
+Code Changes → Pre-commit Hooks → Linting/Formatting →
 Golden Tests → CI/CD Pipeline → Quality Gates → Deployment Ready
 ```
 
 ### 4. Memory Bank Synchronization
 
 ```
-Project Changes → Update KiloCode Memory Bank → Update Cline Memory Bank → 
+Project Changes → Update KiloCode Memory Bank → Update Cline Memory Bank →
 Validate Consistency → Commit Changes → CI/CD Validation
 ```
 

@@ -1,7 +1,7 @@
 ---
 trigger: manual
-description: 
-globs: 
+description:
+globs:
 ---
 
 Manual

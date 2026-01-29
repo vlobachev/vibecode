@@ -6,7 +6,8 @@
 
 1. Create `.kilocode/rules/memory-bank/` directory
 2. Add `memory-bank-instructions.md` from Kilocode AI documentation
-3. Create core files: `brief.md`, `product.md`, `context.md`, `architecture.md`, `tech.md`
+3. Create core files: `brief.md`, `product.md`, `context.md`, `architecture.md`,
+   `tech.md`
 4. Populate each file with project-specific information
 5. Test Memory Bank activation with Kilocode AI
 
@@ -83,7 +84,8 @@
 2. MCP Memory Service (SQLite-vec or ChromaDB)
    - Stand up local vector DB (prefer SQLite-vec for simple setup)
    - Implement semantic search, natural-language time queries, and tag filters
-   - Define memory types (note, decision, task, code_ref) and embeddings pipeline
+   - Define memory types (note, decision, task, code_ref) and embeddings
+     pipeline
    - Add import/export and retention policies
    - Create benchmarks for retrieval quality
 

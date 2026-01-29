@@ -6,8 +6,7 @@ Use this template when asking AI agents to fix bugs.
 
 ### Observed Bug
 
-**Summary**: [Brief description of the issue]
-**Reproduction Steps**:
+**Summary**: [Brief description of the issue] **Reproduction Steps**:
 
 1. [Step 1]
 2. [Step 2]
@@ -34,9 +33,9 @@ Use this template when asking AI agents to fix bugs.
 
 ### Scope
 
-**Affected Files/Packages**: [List suspected files or components]
-**Related Components**: [Dependencies or connected systems]
-**Recent Changes**: [Any recent modifications that might be related]
+**Affected Files/Packages**: [List suspected files or components] **Related
+Components**: [Dependencies or connected systems] **Recent Changes**: [Any
+recent modifications that might be related]
 
 ### Debugging Information
 
@@ -72,15 +71,13 @@ Use this template when asking AI agents to fix bugs.
 
 ### Fix Criteria
 
-**Must Fix**: [Core functionality that must work]
-**Should Preserve**: [Existing behavior to maintain]
-**Must Not Break**: [Critical functionality to protect]
+**Must Fix**: [Core functionality that must work] **Should Preserve**: [Existing
+behavior to maintain] **Must Not Break**: [Critical functionality to protect]
 
 ### Testing Strategy
 
-**Regression Tests**: [Specific tests needed to prevent recurrence]
-**Edge Cases**: [Scenarios to verify]
-**Integration Points**: [Other systems to test]
+**Regression Tests**: [Specific tests needed to prevent recurrence] **Edge
+Cases**: [Scenarios to verify] **Integration Points**: [Other systems to test]
 
 ### Backward Compatibility
 
@@ -115,9 +112,9 @@ Use this template when asking AI agents to fix bugs.
 
 ### Preferred Approach
 
-**Strategy**: [Any guidance on how to approach the fix]
-**Code Areas to Focus On**: [Specific files or functions to examine]
-**Things to Avoid**: [Approaches that might cause more issues]
+**Strategy**: [Any guidance on how to approach the fix] **Code Areas to Focus
+On**: [Specific files or functions to examine] **Things to Avoid**: [Approaches
+that might cause more issues]
 
 ### References
 

@@ -4,7 +4,9 @@
 
 ## Welcome
 
-You're joining a team that uses AI-assisted development (vibecoding) to accelerate software delivery while maintaining high quality. This guide will help you get productive quickly.
+You're joining a team that uses AI-assisted development (vibecoding) to
+accelerate software delivery while maintaining high quality. This guide will
+help you get productive quickly.
 
 ## What is Vibecoding?
 
@@ -60,7 +62,7 @@ Understand the monorepo structure:
 ```
 packages/
 ├── core/           → Shared utilities
-├── api/            → Backend services  
+├── api/            → Backend services
 ├── web/            → Frontend app
 └── shared-types/   → TypeScript definitions
 ```
@@ -116,7 +118,7 @@ Now you can handle more substantial work:
 ### Collaboration Tips
 
 - **Ask questions early**: Don't wait if you're stuck
-- **Share your screen**: Pair program when learning new areas  
+- **Share your screen**: Pair program when learning new areas
 - **Review others' PRs**: Great way to learn patterns
 - **Attend standups**: Stay connected with team priorities
 
@@ -157,7 +159,8 @@ Now you can handle more substantial work:
 - **Making changes too large**: Keep PRs focused and reviewable
 - **Skipping documentation**: Update docs when you change behavior
 - **Ignoring CI failures**: Fix broken tests and linting issues
-- **Not considering backward compatibility**: Breaking changes need migration plans
+- **Not considering backward compatibility**: Breaking changes need migration
+  plans
 
 ## Resources
 
@@ -228,4 +231,6 @@ We want to improve this process! Please share:
 
 ---
 
-**Welcome to the team!** Remember: everyone was new once, and the team is here to help you succeed. Don't hesitate to ask questions and share your fresh perspective.
+**Welcome to the team!** Remember: everyone was new once, and the team is here
+to help you succeed. Don't hesitate to ask questions and share your fresh
+perspective.
