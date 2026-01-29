@@ -41,12 +41,15 @@ pnpm run setup                 # Interactive project setup
 pnpm run test-setup            # Deterministic generator run (test output)
 ```
 
-## Key Directories
+## Project Architecture
 
 - `src/` – generator + reference MCP memory server
 - `templates/` – scaffold templates
 - `tests/` – unit/integration/golden tests
 - `docs/` – documentation index + guides
+- `scripts/` – pre-commit guardrails and validation helpers
+- `prompts/` – reusable prompt templates
+- `policies/` – human review and governance rules
 
 ## AI Collaboration Rules (Pointer)
 

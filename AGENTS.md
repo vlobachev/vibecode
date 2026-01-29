@@ -58,7 +58,30 @@ pnpm test
 
 ---
 
-## 3) How to Work Safely (Human-in-the-Loop)
+## What You Can Do
+
+- Read and analyze any file in the repository
+- Propose code changes following established patterns
+- Run validation commands (`make validate`, `pnpm test`, etc.)
+- Create new files when explicitly requested
+- Suggest improvements and refactors
+- Execute safe, read-only commands
+
+---
+
+## What You Cannot Do
+
+- Bypass human review for any changes
+- Modify `/policies/` contents
+- Add dependencies without explicit approval
+- Change authentication, authorization, or security configs without approval
+- Delete or weaken existing tests
+- Hardcode secrets, tokens, or credentials
+- Make architectural changes without asking first
+
+---
+
+## Working with Humans
 
 **Core rules (non-negotiable):**
 
@@ -77,7 +100,7 @@ pnpm test
 
 ---
 
-## 4) Style & Conventions
+## Code Standards
 
 - **TypeScript-first** when applicable; keep types explicit.
 - One primary export per file.
@@ -97,7 +120,7 @@ pnpm test
 
 ---
 
-## 6) Security & Safety
+## Security Guidelines
 
 - **Never** hardcode secrets, tokens, or credentials.
 - Validate and sanitize user inputs.
