@@ -184,7 +184,7 @@ make validate   # Must pass: lint + format-check + test
 - Hooks run: agent-guardrails.sh, structure validation, AGENTS.md checks
 - **Never bypass hooks** with `--no-verify` unless explicitly instructed
 
-## ✅ What You Can Do
+## What You Can Do
 
 ### Code Generation & Modification
 
@@ -210,7 +210,7 @@ make validate   # Must pass: lint + format-check + test
 - Keep docs/ up to date
 - Document template variables and Handlebars helpers
 
-## ❌ What You Cannot Do
+## What You Cannot Do
 
 ### Security & Dependencies
 
@@ -235,7 +235,7 @@ make validate   # Must pass: lint + format-check + test
 - **Never break** backward compatibility with existing generated projects
 - **Never remove** Makefile targets that users might depend on
 
-## 🎨 Style & Conventions
+## Code Standards
 
 ### Code Style
 
@@ -395,7 +395,7 @@ All pass? ✅ Ready to commit
 Any fail? ❌ Fix and retry
 ```
 
-## 🔒 Security Guidelines
+## Security Guidelines
 
 ### Template Security
 
@@ -528,7 +528,7 @@ make validate   # Must pass: lint + format-check + test
 - **Document template variables** and Handlebars helpers
 - **Include examples** for complex templates
 
-## 👥 Working with Humans
+## Working with Humans
 
 ### Communication Style
 
@@ -552,10 +552,12 @@ make validate   # Must pass: lint + format-check + test
    - Breaking changes (if any)
    - Migration guide (if needed)
 3. **AI Attribution**:
+
    ```
    AI-Generated: Yes
    Reviewed-by: [Human Name]
    ```
+
 4. **Flag uncertainty**: Call out areas where you need human review
 
 ### GitHub Actions Validation (CRITICAL)

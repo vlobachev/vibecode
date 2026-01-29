@@ -3,5 +3,6 @@ node_modules/
 dist/
 build/
 coverage/
+sources/
 *.min.js
 *.bundle.js

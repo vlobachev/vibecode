@@ -411,10 +411,12 @@ This checklist is available as a template in `.github/agent-task-checklist.md`.
 
 1. Ensure AGENTS.md is in repository root
 2. Add explicit instruction in issue:
+
    ```markdown
    **Important**: Read AGENTS.md before starting. Run `make validate` before
    creating PR.
    ```
+
 3. Include validation in acceptance criteria (not optional)
 
 ### Agent Gets Stuck in Loop

@@ -181,45 +181,45 @@ chars, and common passwords."
 ### Agent's Approach
 
 1. **Run tests** first (baseline - all pass)
-2. **Refactor** `validatePassword` method:
+1. **Refactor** `validatePassword` method:
 
-```typescript
-validatePassword(password: string): boolean {
-  // Enhanced validation
-  if (password.length < 8) return false;
-  if (!/[A-Z]/.test(password)) return false;  // Uppercase
-  if (!/[a-z]/.test(password)) return false;  // Lowercase
-  if (!/\d/.test(password)) return false;     // Number
-  if (!/[!@#$%^&*]/.test(password)) return false; // Special char
+   ```typescript
+   validatePassword(password: string): boolean {
+     // Enhanced validation
+     if (password.length < 8) return false;
+     if (!/[A-Z]/.test(password)) return false;  // Uppercase
+     if (!/[a-z]/.test(password)) return false;  // Lowercase
+     if (!/\d/.test(password)) return false;     // Number
+     if (!/[!@#$%^&*]/.test(password)) return false; // Special char
 
-  // Check against common passwords
-  const commonPasswords = ['Password123!', 'Admin123!', 'Test123!'];
-  if (commonPasswords.includes(password)) return false;
+     // Check against common passwords
+     const commonPasswords = ['Password123!', 'Admin123!', 'Test123!'];
+     if (commonPasswords.includes(password)) return false;
 
-  return true;
-}
-```
+     return true;
+   }
+   ```
 
-3. **Run tests** again
-4. **Observe failures** (some tests fail because requirements changed)
-5. **Update tests** to match new requirements:
+1. **Run tests** again
+1. **Observe failures** (some tests fail because requirements changed)
+1. **Update tests** to match new requirements:
 
-```typescript
-it('should reject password without uppercase', () => {
-  assert.strictEqual(validator.validatePassword('securepass123!'), false);
-});
+   ```typescript
+   it('should reject password without uppercase', () => {
+     assert.strictEqual(validator.validatePassword('securepass123!'), false);
+   });
 
-it('should reject password without special characters', () => {
-  assert.strictEqual(validator.validatePassword('SecurePass123'), false);
-});
+   it('should reject password without special characters', () => {
+     assert.strictEqual(validator.validatePassword('SecurePass123'), false);
+   });
 
-it('should reject common passwords', () => {
-  assert.strictEqual(validator.validatePassword('Password123!'), false);
-});
-```
+   it('should reject common passwords', () => {
+     assert.strictEqual(validator.validatePassword('Password123!'), false);
+   });
+   ```
 
-6. **Verify** all tests pass
-7. **Contract preserved**: `validate()`, `validateEmail()`, `validatePassword()`
+1. **Verify** all tests pass
+1. **Contract preserved**: `validate()`, `validateEmail()`, `validatePassword()`
    still have same signatures
 
 ## Key Points
